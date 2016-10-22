@@ -1,0 +1,273 @@
+
+
+    public static class UpdateRoadTask extends AsyncTask<Object, Void, Road> {
+
+        protected Road doInBackground(Object... params) {
+    ;
+            @SuppressWarnings("unchecked")
+
+            Locale locale = Locale.getDefault();
+            ArrayList<GeoPoint> waypoints = (ArrayList<GeoPoint>)params[0];
+            RoadManager roadManager = new OSRMRoadManager(HotelActivity);
+            roadManager = new GraphHopperRoadManager("30e833f1-c17f-4225-9e3a-170df88d9f5d");
+            roadManager.addRequestOption("locale=" + locale.getLanguage());
+            roadManager.addRequestOption("routeType=pedestrian");
+            roadManager.addRequestOption("vehicle=foot");
+
+            return roadManager.getRoad(waypoints);
+        }
+        @Override
+        protected void onPostExecute(Road result) {
+            road = result;
+
+            mapView.getOverlays().remove(roadOverlay);
+
+          roadOverlay = RoadManager.buildRoadOverlay(road,HotelActivity);
+     roadOverlay.setWidth(10);
+
+            mapView.getOverlays().add(roadOverlay);
+            mapView.invalidate();
+
+        }
+    }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //    getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        //  if (id == R.id.action_settings) {
+        //    return true;
+        //  }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void setMarkers(){
+        Marker m_rynek = new Marker(mapView);
+
+        m_rynek.setPosition(rynek_point);
+        m_rynek.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        m_rynek.setIcon(getResources().getDrawable(R.drawable.map_icon));
+        m_rynek.setTitle("Rynek");
+        m_rynek.setSubDescription("sredniowieczny plac targowy we Wroclawiu, obecnie centralna czesc strefy pieszej.");
+
+        Marker m_zoo = new Marker(mapView);
+        m_zoo.setPosition(zoo_point);
+        m_zoo.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        m_zoo.setIcon(getResources().getDrawable(R.drawable.map_icon));
+        m_zoo.setTitle("Ogród Zoologiczny");
+        m_zoo.setSubDescription("Jest najstarszym na obecnych ziemiach polskich ogrodem zoologicznym w Polsce. Pod koniec 2015 wroclawskie Zoo prezentowalo ponad 10500 zwierzat (nie wliczajac bezkregowców) ze 1132 gatunków");
+
+
+        Marker m_ostrów = new Marker(mapView);
+        m_ostrów.setPosition(ostrów_point);
+        m_ostrów.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        m_ostrów.setIcon(getResources().getDrawable(R.drawable.map_icon));
+        m_ostrów.setTitle("Ostrów Tumski");
+        m_ostrów.setSubDescription("najstarsza, zabytkowa czesc Wroclawia, powstala na obszarze przepraw na Odrze.");
+
+
+        Marker m_wyspa_s = new Marker(mapView);
+        m_wyspa_s.setPosition(wyspa_point);
+        m_wyspa_s.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        m_wyspa_s.setIcon(getResources().getDrawable(R.drawable.map_icon));
+        m_wyspa_s.setTitle("Wyspa Slodowa");
+        m_wyspa_s.setSubDescription("niewielka wysepka na Odrze w obrebie wroclawskiego Starego Miasta oraz Sródmiejskiego Wezla Wodnego");
+
+
+        Marker m_uwr = new Marker(mapView);
+        m_uwr.setPosition(uwr_point);
+        m_uwr.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        m_uwr.setIcon(getResources().getDrawable(R.drawable.map_icon));
+        m_uwr.setTitle("Uniwersytet Wroclawski");
+        m_uwr.setSubDescription("jeden z osiemnastu panstwowych uniwersytetów klasycznych w Polsce z siedziba we Wroclawiu, ksztalcacy na kierunkach humanistycznych i scislych.");
+
+
+
+        Marker m_inf_uwr = new Marker(mapView);
+        m_inf_uwr.setPosition(inf_uwr_point);
+        m_inf_uwr.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        m_inf_uwr.setIcon(getResources().getDrawable(R.drawable.map_icon));
+        m_inf_uwr.setTitle("Instytut Informatyczny UWR");
+        m_inf_uwr.setSubDescription("Tam ksztalca sie najlepsi informatycy z najlepszych. Stolica Prologa.");
+
+
+        Marker m_muzeum_narodowe = new Marker(mapView);
+        m_muzeum_narodowe .setPosition(muzeum_point);
+        m_muzeum_narodowe .setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        m_muzeum_narodowe .setIcon(getResources().getDrawable(R.drawable.map_icon));
+        m_muzeum_narodowe .setTitle("Muzeum Narodowe");
+        m_muzeum_narodowe .setSubDescription("Jedno z glównych muzeów Wroclawia i Dolnego Slaska. Zbiory muzeum obejmuja przede wszystkim malarstwo i rzezbe, ze szczególnym uwzglednieniem sztuki calego Slaska.");
+
+
+        Marker m_dominikanska = new Marker(mapView);
+        m_dominikanska .setPosition(dominikanska_point);
+        m_dominikanska .setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        m_dominikanska .setIcon(getResources().getDrawable(R.drawable.map_icon));
+        m_dominikanska .setTitle("Galeria Dominikanska");
+        m_dominikanska .setSubDescription("Jakis twórczy opis galeri.. Mozna zjesc cos na pietrze -1");
+
+
+        Marker m_panorama = new Marker(mapView);
+        m_panorama.setPosition(panorama_point);
+        m_panorama.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        m_panorama.setIcon(getResources().getDrawable(R.drawable.map_icon));
+        m_panorama.setTitle("Panorama Raclawicka");
+        m_panorama.setSubDescription("Muzeum sztuki we Wroclawiu, eksponuje cykloramiczny obraz Bitwa pod Raclawicami namalowany w latach 1893–1894");
+
+
+
+        Marker m_narodowe = new Marker(mapView);
+        m_panorama.setPosition(narodowe_point);
+        m_panorama.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        m_panorama.setIcon(getResources().getDrawable(R.drawable.map_icon));
+        m_panorama.setTitle("Narodowe Forum Muzyki");
+        m_panorama.setSubDescription("nowoczesny kompleks sal koncertowych mieszczacych sie we Wroclawiu oraz nazwa instytucji kultury powstalej w 2014 roku z polaczenia Filharmonii Wroclawskiej i Miedzynarodowego Festiwalu Wratislavia Cantans.");
+
+
+
+
+
+
+        mapView.getOverlays().add(m_dominikanska);
+        mapView.getOverlays().add(m_inf_uwr);
+        mapView.getOverlays().add(m_muzeum_narodowe);
+        mapView.getOverlays().add(m_ostrów);
+        mapView.getOverlays().add(m_rynek);
+        mapView.getOverlays().add(m_uwr);
+        mapView.getOverlays().add(m_wyspa_s);
+        mapView.getOverlays().add(m_zoo);
+        mapView.getOverlays().add(m_narodowe);
+        mapView.getOverlays().add(m_panorama);
+
+
+
+    }
+
+
+
+ mapView = (MapView) findViewById(R.id.map);
+
+        mapController = mapView.getController();
+
+        MyLocationNewOverlay mMyLocationOverlay = new MyLocationNewOverlay(this, mapView);
+
+        mMyLocationOverlay.setDrawAccuracyEnabled(true);
+        mMyLocationOverlay.enableMyLocation();
+
+
+        mapView.getOverlays().add(mMyLocationOverlay);
+
+
+
+
+
+        //Add Scale Bar
+        ScaleBarOverlay myScaleBarOverlay = new ScaleBarOverlay(mapView);
+        mapController.setZoom(16);
+        GeoPoint startPoint = new GeoPoint(51.104084, 17.024512);
+
+        if(mMyLocationOverlay.getMyLocation()!=null) {myLocation =   mMyLocationOverlay.getMyLocation();
+            mapController.setCenter(myLocation);}
+        // add new marker pin to map
+
+        mapView.invalidate();
+        mapView.getOverlays().add(myScaleBarOverlay);
+        mapView.setBuiltInZoomControls(true);
+        mapView.setMultiTouchControls(true);
+        mapView.setTileSource(TileSourceFactory.MAPNIK);
+        mapView.setClickable(true);
+        mapController.setCenter(startPoint);
+        setMarkers();
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3">
+ <org.osmdroid.views.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tilesource="Mapnik" />
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+
+        android:layout_weight="2">
+
+        <ImageView
+        android:id="@+id/background_map"
+        android:scaleType="centerCrop"
+
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+        <ImageView
+
+            android:id="@+id/dark"
+            android:alpha="0.5"
+            android:scaleType="centerCrop"
+            android:src="#000000"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/switch_tab">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffdd1a"
+                app:tabTextAppearance="@style/MineCustomTabText"
+                app:tabSelectedTextColor="#BD0000"
+                app:tabGravity="center"
+                app:tabMode="scrollable"
+                app:tabIndicatorColor="#BD0000"
+                android:elevation="6dp"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tab_layout"/>
+        </LinearLayout>
+
+    </FrameLayout>
+</LinearLayout>
