@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaapplication3;
 
 import java.awt.Color;
@@ -21,18 +16,27 @@ import javax.swing.ImageIcon;
 public class Hotel_request_info extends javax.swing.JFrame {
 
     /**
-     * Creates new form Hotel_request_info
+     * Okno pojawiające się po naciśnięciu w button powiadomienia. 
+     * 
+     * Zawiera wszystkie ifnormacje o poleceniu od klienta
      */
-    public Hotel_request_info() {
+    public Hotel_request_info() 
+    {
+        
         initComponents();
         setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
-         try {
+        
+        try 
+        {
         label_bg.setIcon(new ImageIcon(ImageIO.read(new File("first_bg.jpg"))));
-    } catch (IOException ex) {
+        } 
+        catch (IOException ex) 
+        {
         Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
-    }
-         jScrollPane1.setBackground(new Color(0,0,0,0));
-         area_request_info.setBackground(new Color(0,0,0,0));
+        }
+        
+        jScrollPane1.setBackground(new Color(0,0,0,0));
+        area_request_info.setBackground(new Color(0,0,0,0));
     }
 
     /**
@@ -52,6 +56,7 @@ public class Hotel_request_info extends javax.swing.JFrame {
         label_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Roomie Server");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -86,6 +91,8 @@ public class Hotel_request_info extends javax.swing.JFrame {
         jButton2.setText("Zamknij");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 155, 50));
         getContentPane().add(label_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

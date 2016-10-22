@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaapplication3;
 
 import java.io.File;
@@ -21,16 +16,21 @@ import javax.swing.ImageIcon;
 public class Hotel_dodaj extends javax.swing.JFrame {
 
     /**
-     * Creates new form Hotel_dodaj
+     * Nowa forma Hotel_dodaj
+     * 
+     * Dodaje pokój, do listy pokoi - Ogólnie tworzy konta na które można się zalogować.
+     * 
      */
     public Hotel_dodaj() {
         initComponents();
         setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
             try {
-        label_bg.setIcon(new ImageIcon(ImageIO.read(new File("main_bg.jpg"))));
-    } catch (IOException ex) {
-        Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
-    }
+                  label_bg.setIcon(new ImageIcon(ImageIO.read(new File("main_bg.jpg"))));
+                } 
+            catch (IOException ex) 
+                {
+                  Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
+                }
     }
 
     /**
@@ -62,6 +62,7 @@ public class Hotel_dodaj extends javax.swing.JFrame {
         label_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Roomie Server - Dodaj");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -143,6 +144,8 @@ public class Hotel_dodaj extends javax.swing.JFrame {
 
         label_bg.setForeground(new java.awt.Color(254, 254, 254));
         getContentPane().add(label_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 330));
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

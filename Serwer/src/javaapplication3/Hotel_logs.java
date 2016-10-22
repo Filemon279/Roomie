@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaapplication3;
 
 import java.awt.Color;
@@ -21,22 +16,26 @@ import javax.swing.ImageIcon;
 public class Hotel_logs extends javax.swing.JFrame {
 
     /**
-     * Creates new form Hotel_logs
+     * Niezbędne okno do debugowania, oglądania tego co dzieje się miedzy aplikacjami a serwerami
      */
-    public Hotel_logs() {
-        initComponents();
-             setDefaultCloseOperation(this.HIDE_ON_CLOSE);
-                List_connected_id.setModel(Ramka.List_connected_id);
-             List_unconnected_rooms.setModel(Ramka.List_unconnected_rooms);
-     
-            try {
+    public Hotel_logs() 
+    {
+    initComponents();
+    setDefaultCloseOperation(this.HIDE_ON_CLOSE);
+    List_connected_id.setModel(Ramka.List_connected_id);
+    List_unconnected_rooms.setModel(Ramka.List_unconnected_rooms);
+
+    try {
         label_bg.setIcon(new ImageIcon(ImageIO.read(new File("main_bg.jpg"))));
-    } catch (IOException ex) {
+        } 
+    catch (IOException ex) 
+         {
         Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
-    }
-            List_connected_id.setBackground(new Color(0,0,0,125));
-            List_unconnected_rooms.setBackground(new Color(0,0,0,125));
-         
+        }
+    
+    List_connected_id.setBackground(new Color(0,0,0,125));
+    List_unconnected_rooms.setBackground(new Color(0,0,0,125));
+
     }
 
     /**
@@ -59,6 +58,7 @@ public class Hotel_logs extends javax.swing.JFrame {
         label_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Roomie Server - Logs");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -82,6 +82,8 @@ public class Hotel_logs extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 48, 110, 182));
         getContentPane().add(label_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 480));
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

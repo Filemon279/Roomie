@@ -1,27 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaapplication3;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
-import java.math.BigInteger;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.security.SecureRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -30,7 +20,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -41,37 +30,56 @@ import javax.swing.event.ChangeListener;
  *
  * @author filemon
  */
-public class Ramka extends javax.swing.JFrame {
+
+
+
+/**
+ * 
+ * Główne okno zarządzania, tutaj wyświetlane są buttony informacyjne, umieszczone są wszystkie przyciski
+ * oraz przycisk start odpowiedzialny za uruchomienie serwera. Bez tego aplikacja nie ustanowi połaczenia
+ * 
+ */
+public class Ramka extends javax.swing.JFrame 
+{
+    
 static Hotel_logs logs;
-        static DefaultListModel List_connected_rooms = new DefaultListModel();
-        static DefaultListModel List_connected_id = new DefaultListModel();
-        static DefaultListModel List_unconnected_rooms = new DefaultListModel();
-        static JFrame RamkaOut;     
-        static ClientServiceThread[] polaczenia = new ClientServiceThread[1000];
-        static Pokoje[] pokoje = new Pokoje[1000];
+static DefaultListModel List_connected_rooms = new DefaultListModel();
+static DefaultListModel List_connected_id = new DefaultListModel();
+static DefaultListModel List_unconnected_rooms = new DefaultListModel();
+static JFrame RamkaOut;     
+static ClientServiceThread[] polaczenia = new ClientServiceThread[1000];
+static Pokoje[] pokoje = new Pokoje[1000];
         
         
-    public Ramka() {
-        
-        initComponents();   
-          RamkaOut = this;
-     
-    try {
+public Ramka() 
+{
+
+    initComponents();   
+    RamkaOut = this;
+
+    try 
+    {
         label_background_img.setIcon(new ImageIcon(ImageIO.read(new File("main_bg.jpg"))));
-    } catch (IOException ex) {
+    } 
+    
+    catch (IOException ex) 
+    {
         Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
     }
-    request_panel.setBackground(new Color(0,0,0,125));
-   
     
-           jScrollPane1.getViewport().addChangeListener(new ChangeListener() {
+    request_panel.setBackground(new Color(0,0,0,125));
 
-            @Override
-            public void stateChanged(ChangeEvent e) {
-               jScrollPane1.repaint();
-            }
-        });
-    }
+
+    jScrollPane1.getViewport().addChangeListener(new ChangeListener() 
+    {
+
+        @Override
+        public void stateChanged(ChangeEvent e) 
+        {
+           jScrollPane1.repaint();
+        }
+    });
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,6 +99,7 @@ static Hotel_logs logs;
         label_background_img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Roomie Server");
         setBackground(new java.awt.Color(1, 9, 9));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -140,13 +149,15 @@ static Hotel_logs logs;
         request_panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         request_panel.setAutoscrolls(true);
         request_panel.setName(""); // NOI18N
-        request_panel.setLayout(new java.awt.FlowLayout(0));
+        request_panel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
         jScrollPane1.setViewportView(request_panel);
         request_panel.getAccessibleContext().setAccessibleName("");
         request_panel.getAccessibleContext().setAccessibleParent(this);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 923, 376));
         getContentPane().add(label_background_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 520));
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -168,18 +179,16 @@ static Hotel_logs logs;
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void wyslijButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wyslijButtonActionPerformed
-Hotel_wyslij wyslij = new Hotel_wyslij();
-  wyslij.setLocationRelativeTo(null);
-wyslij.show();
-  
+    Hotel_wyslij wyslij = new Hotel_wyslij();
+    wyslij.setLocationRelativeTo(null);
+    wyslij.show();
     }//GEN-LAST:event_wyslijButtonActionPerformed
 
     private void ButtonDodajUsrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDodajUsrActionPerformed
-Hotel_dodaj dodaj = new Hotel_dodaj();
-dodaj.setLocationRelativeTo(null);
+    Hotel_dodaj dodaj = new Hotel_dodaj();
+    dodaj.setLocationRelativeTo(null);
+    dodaj.show();
 
-dodaj.show();
-   
     }//GEN-LAST:event_ButtonDodajUsrActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -238,99 +247,125 @@ int i = 10;
     private javax.swing.JButton wyslijButton;
     // End of variables declaration//GEN-END:variables
 
-    public void lecim(){
+    public void lecim()
+    {
        
-         try {
+         try 
+         {
                  
             ServerSocket m_ServerSocket = new ServerSocket(8080);
             int id = 0;
            
- while(true){
-   
+            while(true)
+            {
                 Socket clientSocket = m_ServerSocket.accept();
                 ClientServiceThread cliThread = new ClientServiceThread(clientSocket, id, logs.panel,jScrollPane1,request_panel);
-            
-            polaczenia[id] = cliThread;
+                polaczenia[id] = cliThread;
                 cliThread.start();
-                  id++;
- }
-              } catch (IOException ex) {
+                id++;
+            }
+        } 
+         
+        catch (IOException ex) 
+        {
             Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-public void updatePanel(final String text, JTextArea panelIn)
-{
-        try {
+    
+    
+    public void updatePanel(final String text, JTextArea panelIn)
+    {
+        try 
+        {
             SwingUtilities.invokeAndWait(new Runnable()
             {
                 public void run()
                 {
                     panelIn.setText(panelIn.getText()+text);
                 }
-            });  } catch (InterruptedException ex) {
+            });  
+        } 
+        catch (InterruptedException ex) 
+        {
             Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvocationTargetException ex) {
+        } 
+        catch (InvocationTargetException ex) 
+        {
             Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
+    }
 
 
-public void addToList(final String text)
-{
-        try {
+
+
+    public void addToList(final String text)
+    {
+        try 
+        {
             SwingUtilities.invokeAndWait(new Runnable()
             {
                 public void run()
                 {     
              //  UserInList.addElement(text);
                 }
-            });  } catch (InterruptedException ex) {
+            });  
+        } 
+
+        catch (InterruptedException ex) 
+        {
             Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvocationTargetException ex) {
+        } 
+
+        catch (InvocationTargetException ex) 
+        {
             Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
         }
-}  
+    }  
 
-public void addButton(String title,String information)
-{
+
+
+    public void addButton(String title,String information)
+    {
     Dimension size = new Dimension(120,120);
- Dimension size2 = new Dimension(this.getWidth(),this.getHeight());
-   i++;
+    Dimension size2 = new Dimension(this.getWidth(),this.getHeight());
+    i++;
     final JButton newButton = new JButton(title);
-      newButton.setAction( new AbstractAction(title) {
+    
+    newButton.setAction( new AbstractAction(title) 
+    {
         @Override
-        public void actionPerformed( ActionEvent e ) {  
-          Ramka.logs.panel.append(e.getActionCommand()+"\n");
-          Hotel_request_info info = new Hotel_request_info();
-          info.area_request_info.setText(information);
-          info.label_request_info.setText(title);
-          info.close_button.setAction(new AbstractAction("Wykonano") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                request_panel.remove(newButton);
-               request_panel.revalidate();
-                request_panel.repaint();
-                info.dispose();
-            }
-        });
-          
-          info.setLocationRelativeTo(null);
-          info.show();
-          
+        public void actionPerformed( ActionEvent e ) 
+        {  
+            Ramka.logs.panel.append(e.getActionCommand()+"\n");
+            Hotel_request_info info = new Hotel_request_info();
+            info.area_request_info.setText(information);
+            info.label_request_info.setText(title);
+
+            info.close_button.setAction(new AbstractAction("Wykonano") 
+            {
+                @Override
+                public void actionPerformed(ActionEvent e) 
+                {
+                    request_panel.remove(newButton);
+                    request_panel.revalidate();
+                    request_panel.repaint();
+                    info.dispose();
+                }
+            });
+
+            info.setLocationRelativeTo(null);
+            info.show();
         }
     });
-    // newButton.setText("<html><center><b>"+room+"</b><br>"+title+"</center></html>");
-   
-     newButton.setPreferredSize(size);
-     
-     
     
-     request_panel.setPreferredSize(size2);
-     request_panel.add(newButton);   
-     request_panel.validate();     
-     jScrollPane1.validate();
-}
+    newButton.setPreferredSize(size);
+
+    request_panel.setPreferredSize(size2);
+    request_panel.add(newButton);   
+    request_panel.validate();     
+    jScrollPane1.validate();
+    }
 
 
 
@@ -435,6 +470,7 @@ panel.append("Accepted Client : ID - " + clientID + " : Address - "
      if((i+1)>=ListaUsrIn.size()&&(pokoje[Integer.parseInt(ListaUsrIn.get(i).toString())].numer!=nr)){
           panel.append("Bledny numer\n");
                    wyslijWiadomosc(out,"loginWrong");
+                   panel.append("wysłano info\n");
      }
           }
         

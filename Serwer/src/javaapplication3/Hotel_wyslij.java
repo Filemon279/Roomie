@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaapplication3;
 
 import java.awt.Color;
@@ -23,20 +18,25 @@ import javax.swing.ImageIcon;
 public class Hotel_wyslij extends javax.swing.JFrame {
 
     /**
-     * Creates new form Hotel_wyslij
+     * Okno zarządzania powiadomieniami wysyłanymi do aplikacji gościa hotelu.
      */
-    public Hotel_wyslij() {
-        initComponents();
-           setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
-           
-                 list_choose_target.setModel(Ramka.List_unconnected_rooms);
-           try {
-        label_bg.setIcon(new ImageIcon(ImageIO.read(new File("main_bg.jpg"))));
-    } catch (IOException ex) {
-        Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
+    public Hotel_wyslij() 
+    {
+    initComponents();
+    setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
+    list_choose_target.setModel(Ramka.List_unconnected_rooms);
+    
+    try 
+    {
+    label_bg.setIcon(new ImageIcon(ImageIO.read(new File("main_bg.jpg"))));
+    } 
+    catch (IOException ex) 
+    {
+    Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
     }
-           list_choose_target.setBackground(new Color(0,0,0,125));
-           list_few_targets.setBackground(new Color(0,0,0,125));
+    
+    list_choose_target.setBackground(new Color(0,0,0,125));
+    list_few_targets.setBackground(new Color(0,0,0,125));
     }
 
     /**
@@ -70,6 +70,7 @@ public class Hotel_wyslij extends javax.swing.JFrame {
         label_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Roomie Server - Wyslij");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -191,36 +192,46 @@ public class Hotel_wyslij extends javax.swing.JFrame {
     }//GEN-LAST:event_button_add_targetActionPerformed
 
     private void button_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_sendActionPerformed
-      int ID;
-        if((String)list_choose_target.getSelectedValue()!=null){
-             System.out.println(list_choose_target.getSelectedValue());
-          
-     ID = Ramka.pokoje[Integer.parseInt(list_choose_target.getSelectedValue())].ID;
-       System.out.println(ID);
+    int ID;
     
-                  PrintWriter   out=null;
-            try {
-                  out = new PrintWriter(new OutputStreamWriter(Ramka.polaczenia[ID].clientSocket.getOutputStream()));
-                } 
-            catch (IOException ex) {
+    /**
+    *
+    * Wysyłanie powiadomień, wypisanie tego w konsoli logów oraz stworzenie odpowiedniego pakietu do wysłania
+    * 
+    */
+    
+    if((String)list_choose_target.getSelectedValue()!=null)
+        {
+            System.out.println(list_choose_target.getSelectedValue());
+            ID = Ramka.pokoje[Integer.parseInt(list_choose_target.getSelectedValue())].ID;
+            System.out.println(ID);
+            PrintWriter   out=null;
+                 
+            try 
+            {
+            out = new PrintWriter(new OutputStreamWriter(Ramka.polaczenia[ID].clientSocket.getOutputStream()));
+            } 
+            catch (IOException ex) 
+            {
             Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
             }
-      
-        if(radio_notification.isSelected())
-        {
-        out.println("POW#"+field_title.getText()+"#"+area_message.getText());
-        out.flush();
-        Ramka.logs.panel.append("Server to "+list_choose_target.getSelectedValue()+" Powiadomienie : "+area_message.getText()+"\n");
-        area_message.setText("");
+
+            if(radio_notification.isSelected())
+            {
+            out.println("POW#"+field_title.getText()+"#"+area_message.getText());
+            out.flush();
+            Ramka.logs.panel.append("Server to "+list_choose_target.getSelectedValue()+" Powiadomienie : "+area_message.getText()+"\n");
+            area_message.setText("");
+            }
+
+            else
+            {
+            out.println(area_message.getText());
+            out.flush();
+            Ramka.logs.panel.append("Server to "+list_choose_target.getSelectedValue()+": "+area_message.getText()+"\n");
+            area_message.setText("");
+            }
         }
-      
-        else{
-        out.println(area_message.getText());
-        out.flush();
-       Ramka.logs.panel.append("Server to "+list_choose_target.getSelectedValue()+": "+area_message.getText()+"\n");
-       area_message.setText("");
-        }
-  }
     }//GEN-LAST:event_button_sendActionPerformed
 
     private void field_titleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_titleActionPerformed
