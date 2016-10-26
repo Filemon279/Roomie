@@ -53,9 +53,6 @@ public class MainActivity extends Activity {
     private static Context MainActivityOut;
     private static String packName;
     private static LayoutInflater layoutInflater;
-    private static String lastNotification;
-    private static LayoutInflater layoutInflater2;
-    private static TextView viewPowiadomienie2;
     private Display display;
     static Point size = new Point();
 
@@ -74,8 +71,8 @@ public class MainActivity extends Activity {
 
         ImageView background = (ImageView) findViewById(R.id.main_background);
         background.setImageBitmap(decodeImage(getResources(),R.mipmap.hotel_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
-        ImageView logo_mofinet = (ImageView) findViewById(R.id.main_logo_mofinet);
-        logo_mofinet.setImageBitmap(decodeImage(getResources(),R.drawable.logo,200,200));
+        ImageView logo_issp = (ImageView) findViewById(R.id.main_logo);
+        logo_issp.setImageBitmap(decodeImage(getResources(),R.drawable.black_issp2,200,200));
 
 
 
@@ -93,7 +90,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent window_service = new Intent(MainActivity.this, Hotel_services.class);
                 MainActivity.this.startActivity(window_service);
-                //  img_animation.clearAnimation();
+
             }
 
         });
