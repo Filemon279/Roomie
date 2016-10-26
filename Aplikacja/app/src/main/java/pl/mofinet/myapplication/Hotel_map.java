@@ -48,7 +48,16 @@ public class Hotel_map  extends AppCompatActivity implements OnMapReadyCallback 
     static Context HotelActivity;
     public static final  LatLng narodowe_point = new LatLng(51.116131, 17.039849);
     public static final  LatLng panorama_point = new LatLng(51.110129, 17.044343);
+
+    //Galerie
     public static final LatLng dominikanska_point = new LatLng(51.108112, 17.039698);
+    public static final LatLng renoma_point = new LatLng(51.10362299, 17.03128159);
+    public static final LatLng arkady_point = new LatLng(51.09924725, 17.0287469);
+    public static final LatLng skyTower_point = new LatLng(51.09429161, 17.0201236);
+    public static final LatLng magnolia_point = new LatLng(51.11944499, 16.98969126);
+
+
+
     public static final LatLng muzeum_point = new LatLng(51.110564, 17.047788);
     public static final LatLng inf_uwr_point = new LatLng(51.110941, 17.053088);
     public static final LatLng uwr_point = new LatLng(51.113663, 17.034720);
@@ -56,6 +65,7 @@ public class Hotel_map  extends AppCompatActivity implements OnMapReadyCallback 
     public static final LatLng ostrów_point = new LatLng(51.114463, 17.046734);
     public static final LatLng zoo_point = new LatLng(51.106442, 17.073065);
     public static final LatLng rynek_point = new LatLng(51.109454, 17.031332);
+
     public static IMapController mapController;
     public static GeoPoint myLocation;
     public static GeoPoint currentLocation;
@@ -88,6 +98,7 @@ public class Hotel_map  extends AppCompatActivity implements OnMapReadyCallback 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
                 viewPager.setCurrentItem(tab.getPosition());
             }
 
@@ -123,19 +134,7 @@ public class Hotel_map  extends AppCompatActivity implements OnMapReadyCallback 
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
 
-            // Add a marker in Sydney, Australia, and move the camera.
-            LatLng sydney = new LatLng(51.116131, 17.039849);
-     /*       mMap.addMarker(new MarkerOptions().position(rynek_point).title("Marker in Sydney"));
-            mMap.addMarker(new MarkerOptions().position(narodowe_point).title("Marker in Sydney"));
-            mMap.addMarker(new MarkerOptions().position(ostrów_point).title("Marker in Sydney"));
-            mMap.addMarker(new MarkerOptions().position(wyspa_point).title("Marker in Sydney"));
-            mMap.addMarker(new MarkerOptions().position(uwr_point).title("Marker in Sydney"));
-            mMap.addMarker(new MarkerOptions().position(inf_uwr_point).title("Marker in Sydney"));
-            mMap.addMarker(new MarkerOptions().position(zoo_point).title("Marker in Sydney"));
-            mMap.addMarker(new MarkerOptions().position(dominikanska_point).title("Marker in Sydney"));
-            mMap.addMarker(new MarkerOptions().position(muzeum_point).title("Marker in Sydney"));
-            mMap.addMarker(new MarkerOptions().position(panorama_point).title("Marker in Sydney"));
-            mMap.addMarker(new MarkerOptions().position(narodowe_point).title("Marker in Sydney"));*/
+
             mMap.setMapType(1);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(rynek_point, 15.0f));
 

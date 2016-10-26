@@ -32,6 +32,46 @@
                     android:layout_marginBottom="2dp"
                     android:textColor="#ffffff"
                     android:textSize="16dp" />
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Renoma"
+                    android:id="@+id/show_renoma_but"
+                    android:background="@drawable/img_dominikanska_button"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp" />
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="arkady"
+                    android:id="@+id/show_arkady_but"
+                    android:background="@drawable/img_dominikanska_button"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp" />
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SkyTower"
+                    android:id="@+id/show_skyTower_but"
+                    android:background="@drawable/img_dominikanska_button"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp" />
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Magnolia Park"
+                    android:id="@+id/show_magnolia_but"
+                    android:background="@drawable/img_dominikanska_button"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp" />
 
 
 

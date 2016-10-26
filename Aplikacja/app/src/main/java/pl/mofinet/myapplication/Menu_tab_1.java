@@ -26,10 +26,10 @@ public class Menu_tab_1 extends Fragment {
         final  LatLng muzeum_point = Hotel_map.muzeum_point;
         final IMapController mapController;
         mapController = Hotel_map.mapController;
-        Hotel_map.mMap.clear();
+     //   Hotel_map.mMap.clear();
     //    Hotel_map.mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(panorama_point, 16.0f));
-        Hotel_map.mMap.addMarker(new MarkerOptions().position(muzeum_point).title("Marker in Sydney"));
-        Hotel_map.mMap.addMarker(new MarkerOptions().position(panorama_point).title("Marker in Sydney"));
+        Hotel_map.mMap.addMarker(new MarkerOptions().position(muzeum_point).title("Muzeum Główne Wrocław"));
+        Hotel_map.mMap.addMarker(new MarkerOptions().position(panorama_point).title("Panorama Raclawicka"));
 
         View v = inflater.inflate(R.layout.tab_menu_1, container, false);
         Button show_panorama = (Button) v.findViewById(R.id.show_panorama_but);

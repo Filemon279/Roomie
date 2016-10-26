@@ -91,11 +91,13 @@ public class Start_logo extends AppCompatActivity {
                          Intent oknoGlowne = new Intent(Start_logo.this, LoginActivity.class);
                          Start_logo.this.startActivity(oknoGlowne);
                          finish();
+
                 }
+
             }
         });
 
-        showLoginActiv();
+
 
     }
 

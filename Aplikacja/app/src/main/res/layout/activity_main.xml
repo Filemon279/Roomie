@@ -43,7 +43,7 @@
                 <ImageView
 
                     android:id="@+id/dark"
-                    android:alpha="0.8"
+                    android:alpha="0.1"
                     android:scaleType="centerCrop"
                     android:src="#e000"
                     android:layout_centerInParent="true"

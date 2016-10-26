@@ -16,9 +16,11 @@ public class Menu_page_adapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
 
         switch (position) {
+
             case 0:
                 Menu_tab_1 tab1 = new Menu_tab_1();
                 return tab1;
+
             case 1:
                 Menu_tab_2 tab2 = new Menu_tab_2();
                 return tab2;
