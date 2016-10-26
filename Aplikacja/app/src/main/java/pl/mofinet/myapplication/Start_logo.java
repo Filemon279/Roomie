@@ -38,25 +38,25 @@ public class Start_logo extends AppCompatActivity {
         builder = new AlertDialog.Builder(this);
 
         ImageView logo = (ImageView) findViewById(R.id.start_logo_logo);
+        ImageView issp_logo = (ImageView) findViewById(R.id.issp_logo);
         background = (ImageView) findViewById(R.id.start_logo_bg);
-
         background.setImageBitmap(
                 decodeSampledBitmapFromResource(getResources(), R.mipmap.service_bg, getWindowManager().getDefaultDisplay().getWidth(),
                         getWindowManager().getDefaultDisplay().getHeight()));
+
+
     logo.setImageBitmap(
             decodeSampledBitmapFromResource(getResources(), R.drawable.roomie_logo_shadow, 400,400));
-   //   Bitmap b = BitmapFactory.decodeResource(getResources(), R.mipmap.service_bg, options);
-    //   background.setImageBitmap(b);
-    //   b = BitmapFactory.decodeResource(getResources(), R.drawable.roomie_logo_shadow, options);
-
-
-
-     //   logo.setImageBitmap(b);
         logo.clearAnimation();
+
+        issp_logo.setImageBitmap(
+                decodeSampledBitmapFromResource(getResources(), R.drawable.white_issp, 400,400));
+        issp_logo.clearAnimation();
 
         Animation show = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.show);
         show.setStartOffset(1600);
         logo.startAnimation(show);
+        issp_logo.startAnimation(show);
 
         show.setAnimationListener(new Animation.AnimationListener() {
             @Override
