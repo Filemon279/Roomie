@@ -46,11 +46,12 @@ public class LoginActivity extends AppCompatActivity {
     private static RelativeLayout relativeLayout;
     public static Button buttonZaloguj1;
     private static EditText nrPokoju,hasloPokoju;
-
+    private static AlertDialog.Builder builder;
     public static Context LoginActivityOut;
     static Point size = new Point();
     private Display display;
-    private static AlertDialog.Builder builder;
+
+
     public static final String PREFS_NAME = "LoginAndPass";
     public String PREFS_USERNAME= "prefsUsername";
     public String PREFS_PASSWORD="prefsPassword";
@@ -76,14 +77,16 @@ public class LoginActivity extends AppCompatActivity {
         hasloPokoju = (EditText) findViewById(R.id.hasloPokoju);
         layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         builder = new AlertDialog.Builder(this);
-
-
         display = getWindow().getWindowManager().getDefaultDisplay();
-
         display.getSize(size);
 
+        SharedPreferences pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        String username = pref.getString(PREFS_USERNAME, "");
+        String pass = pref.getString(PREFS_PASSWORD, "");
 
-
+        if (!username.equals("") && !pass.equals("")) {
+            Client.sendRequest("LOGREQ#"+username+"#"+pass);
+        }
 
         buttonZaloguj1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

@@ -17,6 +17,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import static pl.mofinet.myapplication.Start_logo.showMainActiv;
+
 /**
  * Created by filemon on 03.04.16.
  */
@@ -30,12 +32,10 @@ public final class Client {
         chatOperator.execute();
     }
 
-    private Socket client;
+    public Socket client;
     public static PrintWriter printwriter;
     private BufferedReader bufferedReader;
-    private String CHAT_SERVER_IP = "192.168.0.104"; // Adres kompa w sieci lokalnej // Bledny sprawia ze aplikacja nie uruchomi sie
-
-
+    private String CHAT_SERVER_IP = "192.168.88.196"; // Adres kompa w sieci lokalnej // Bledny sprawia ze aplikacja nie uruchomi sie
 
 
     private class ChatOperator extends AsyncTask<Void, Void, Void> {
@@ -57,7 +57,7 @@ public final class Client {
             } catch (UnknownHostException e) {
 //                e.printStackTrace();
             } catch (IOException e) {
-            //    Start_logo.popupInfo(("Faild to connect server " + CHAT_SERVER_IP));
+              //  Start_logo.popupInfo("Błąd połączenia z Serwerem");
                 e.printStackTrace();
             }
             return null;
@@ -79,6 +79,8 @@ public final class Client {
 
 
     }
+
+
 
     /**
      * This AsyncTask continuously reads the input buffer and show the chat
@@ -117,21 +119,21 @@ public final class Client {
         @Override
         protected void onProgressUpdate(Void... values) {
     //    if(zainicjowano)    //textViewIn.append("Server: " + message + "\n");
+
+
+
             if(message.equals( "loginConfirmed")) {
                 logined = true;
-               Start_logo.showMainActiv();
-
+               showMainActiv();
             }
             else if(message.equals("passwordWrong")) {
              //   Start_logo.showLoginActiv();
 
                 LoginActivity.popupInfo("Bledne haslo");
-
             }
             else if(message.equals("loginWrong")){
               //  Start_logo.showLoginActiv();
                 LoginActivity.popupInfo("Bledny numer pokoju");
-
             }
             else if(message.equals("noAccount")) {
               //  Start_logo.showLoginActiv();
@@ -146,9 +148,6 @@ public final class Client {
                 MainActivity.createNotification(messageInfo);
             }
         }
-
-
-
     }
 
     /**
@@ -175,6 +174,9 @@ public final class Client {
 
 
     }
+
+
+
 
 
 

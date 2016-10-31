@@ -21,10 +21,6 @@ import java.io.ByteArrayOutputStream;
 public class Start_logo extends AppCompatActivity {
     ImageView background;
     static Context Startlogo;
-    public String PREFS_NAME = "LoginAndPass";
-    public String PREFS_USERNAME= "prefsUsername";
-    public String PREFS_PASSWORD="prefsPassword";
-    public String PREFS_FIRSTSTART="firstStart";
     static Activity startlogoactiv;
     public Client client = new Client();
     private static AlertDialog.Builder builder;
@@ -69,31 +65,21 @@ public class Start_logo extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation arg0) {
-           // showLoginActiv();//tylko na testy
 
+                if (client.client == null) {
+                    popupInfo("Brak połączenia z Serwerem Hotelu. Skontaktuj się z obsługą");
+                }
 
-                SharedPreferences pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                else{
 
-                String username = pref.getString(PREFS_USERNAME, "");
-                String pass = pref.getString(PREFS_PASSWORD, "");
-                String firstStart = pref.getString(PREFS_FIRSTSTART, "");
+                    // showLoginActiv();//tylko na testy
 
-                if (!firstStart.equals("monia")) {
-                    pref.edit().putString(PREFS_FIRSTSTART, "monia").commit();
-                    Intent oknoGlowne = new Intent(Start_logo.this, language.class);
+                    Intent oknoGlowne = new Intent(Start_logo.this, LoginActivity.class);
                     Start_logo.this.startActivity(oknoGlowne);
                     finish();
-                }
-                if (!username.equals("") && !pass.equals("")) {
-                      client.sendRequest("LOGREQ#"+username+"#"+pass);
 
-                } else {
-                         Intent oknoGlowne = new Intent(Start_logo.this, LoginActivity.class);
-                         Start_logo.this.startActivity(oknoGlowne);
-                         finish();
 
-                }
-
+            }
             }
         });
 
@@ -110,7 +96,8 @@ public class Start_logo extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
+                    //  System.exit(0); <-- Prawidłowe
+                        showMainActiv(); // <--Testy
                     }
                 })
                 .show();
