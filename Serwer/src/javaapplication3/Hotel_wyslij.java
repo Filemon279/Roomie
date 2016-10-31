@@ -24,7 +24,7 @@ public class Hotel_wyslij extends javax.swing.JFrame {
     {
     initComponents();
     setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
-    list_choose_target.setModel(Ramka.List_unconnected_rooms);
+    list_choose_target.setModel(Ramka.List_connected_rooms);
     
     try 
     {
@@ -35,8 +35,8 @@ public class Hotel_wyslij extends javax.swing.JFrame {
     Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
     }
     
-    list_choose_target.setBackground(new Color(0,0,0,125));
-    list_few_targets.setBackground(new Color(0,0,0,125));
+   // list_choose_target.setBackground(new Color(0,0,0,125));
+   // list_few_targets.setBackground(new Color(0,0,0,125));
     }
 
     /**
@@ -79,6 +79,7 @@ public class Hotel_wyslij extends javax.swing.JFrame {
         jLabel1.setText("Wyślij Wiadomość");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
 
+        list_choose_target.setBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(list_choose_target);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 110, 220));
@@ -114,6 +115,7 @@ public class Hotel_wyslij extends javax.swing.JFrame {
         });
         getContentPane().add(check_one_room, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
+        list_few_targets.setBackground(new java.awt.Color(204, 204, 204));
         jScrollPane2.setViewportView(list_few_targets);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 120, 220));

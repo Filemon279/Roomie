@@ -147,6 +147,14 @@ public final class Client {
 
                 MainActivity.createNotification(messageInfo);
             }
+            else if(message.contains("CHECKINOUT#"))
+            {
+                //Przykladowy z Servera:" CHECKINOUT#dataZameldowania#dataWymeldowania"
+               String[] messageInfo = message.split("#");
+              MainActivity.checkIn.setText("CHECK IN: "+messageInfo[1]);
+             MainActivity.checkOut.setText("CHECK OUT: " +messageInfo[2]);
+            }
+
         }
     }
 

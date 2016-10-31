@@ -85,8 +85,6 @@ public class Hotel_dodaj extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(254, 254, 254));
         jLabel3.setText("Hasło Pokoju:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 149, -1, -1));
-
-        field_generate_password.setEditable(false);
         getContentPane().add(field_generate_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 144, 128, -1));
 
         jButton1.setBackground(new java.awt.Color(55, 129, 149));
@@ -169,7 +167,7 @@ public class Hotel_dodaj extends javax.swing.JFrame {
    else if (field_generate_password.getText().toString().equals("")) Ramka.logs.panel.append("Nie wygenerowano hasla");
    else
    {
-       Pokoje pokoj = new Pokoje(Integer.parseInt(field_type_number.getText().toString()),field_generate_password.getText().toString());
+       Pokoje pokoj = new Pokoje(Integer.parseInt(field_type_number.getText().toString()),field_generate_password.getText().toString(),field_checkIn.getText(),field_checkOut.getText(),field_type_name.getText(),field_type_surname.getText());
        Ramka.pokoje[Integer.parseInt(field_type_number.getText().toString())]=pokoj;
        Ramka.List_unconnected_rooms.addElement(field_type_number.getText());
    }
@@ -238,15 +236,15 @@ public class Hotel_dodaj extends javax.swing.JFrame {
     
     
     
-    
+   /**
+    * Generuj Losowe Hasło
+    * 
+    */ 
 public String GenerujHaslo() 
     {
        SecureRandom random = new SecureRandom(); 
        return new BigInteger(15, random).toString(32);
     }
-
-
-
 
 }
 

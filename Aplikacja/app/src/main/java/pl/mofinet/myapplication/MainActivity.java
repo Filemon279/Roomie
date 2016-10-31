@@ -52,6 +52,8 @@ public class MainActivity extends Activity {
     private static NotificationManager notificationManager;
     private static Context MainActivityOut;
     private static String packName;
+    public static TextView checkIn;
+    public static TextView checkOut;
     private static LayoutInflater layoutInflater;
     private Display display;
     static Point size = new Point();
@@ -82,7 +84,8 @@ public class MainActivity extends Activity {
         layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         display = getWindow().getWindowManager().getDefaultDisplay();
         display.getSize(size);
-
+        checkIn = (TextView) findViewById(R.id.check_in_field);
+        checkOut = (TextView) findViewById(R.id.check_out_field);
 
         service = (ImageButton) findViewById(R.id.button_service);
 

@@ -375,12 +375,20 @@ int i = 10;
 
 class Pokoje{
     int numer;
-    String haslo;
     int ID=-1;
-public Pokoje(int numer1, String haslo1)
+    String haslo;
+    String zameldowanie;
+    String wymeldowanie;
+    String imie;
+    String naziwsko;
+public Pokoje(int numerIn, String hasloIn, String zameldowanieIn, String wymeldowanieIn, String imieIn, String nazwiskoIn)
 {
-    numer = numer1;
-    haslo = haslo1;
+    numer = numerIn;
+    haslo = hasloIn;
+    zameldowanie = zameldowanieIn;
+    wymeldowanie = wymeldowanieIn;
+    imie = imieIn;
+    naziwsko = nazwiskoIn;
 }
 }
 
@@ -456,10 +464,11 @@ panel.append("Accepted Client : ID - " + clientID + " : Address - "
                       wyslijWiadomosc(out,"loginConfirmed");
                       ListaZalogowaniIn.addElement(""+nr);
                       pokoje[nr].ID = clientID;
-                      clientRoom = nr;
-                      Ramka.List_unconnected_rooms.removeElement(""+nr);
-                   //   ListaPolaczeniIn.removeElement("ID: "+clientID);
+                      clientRoom = nr;  
                       panel.append("Zalogowano pomyslnie jako: "+nr+"\n");
+                      wyslijWiadomosc(out,"CHECKINOUT#11.05#11.08");
+                      panel.append("Wyslano date zameldowania/wymeldowania: "+pokoje[Integer.parseInt(ListaUsrIn.get(i).toString())].zameldowanie+" - "+pokoje[Integer.parseInt(ListaUsrIn.get(i).toString())].wymeldowanie);
+                      ListaUsrIn.removeElement(""+nr); 
                       looged=true;         
                       break;
                   }
@@ -495,6 +504,7 @@ panel.append("Accepted Client : ID - " + clientID + " : Address - "
         
      else  {
        if(ListaZalogowaniIn.size()!=0)ListaZalogowaniIn.removeElement(""+clientRoom);  
+       ListaUsrIn.addElement(clientRoom);
        panel.setText(panel.getText()+"ID: "+clientID+" Zakończył połączenie\n");
        running = false;       
         }
@@ -508,6 +518,7 @@ panel.append("Accepted Client : ID - " + clientID + " : Address - "
   
  public void wyslijWiadomosc(PrintWriter printWriter, String text)
     {
+      
         printWriter.println(text);
         printWriter.flush();
     }
