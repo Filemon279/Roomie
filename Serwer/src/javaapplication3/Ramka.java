@@ -436,6 +436,7 @@ panel.append("Accepted Client : ID - " + clientID + " : Address - "
         
         if (messageInfo[0].equalsIgnoreCase("quit")) {
           running = false;
+          if(ListaZalogowaniIn.size()!=0)ListaZalogowaniIn.removeElement(""+clientRoom);  
           panel.setText(panel.getText()+"Zakończył połączenie : " + clientID+"\n");
         } 
         if (messageInfo[0].equalsIgnoreCase("LOGREQ")) {
@@ -456,7 +457,8 @@ panel.append("Accepted Client : ID - " + clientID + " : Address - "
                       ListaZalogowaniIn.addElement(""+nr);
                       pokoje[nr].ID = clientID;
                       clientRoom = nr;
-                      //ListaPolaczeniIn.removeElement("ID: "+clientID);
+                      Ramka.List_unconnected_rooms.removeElement(""+nr);
+                   //   ListaPolaczeniIn.removeElement("ID: "+clientID);
                       panel.append("Zalogowano pomyslnie jako: "+nr+"\n");
                       looged=true;         
                       break;

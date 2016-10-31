@@ -33,8 +33,8 @@ public class Hotel_logs extends javax.swing.JFrame {
         Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
         }
     
-    List_connected_id.setBackground(new Color(0,0,0,125));
-    List_unconnected_rooms.setBackground(new Color(0,0,0,125));
+  //  List_connected_id.setBackground(new Color(0,0,0,125));
+  //  List_unconnected_rooms.setBackground(new Color(0,0,0,125));
 
     }
 
@@ -56,6 +56,8 @@ public class Hotel_logs extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         List_unconnected_rooms = new javax.swing.JList<>();
         label_bg = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        List_unconnected_rooms1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Roomie Server - Logs");
@@ -68,6 +70,7 @@ public class Hotel_logs extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 236, 762, 229));
 
+        List_connected_id.setBackground(new java.awt.Color(204, 204, 204));
         jScrollPane2.setViewportView(List_connected_id);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 48, 100, 182));
@@ -78,10 +81,16 @@ public class Hotel_logs extends javax.swing.JFrame {
         jLabel2.setText("All Unconnected Rooms");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 19, -1, -1));
 
+        List_unconnected_rooms.setBackground(new java.awt.Color(204, 204, 204));
         jScrollPane3.setViewportView(List_unconnected_rooms);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 48, 110, 182));
         getContentPane().add(label_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 480));
+
+        List_unconnected_rooms1.setBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane4.setViewportView(List_unconnected_rooms1);
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 48, 110, 182));
 
         getAccessibleContext().setAccessibleDescription("");
 
@@ -126,11 +135,13 @@ public class Hotel_logs extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> List_connected_id;
     private javax.swing.JList<String> List_unconnected_rooms;
+    private javax.swing.JList<String> List_unconnected_rooms1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel label_bg;
     public static javax.swing.JTextArea panel;
     // End of variables declaration//GEN-END:variables
