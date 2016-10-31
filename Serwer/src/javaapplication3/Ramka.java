@@ -466,7 +466,7 @@ panel.append("Accepted Client : ID - " + clientID + " : Address - "
                       pokoje[nr].ID = clientID;
                       clientRoom = nr;  
                       panel.append("Zalogowano pomyslnie jako: "+nr+"\n");
-                      wyslijWiadomosc(out,"CHECKINOUT#11.05#11.08");
+                      wyslijWiadomosc(out,"CHECKINOUT#"+pokoje[Integer.parseInt(ListaUsrIn.get(i).toString())].zameldowanie+"#"+pokoje[Integer.parseInt(ListaUsrIn.get(i).toString())].wymeldowanie);
                       panel.append("Wyslano date zameldowania/wymeldowania: "+pokoje[Integer.parseInt(ListaUsrIn.get(i).toString())].zameldowanie+" - "+pokoje[Integer.parseInt(ListaUsrIn.get(i).toString())].wymeldowanie);
                       ListaUsrIn.removeElement(""+nr); 
                       looged=true;         
