@@ -5,10 +5,8 @@
  */
 package javaapplication3;
 
-import com.mysql.jdbc.ResultSetMetaData;
-import com.mysql.jdbc.Statement;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import java.sql.Array;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -20,8 +18,9 @@ import java.sql.SQLException;
 
 
 public class baza_danych {
-public String [] Kolumny;
+public static String [] Kolumny;
 public static ResultSet rs;
+public static java.sql.Statement stmt;
  public baza_danych() throws SQLException
  {
       MysqlDataSource dataSource = new MysqlDataSource();
@@ -31,7 +30,7 @@ public static ResultSet rs;
     dataSource.setServerName("127.0.0.1");
         
 java.sql.Connection conn = dataSource.getConnection();
-java.sql.Statement stmt = conn.createStatement();
+stmt = conn.createStatement();
 rs = stmt.executeQuery("SELECT * FROM pokoje");
 java.sql.ResultSetMetaData metadata = rs.getMetaData();
 int columnCount = metadata.getColumnCount(); 

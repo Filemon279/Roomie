@@ -4,10 +4,20 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFormattedTextField.AbstractFormatter;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 
 /**
  *
@@ -21,6 +31,12 @@ public class Hotel_dodaj extends javax.swing.JFrame {
      * Dodaje pokój, do listy pokoi - Ogólnie tworzy konta na które można się zalogować.
      * 
      */
+    JDatePickerImpl field_checkIn;
+    JDatePickerImpl field_checkOut ;
+    JDatePanelImpl dataPanel_checkIn ;
+    JDatePanelImpl dataPanel_checkOut;
+    UtilDateModel model;
+    UtilDateModel model2;
     public Hotel_dodaj() {
         initComponents();
         setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
@@ -31,8 +47,58 @@ public class Hotel_dodaj extends javax.swing.JFrame {
                 {
                   Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            model = new UtilDateModel();
+            model2 = new UtilDateModel();
+            //model.setDate(20,04,2014);
+// Need this...
+Properties p = new Properties();
+p.put("text.today", "Today");
+p.put("text.month", "Month");
+p.put("text.year", "Year");
+dataPanel_checkIn = new JDatePanelImpl(model, p);
+dataPanel_checkOut = new JDatePanelImpl(model2, p);
+// Don't know about the formatter, but there it is...
+field_checkIn = new JDatePickerImpl(dataPanel_checkIn, new DateLabelFormatter());
+field_checkOut = new JDatePickerImpl(dataPanel_checkOut, new DateLabelFormatter());
+
+  javax.swing.JLabel jLabel_checkIn = new javax.swing.JLabel();
+  javax.swing.JLabel jLabel_checkOut= new javax.swing.JLabel();
+  jLabel_checkIn.setText("Check In");
+    jLabel_checkOut.setText("Check OUT");
+
+  jPanel1.add(jLabel_checkIn);
+    jPanel1.add(field_checkIn);
+      jPanel1.add(jLabel_checkOut);
+      jPanel1.add(field_checkOut);
+
+
+
     }
 
+ public class DateLabelFormatter extends AbstractFormatter {
+
+    private String datePattern = "yyyy-MM-dd";
+    private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+
+    @Override
+    public Object stringToValue(String text) throws ParseException {
+        return dateFormatter.parseObject(text);
+    }
+
+    @Override
+    public String valueToString(Object value) throws ParseException {
+        if (value != null) {
+            Calendar cal = (Calendar) value;
+            return dateFormatter.format(cal.getTime());
+        }
+
+        return "";
+    }
+
+}   
+    
+  
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,16 +115,15 @@ public class Hotel_dodaj extends javax.swing.JFrame {
         field_generate_password = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        field_checkIn = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        field_checkOut = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         field_type_name = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         field_type_surname = new javax.swing.JTextField();
         button_add_room = new javax.swing.JButton();
+        JScrollPane1 = new javax.swing.JScrollPane();
+        field_inne = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
         label_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,30 +164,15 @@ public class Hotel_dodaj extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
         jLabel4.setText("Okres Zameldowania");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 51, -1, -1));
-
-        field_checkIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_checkInActionPerformed(evt);
-            }
-        });
-        getContentPane().add(field_checkIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 80, 70, -1));
-
-        jLabel5.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel5.setText("Od:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 85, -1, -1));
-
-        jLabel6.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel6.setText("do:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 85, -1, -1));
-        getContentPane().add(field_checkOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 80, 70, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
 
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
         jLabel7.setText("Opcjonalnie:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 217, -1, -1));
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Imię:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 252, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
         getContentPane().add(field_type_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 252, 157, -1));
 
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
@@ -138,7 +188,16 @@ public class Hotel_dodaj extends javax.swing.JFrame {
                 button_add_roomActionPerformed(evt);
             }
         });
-        getContentPane().add(button_add_room, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 257, 186, 55));
+        getContentPane().add(button_add_room, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 186, 55));
+
+        field_inne.setColumns(20);
+        field_inne.setRows(5);
+        JScrollPane1.setViewportView(field_inne);
+
+        getContentPane().add(JScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, -1, -1));
+
+        jPanel1.setForeground(getBackground());
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 230, 110));
 
         label_bg.setForeground(new java.awt.Color(254, 254, 254));
         getContentPane().add(label_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 330));
@@ -156,10 +215,6 @@ public class Hotel_dodaj extends javax.swing.JFrame {
     field_generate_password.setText(GenerujHaslo());
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void field_checkInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_checkInActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_checkInActionPerformed
-
     private void button_add_roomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_add_roomActionPerformed
    if(field_type_number.getText().toString().equals("")) Ramka.logs.panel.append("Nie podano numeru pokoju\n");
    else if (!field_type_number.getText().matches("\\d+")) Ramka.logs.panel.append("Bledny numer pokoju\n");
@@ -167,7 +222,23 @@ public class Hotel_dodaj extends javax.swing.JFrame {
    else if (field_generate_password.getText().toString().equals("")) Ramka.logs.panel.append("Nie wygenerowano hasla");
    else
    {
-       Pokoje pokoj = new Pokoje(Integer.parseInt(field_type_number.getText().toString()),field_generate_password.getText().toString(),field_checkIn.getText(),field_checkOut.getText(),field_type_name.getText(),field_type_surname.getText());
+       //INSERT INTO `pokoje`(`Numer`, `Haslo`, `Imie`, `Nazwisko`, `checkIn`, `checkOut`, `inne`) VALUES ([],[],[],[],[],[],[])
+       String polecenie = "INSERT INTO `pokoje`(`Numer`, `Haslo`, `Imie`, `Nazwisko`, `checkIn`, `checkOut`, `inne`) VALUES ('";
+       polecenie+=field_type_number.getText().toString()+"','"; //Numer
+       polecenie+=field_generate_password.getText().toString()+"','"; // Haslo
+       polecenie+=field_type_name.getText().toString()+"','"; // Imie
+       polecenie+=field_type_surname.getText().toString()+"','"; // Nazwisko
+       polecenie+=field_checkIn.getJFormattedTextField().getText()+"','"; // Check IN
+       polecenie+=field_checkOut.getJFormattedTextField().getText()+"','"; // Check OUT
+       polecenie+=field_inne.getText().toString()+"')"; // inne
+       System.out.println(polecenie);
+
+       try {
+           baza_danych.stmt.execute(polecenie);
+       } catch (SQLException ex) {
+           Logger.getLogger(Hotel_dodaj.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       Pokoje pokoj = new Pokoje(Integer.parseInt(field_type_number.getText().toString()),field_generate_password.getText().toString(),field_checkIn.getJFormattedTextField().getText(),field_checkOut.getJFormattedTextField().getText(),field_type_name.getText(),field_type_surname.getText());
        Ramka.pokoje[Integer.parseInt(field_type_number.getText().toString())]=pokoj;
        Ramka.List_unconnected_rooms.addElement(field_type_number.getText());
    }
@@ -211,10 +282,10 @@ public class Hotel_dodaj extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane JScrollPane1;
     private javax.swing.JButton button_add_room;
-    private javax.swing.JTextField field_checkIn;
-    private javax.swing.JTextField field_checkOut;
     private javax.swing.JTextField field_generate_password;
+    private javax.swing.JTextArea field_inne;
     private javax.swing.JTextField field_type_name;
     private javax.swing.JTextField field_type_number;
     private javax.swing.JTextField field_type_surname;
@@ -223,11 +294,10 @@ public class Hotel_dodaj extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_bg;
     // End of variables declaration//GEN-END:variables
 
