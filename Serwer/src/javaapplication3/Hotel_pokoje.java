@@ -5,6 +5,7 @@
  */
 package javaapplication3;
 
+import java.awt.Component;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -14,6 +15,8 @@ import java.util.logging.Logger;
 import static javaapplication3.baza_danych.rs;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -30,9 +33,15 @@ public class Hotel_pokoje extends javax.swing.JFrame {
         ResultSet rs = baza_danych.getAllRooms();
         try {
             jTable1.setModel(buildTable(rs));
+           
         } catch (SQLException ex) {
             Logger.getLogger(Hotel_pokoje.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+          ColumnsAutoSizer.sizeColumnsToFit(jTable1);
+          
+     
+        
     }
 
     /**
@@ -48,19 +57,15 @@ public class Hotel_pokoje extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout());
+        setTitle("Roomie - Pokoje");
+        setPreferredSize(new java.awt.Dimension(800, 604));
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setAutoCreateRowSorter(true);
+        jTable1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
@@ -100,6 +105,7 @@ public class Hotel_pokoje extends javax.swing.JFrame {
             public void run() {
                 new Hotel_pokoje().setVisible(true);
                 
+              
             }
         });
     }
@@ -109,12 +115,11 @@ public class Hotel_pokoje extends javax.swing.JFrame {
 
     ResultSetMetaData metaData = rs.getMetaData();
 
-    // names of columns
+   
     Vector<String> columnNames = new Vector<String>();
     int columnCount = metaData.getColumnCount();
     for (int column = 1; column <= columnCount; column++) {
-        columnNames.add(metaData.getColumnName(column));
-            System.out.println("0");
+        columnNames.add(metaData.getColumnName(column));   
     }
     
     
@@ -131,7 +136,7 @@ Vector<Vector<Object>> data = new Vector<Vector<Object>>();
     return new DefaultTableModel(data, columnNames);
 
 }
-    
+     
     
     
     
