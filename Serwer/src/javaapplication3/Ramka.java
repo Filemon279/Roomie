@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -26,6 +27,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
 /**
  *
  * @author filemon
@@ -56,7 +58,7 @@ public Ramka()
 
     initComponents();   
     RamkaOut = this;
-
+   
     try 
     {
         label_background_img.setIcon(new ImageIcon(ImageIO.read(new File("main_bg.jpg"))));
@@ -79,6 +81,15 @@ public Ramka()
            jScrollPane1.repaint();
         }
     });
+    
+    
+     try {
+        baza_danych baza = new baza_danych();
+    } catch (SQLException ex) {
+        Logger.getLogger(Ramka.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    
 }
 
     /**
@@ -96,6 +107,7 @@ public Ramka()
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         request_panel = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         label_background_img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -111,7 +123,7 @@ public Ramka()
                 startButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 439, 114, -1));
+        getContentPane().add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, 114, -1));
 
         wyslijButton.setBackground(new java.awt.Color(55, 129, 149));
         wyslijButton.setText("Wyślij");
@@ -138,7 +150,7 @@ public Ramka()
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 472, 115, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, 115, -1));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -154,7 +166,16 @@ public Ramka()
         request_panel.getAccessibleContext().setAccessibleName("");
         request_panel.getAccessibleContext().setAccessibleParent(this);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 923, 376));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 930, 376));
+
+        jButton2.setBackground(new java.awt.Color(55, 129, 149));
+        jButton2.setText("Pokoje");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, 115, -1));
         getContentPane().add(label_background_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 520));
 
         getAccessibleContext().setAccessibleDescription("");
@@ -195,6 +216,12 @@ public Ramka()
   logs.setLocationRelativeTo(null);
   logs.show();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      Hotel_pokoje pokoje = new Hotel_pokoje();
+      pokoje.setLocationRelativeTo(null);
+      pokoje.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
 int i = 10;
     /**
      * @param args the command line arguments
@@ -240,6 +267,7 @@ int i = 10;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonDodajUsr;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JLabel label_background_img;
     private javax.swing.JPanel request_panel;
