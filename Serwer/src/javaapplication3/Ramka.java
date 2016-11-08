@@ -58,7 +58,7 @@ public Ramka()
 
     initComponents();   
     RamkaOut = this;
-   
+ //  this.setResizable(false);
     try 
     {
         label_background_img.setIcon(new ImageIcon(ImageIO.read(new File("main_bg.jpg"))));
@@ -114,6 +114,7 @@ public Ramka()
         setTitle("Roomie Server");
         setBackground(new java.awt.Color(1, 9, 9));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         startButton.setBackground(new java.awt.Color(55, 129, 149));

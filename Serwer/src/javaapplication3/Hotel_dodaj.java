@@ -8,12 +8,14 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField.AbstractFormatter;
+import javax.swing.JOptionPane;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -63,8 +65,9 @@ field_checkOut = new JDatePickerImpl(dataPanel_checkOut, new DateLabelFormatter(
 
   javax.swing.JLabel jLabel_checkIn = new javax.swing.JLabel();
   javax.swing.JLabel jLabel_checkOut= new javax.swing.JLabel();
-  jLabel_checkIn.setText("Check In");
-    jLabel_checkOut.setText("Check OUT");
+  jLabel_checkIn.setText("<html><font color='white'>Check IN</font></html>");
+    jLabel_checkOut.setText("<html><font color='white'>Check OUT</font></html>");
+   
 
   jPanel1.add(jLabel_checkIn);
     jPanel1.add(field_checkIn);
@@ -114,14 +117,12 @@ field_checkOut = new JDatePickerImpl(dataPanel_checkOut, new DateLabelFormatter(
         jLabel3 = new javax.swing.JLabel();
         field_generate_password = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         field_type_name = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         field_type_surname = new javax.swing.JTextField();
         button_add_room = new javax.swing.JButton();
-        JScrollPane1 = new javax.swing.JScrollPane();
         field_inne = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         label_bg = new javax.swing.JLabel();
@@ -141,16 +142,16 @@ field_checkOut = new JDatePickerImpl(dataPanel_checkOut, new DateLabelFormatter(
                 field_type_numberActionPerformed(evt);
             }
         });
-        getContentPane().add(field_type_number, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 51, 128, -1));
+        getContentPane().add(field_type_number, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 160, -1));
 
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
         jLabel2.setText("Nr. Pokoju:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 56, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(254, 254, 254));
         jLabel3.setText("Hasło Pokoju:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 149, -1, -1));
-        getContentPane().add(field_generate_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 144, 128, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
+        getContentPane().add(field_generate_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 160, -1));
 
         jButton1.setBackground(new java.awt.Color(55, 129, 149));
         jButton1.setForeground(new java.awt.Color(254, 254, 254));
@@ -160,25 +161,22 @@ field_checkOut = new JDatePickerImpl(dataPanel_checkOut, new DateLabelFormatter(
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 88, 213, 44));
-
-        jLabel4.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel4.setText("Okres Zameldowania");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 213, 50));
 
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
         jLabel7.setText("Opcjonalnie:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 217, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Imię:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
-        getContentPane().add(field_type_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 252, 157, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
+        getContentPane().add(field_type_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 160, -1));
 
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
         jLabel9.setText("Nazwisko:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 285, -1, -1));
-        getContentPane().add(field_type_surname, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 285, 157, -1));
+        jLabel9.setAlignmentY(0.0F);
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, -1));
+        getContentPane().add(field_type_surname, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 160, -1));
 
         button_add_room.setBackground(new java.awt.Color(55, 129, 149));
         button_add_room.setForeground(new java.awt.Color(254, 254, 254));
@@ -188,19 +186,22 @@ field_checkOut = new JDatePickerImpl(dataPanel_checkOut, new DateLabelFormatter(
                 button_add_roomActionPerformed(evt);
             }
         });
-        getContentPane().add(button_add_room, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 186, 55));
+        getContentPane().add(button_add_room, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 186, 55));
 
         field_inne.setColumns(20);
+        field_inne.setLineWrap(true);
         field_inne.setRows(5);
-        JScrollPane1.setViewportView(field_inne);
+        field_inne.setText("Brak dodatkowych życzeń");
+        field_inne.setWrapStyleWord(true);
+        field_inne.setMaximumSize(new java.awt.Dimension(100, 16));
+        getContentPane().add(field_inne, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, 100));
 
-        getContentPane().add(JScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, -1, -1));
-
-        jPanel1.setForeground(getBackground());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 230, 110));
+        jPanel1.setBackground(new java.awt.Color(55, 129, 149));
+        jPanel1.setForeground(new java.awt.Color(102, 102, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 250, 120));
 
         label_bg.setForeground(new java.awt.Color(254, 254, 254));
-        getContentPane().add(label_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 330));
+        getContentPane().add(label_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 340));
 
         getAccessibleContext().setAccessibleDescription("");
 
@@ -216,10 +217,41 @@ field_checkOut = new JDatePickerImpl(dataPanel_checkOut, new DateLabelFormatter(
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void button_add_roomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_add_roomActionPerformed
-   if(field_type_number.getText().toString().equals("")) Ramka.logs.panel.append("Nie podano numeru pokoju\n");
-   else if (!field_type_number.getText().matches("\\d+")) Ramka.logs.panel.append("Bledny numer pokoju\n");
-   else if (Ramka.List_unconnected_rooms.contains(field_type_number.getText())||Ramka.List_connected_rooms.contains(field_type_number.getText()))  Ramka.logs.panel.append("Pokoj jest juz zarejestrowany\n");
-   else if (field_generate_password.getText().toString().equals("")) Ramka.logs.panel.append("Nie wygenerowano hasla");
+  //Sprawdzanie poprawnosci danych.  
+ String sDate = field_checkIn.getJFormattedTextField().getText();
+ String eDate = field_checkOut.getJFormattedTextField().getText();
+  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+ Date date2 = null;
+     int i = 0;
+          Date date = null;
+        if  (field_checkIn.getJFormattedTextField().getText().equals("")) ;
+        else if(field_checkOut.getJFormattedTextField().getText().equals(""));
+        else{
+
+          
+        try {
+           date = sdf.parse(sDate);
+        } catch (ParseException ex) {
+            Logger.getLogger(Hotel_dodaj.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+         try {
+            date2 = sdf.parse(eDate);
+            i=1;
+        } catch (ParseException ex) {
+            Logger.getLogger(Hotel_dodaj.class.getName()).log(Level.SEVERE, null, ex);
+        }}
+       //  System.out.println(date.compareTo(date2));
+      // if(date.compareTo(date2)==-1) //ok
+      if(i==0) JOptionPane.showMessageDialog(null,"Nie podano czasu pobytu","Uwaga",JOptionPane.WARNING_MESSAGE);
+       else if (date.compareTo(date2)==0) JOptionPane.showMessageDialog(null,"Minimalny pobyt to 1 noc","Uwaga",JOptionPane.WARNING_MESSAGE);//jeden dzien
+       else if (date.compareTo(date2)==1)JOptionPane.showMessageDialog(null,"Nieprawidlowy przedzial czasowy pobytu","Uwaga",JOptionPane.WARNING_MESSAGE);  //BLAD
+      
+       else if(field_type_number.getText().toString().equals("")) JOptionPane.showMessageDialog(null,"Nie podano numeru pokoju","Uwaga",JOptionPane.WARNING_MESSAGE);
+   else if (!field_type_number.getText().matches("\\d+"))JOptionPane.showMessageDialog(null,"Bledny numer pokoju","Uwaga",JOptionPane.WARNING_MESSAGE);
+   else if (Ramka.List_unconnected_rooms.contains(field_type_number.getText())||Ramka.List_connected_rooms.contains(field_type_number.getText())) JOptionPane.showMessageDialog(null,"Pokój jest juz zarejestrowany","Uwaga",JOptionPane.WARNING_MESSAGE); 
+   else if (field_generate_password.getText().toString().equals("")) JOptionPane.showMessageDialog(null,"Proszę wygenerować hasło","Uwaga",JOptionPane.WARNING_MESSAGE);
+ 
    else
    {
        //INSERT INTO `pokoje`(`Numer`, `Haslo`, `Imie`, `Nazwisko`, `checkIn`, `checkOut`, `inne`) VALUES ([],[],[],[],[],[],[])
@@ -233,6 +265,8 @@ field_checkOut = new JDatePickerImpl(dataPanel_checkOut, new DateLabelFormatter(
        polecenie+=field_inne.getText().toString()+"')"; // inne
        System.out.println(polecenie);
 
+       
+     
        try {
            baza_danych.stmt.execute(polecenie);
        } catch (SQLException ex) {
@@ -282,7 +316,6 @@ field_checkOut = new JDatePickerImpl(dataPanel_checkOut, new DateLabelFormatter(
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane JScrollPane1;
     private javax.swing.JButton button_add_room;
     private javax.swing.JTextField field_generate_password;
     private javax.swing.JTextArea field_inne;
@@ -293,7 +326,6 @@ field_checkOut = new JDatePickerImpl(dataPanel_checkOut, new DateLabelFormatter(
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
