@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -35,20 +37,28 @@ public final class Client {
     public Socket client;
     public static PrintWriter printwriter;
     private BufferedReader bufferedReader;
-    private String CHAT_SERVER_IP = "192.168.88.196"; // Adres kompa w sieci lokalnej // Bledny sprawia ze aplikacja nie uruchomi sie
+    private String CHAT_SERVER_IP = "192.168.0.102"; // Adres kompa w sieci lokalnej // Bledny sprawia ze aplikacja nie uruchomi sie
 
 
     private class ChatOperator extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... arg0) {
+
+
             try {
+
+
+
+
+
                 client = new Socket(CHAT_SERVER_IP, 8080); // Creating the server socket.
 
                 if (client != null) {
                     printwriter = new PrintWriter(client.getOutputStream(), true);
                     InputStreamReader inputStreamReader = new InputStreamReader(client.getInputStream());
                     bufferedReader = new BufferedReader(inputStreamReader);
+                    //inFromServer = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
 
 
@@ -60,7 +70,7 @@ public final class Client {
               //  Start_logo.popupInfo("Błąd połączenia z Serwerem");
                 e.printStackTrace();
             }
-            return null;
+           return null;
         }
 
         /**
@@ -69,10 +79,10 @@ public final class Client {
 
         protected void onPostExecute(Void result) {
 
-
-
+            Log.i("UWAGA !!!!!!!!!!!!!!!","nasluchuje");
             Receiver receiver = new Receiver(); // Initialize chat receiver AsyncTask.
             receiver.execute();
+
 
         }
 
@@ -95,12 +105,17 @@ public final class Client {
         @Override
         protected Void doInBackground(Void... params) {
 
+
+
+
+            Log.i("UWAGA !!!!!!!!!!!!!!!","nasluchuje do it in");
             while (true) {
                 try {
 
                     if (bufferedReader.ready()) {
+                        Log.i("UWAGA !!!!!!!!!!!!!!!","czeka na komunikat");
                         message = bufferedReader.readLine();
-
+                        Log.i("UWAGA !!!!!!!!!!!!!!!","doszlo cos");
                         publishProgress(null);
                     }
                 } catch (UnknownHostException e) {
@@ -121,7 +136,8 @@ public final class Client {
     //    if(zainicjowano)    //textViewIn.append("Server: " + message + "\n");
 
 
-
+            Log.i("UWAGA !!!!!!!!!!!!!!!","odbiera wiadomosci");
+            Log.i("UWAGA !!!!!!!!!!!!!!!",message);
             if(message.equals( "loginConfirmed")) {
                 logined = true;
                showMainActiv();

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>img/main_bg.jpg</file>
+        <file>img/notiimg.png</file>
+        <file>img/notiimg2.png</file>
+        <file>img/notiimg3.png</file>
+        <file>img/notiimg4.png</file>
+    </qresource>
+</RCC>
