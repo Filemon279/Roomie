@@ -196,6 +196,8 @@ public:
 
         label_3 = new QLabel(widget);
         label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setFont(font);
+        label_3->setStyleSheet(QStringLiteral("color:white"));
 
         gridLayout_4->addWidget(label_3, 4, 0, 1, 1);
 
@@ -232,6 +234,8 @@ public:
 
         label_2 = new QLabel(widget);
         label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setFont(font);
+        label_2->setStyleSheet(QStringLiteral("color:white"));
 
         gridLayout_4->addWidget(label_2, 2, 0, 1, 1);
 

@@ -11,7 +11,7 @@ void Hotel_thread::run()
 {
     // thread starts here
     sendLogs("Thread started");
-
+    initBaza();
     socket = new QTcpSocket();
 
     // set the ID
@@ -48,23 +48,85 @@ void Hotel_thread::readyRead()
     // will write on server side window
     sendLogs(QString::number(socketDescriptor)+" Data in: "+Data);
 
-    if(Data.contains("LOG")){
-        sendLogs("Wysylam: loginConfirmed");
-        socket->write("loginConfirmed\n");
-       // socket->write(Data);
-        socket->flush();
-        socket->waitForBytesWritten(30000);
-         sendLogs("Wysylam: wyslano");
+    QStringList msg = QString(Data).split("#");
+
+    if(msg.length()>0)
+    {
+
+    if (!Baza.isOpen())
+    {
+        if(!Baza.open())
+        {
+        sendLogs("NIE POLACZONO");
+        }
+        else
+        {
+        sendLogs("POLACZONO");
+        }
+    }
+    else
+    {
+       sendLogs("POLACZONO");
+    }
+
+    if(msg.value(0)=="LOGREQ"){
+        //Sprawdzamy gdzie i kto chce sie zalogować
+        //I czy pokoj jest zarejestrowany
+        QString polecenie = "SELECT * FROM pokoje WHERE Numer=";
+        polecenie.append(msg.value(1));//+" AND Haslo=\"");
+        //polecenie.append(msg.value(2));
+       // polecenie.chop(1);
+        //polecenie.append("\"");
+        QSqlQuery query(polecenie);
+        sendLogs(polecenie);
+
+        if(query.next())
+        {
+            QString pass = msg.value(2);
+            pass.chop(1);
+            if(query.value("Haslo")==pass)
+            {   //UPDATE `pokoje` SET `Numer`=[value-1] WHERE 1
+                polecenie = "UPDATE `pokoje` SET `status`=\"";
+                polecenie.append(QString::number(socketDescriptor)+"\" WHERE Numer=");
+                polecenie.append(msg.value(1));
+                QSqlQuery query(polecenie);
+                numer_pokoju = msg.value(1);
+                sendLogs("Wysylam: loginConfirmed");
+                socket->write("loginConfirmed\n");
+                socket->flush();
+                sendLogs(QString::number(socketDescriptor)+" ZALOGOWANO Nr: "+msg.value(1));
+            }
+            else
+            {
+                sendLogs("NIE ZALOGOWANO - Bledne haslo - Nr: "+msg.value(1));
+                socket->write("passwordWrong\n");
+                socket->flush();
+            }
+        }
+        else // BRAK KONTA O TYM NUMERZE
+        {
+
+            sendLogs("NIE ZALOGOWANO - Bledny numer - Nr: "+msg.value(1));
+            socket->write("noAccount\n");
+            socket->flush();
+          // QString polecenie = "SELECT * FROM pokoje WHERE Numer=";
+          //  polecenie.append(msg.value(1));
+          //  if()
+        }
+
 
     }
-    else socket->write(Data);
 
+    }
 }
 
 void Hotel_thread::disconnected()
 {
      sendLogs(QString::number(socketDescriptor)+" Disconnected");
-
+    QString polecenie;
+     polecenie = "UPDATE `pokoje` SET `status`=\"0\" WHERE Numer=";
+     polecenie.append(numer_pokoju);
+     QSqlQuery query(polecenie);
 
     socket->deleteLater();
     exit(0);

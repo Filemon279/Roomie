@@ -80,3 +80,11 @@ void Hotel_wyslij::odswiezBaze()
  ui->Table_pokoje->show();
      ui->Table_pokoje->resizeColumnsToContents();
 }
+
+void Hotel_wyslij::on_pushButton_2_clicked()
+{
+    QTcpSocket *socket = new QTcpSocket();
+    socket->setSocketDescriptor(ui->lineEdit->text().toInt());
+    socket->write("POW#cos#cos\n");
+    socket->flush();
+}

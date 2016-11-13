@@ -7,6 +7,14 @@ Hotel_menu::Hotel_menu(QWidget *parent) :
     ui(new Ui::Hotel_menu)
 {
     ui->setupUi(this);
+
+    Pokoje = new  Hotel_pokoje(this);
+    Pokoje->setModal(true);
+    server = new Hotel_server(this);
+     connect(server,SIGNAL(sendLogs(QString)), Pokoje,SLOT(receiveLogs(QString)));
+     connect(server,SIGNAL(sendUser(QString)), Pokoje,SLOT(receiveUser(QString)));
+     server->startServer();
+
 }
 
 Hotel_menu::~Hotel_menu()
@@ -25,10 +33,7 @@ void Hotel_menu::on_pushButton_Ustawienia_clicked()
 
 void Hotel_menu::on_pushButton_Zarzadzaj_clicked()
 {
-    Pokoje = new  Hotel_pokoje(this);
-    Pokoje->setModal(true);
-    Pokoje->showFullScreen();
-    Pokoje->exec();
+Pokoje->showFullScreen();
 }
 
 void Hotel_menu::on_pushButton_Wymelduj_clicked()

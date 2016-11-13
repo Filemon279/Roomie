@@ -4,6 +4,8 @@
 #include <QThread>
 #include <QTcpSocket>
 #include <QDebug>
+#include "hotel_server.h"
+
 class Hotel_thread : public QThread
 {
     Q_OBJECT
@@ -23,6 +25,7 @@ private:
     QTcpSocket *socket;
     qintptr socketDescriptor;
     void sendLogs(QString text);
+    QString numer_pokoju = "brak";
 };
 
 

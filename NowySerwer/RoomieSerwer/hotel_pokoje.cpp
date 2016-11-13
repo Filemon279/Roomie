@@ -14,10 +14,7 @@ Hotel_pokoje::Hotel_pokoje(QWidget *parent) :
     ui->Table_pokoje->setSelectionBehavior(QAbstractItemView::SelectRows);
 
 
-    server = new Hotel_server(this);
-     connect(server,SIGNAL(sendLogs(QString)), this,SLOT(receiveLogs(QString)));
-     connect(server,SIGNAL(sendUser(QString)), this,SLOT(receiveUser(QString)));
-     server->startServer();
+
 
   // for (std::list<Pokoje>::iterator i = pokoje.begin(); i != pokoje.end(); ++i)
    //    ui->textEdit->append(i->checkIN);
@@ -52,6 +49,12 @@ Hotel_pokoje::Hotel_pokoje(QWidget *parent) :
 Hotel_pokoje::~Hotel_pokoje()
 {
     delete ui;
+}
+
+void Hotel_pokoje::keyPressEvent(QKeyEvent *e) {
+    if(e->key() == Qt::Key_Escape)
+        this->hide();
+    else {/* minimize */}
 }
 
 

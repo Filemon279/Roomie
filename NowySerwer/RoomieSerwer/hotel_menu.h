@@ -1,3 +1,4 @@
+
 #ifndef HOTEL_MENU_H
 #define HOTEL_MENU_H
 
@@ -6,6 +7,7 @@
 #include "hotel_pokoje.h"
 #include "hotel_wyslij.h"
 #include "hotel_zamelduj.h"
+#include "hotel_server.h"
 
 
 namespace Ui {
@@ -19,6 +21,7 @@ class Hotel_menu : public QDialog
 public:
     explicit Hotel_menu(QWidget *parent = 0);
     ~Hotel_menu();
+    Hotel_server *server;
 
 private slots:
     void on_pushButton_Ustawienia_clicked();

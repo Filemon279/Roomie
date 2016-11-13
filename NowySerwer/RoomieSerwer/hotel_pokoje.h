@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "hotel_server.h"
+#include <QKeyEvent>
 
 namespace Ui {
 class Hotel_pokoje;
@@ -26,7 +27,7 @@ private:
 private slots:
     void receiveLogs(QString text);
     void receiveUser(QString text);
-
+    void keyPressEvent(QKeyEvent *e);
     void on_pushButton_3_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_clicked();
