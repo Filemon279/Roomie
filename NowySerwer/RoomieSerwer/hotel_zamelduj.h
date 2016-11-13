@@ -21,6 +21,7 @@ private slots:
 
 private:
     Ui::Hotel_zamelduj *ui;
+    bool sprawdzCzyWolny(QString numer);
 };
 
 #endif // HOTEL_ZAMELDUJ_H

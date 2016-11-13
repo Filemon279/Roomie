@@ -3,6 +3,9 @@
 
 #include <QtSql>
 #include <QString>
+#include <QMessageBox>
+#include <QSpacerItem>
+#include <QGridLayout>
 
 class BazaDanych
 {
@@ -18,6 +21,8 @@ class QSqlDatabase;
 QT_END_NAMESPACE
 extern QSqlDatabase Baza;
 extern void initBaza();
+
+extern int message_box(QString title, QString message, QWidget *widget);
 
 
 #endif // BAZADANYCH_H

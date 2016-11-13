@@ -53,9 +53,9 @@ public:
     QLabel *label_4;
     QRadioButton *radioButton_dolar;
     QLabel *label_3;
-    QTextEdit *textEdit;
+    QTextEdit *textEdit_msg;
     QSpacerItem *verticalSpacer;
-    QLineEdit *lineEdit;
+    QLineEdit *lineEdit_title;
     QLabel *label_2;
     QLabel *label_info;
 
@@ -201,36 +201,36 @@ public:
 
         gridLayout_4->addWidget(label_3, 4, 0, 1, 1);
 
-        textEdit = new QTextEdit(widget);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit_msg = new QTextEdit(widget);
+        textEdit_msg->setObjectName(QStringLiteral("textEdit_msg"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
-        textEdit->setSizePolicy(sizePolicy);
-        textEdit->setMaximumSize(QSize(16777215, 80));
+        sizePolicy.setHeightForWidth(textEdit_msg->sizePolicy().hasHeightForWidth());
+        textEdit_msg->setSizePolicy(sizePolicy);
+        textEdit_msg->setMaximumSize(QSize(16777215, 80));
         QFont font2;
         font2.setFamily(QStringLiteral("Arial"));
         font2.setPointSize(14);
         font2.setBold(true);
         font2.setWeight(75);
-        textEdit->setFont(font2);
-        textEdit->setStyleSheet(QLatin1String("background-color: rgba(0, 0, 0, 80);\n"
+        textEdit_msg->setFont(font2);
+        textEdit_msg->setStyleSheet(QLatin1String("background-color: rgba(0, 0, 0, 80);\n"
 "color:white"));
 
-        gridLayout_4->addWidget(textEdit, 5, 0, 1, 1);
+        gridLayout_4->addWidget(textEdit_msg, 5, 0, 1, 1);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout_4->addItem(verticalSpacer, 1, 0, 1, 1);
 
-        lineEdit = new QLineEdit(widget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setFont(font2);
-        lineEdit->setStyleSheet(QLatin1String("background-color: rgba(0, 0, 0, 80);\n"
+        lineEdit_title = new QLineEdit(widget);
+        lineEdit_title->setObjectName(QStringLiteral("lineEdit_title"));
+        lineEdit_title->setFont(font2);
+        lineEdit_title->setStyleSheet(QLatin1String("background-color: rgba(0, 0, 0, 80);\n"
 "color:white"));
 
-        gridLayout_4->addWidget(lineEdit, 3, 0, 1, 1);
+        gridLayout_4->addWidget(lineEdit_title, 3, 0, 1, 1);
 
         label_2 = new QLabel(widget);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -256,7 +256,7 @@ public:
     void retranslateUi(QDialog *Hotel_wyslij)
     {
         Hotel_wyslij->setWindowTitle(QApplication::translate("Hotel_wyslij", "Dialog", 0));
-        label->setText(QApplication::translate("Hotel_wyslij", "Wybierz Adresata", 0));
+        label->setText(QApplication::translate("Hotel_wyslij", "Zalogowani U\305\274ytkownicy", 0));
         pushButton->setText(QApplication::translate("Hotel_wyslij", "Zaznacz Wszystkich", 0));
         pushButton_2->setText(QApplication::translate("Hotel_wyslij", "Wy\305\233lij", 0));
         groupBox->setTitle(QApplication::translate("Hotel_wyslij", "Ikona powiadomienia", 0));

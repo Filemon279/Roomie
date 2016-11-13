@@ -69,22 +69,42 @@ void Hotel_wyslij::odswiezBaze()
 
       while (query.next())
       {
+          if(query.value("status")!="")//&&query.value("status")!="0"
+          {
           for(int i=0; i<=Rows-1;i++)
           {
-              ui->Table_pokoje->setItem(index,i,new QTableWidgetItem(query.value(i).toString()));
-          }
-              ui->Table_pokoje->setVerticalHeaderItem(index,new QTableWidgetItem(query.value("Numer").toString()));     //nr ID
-      index++;
-      }
 
+               ui->Table_pokoje->setItem(index,i,new QTableWidgetItem(query.value(i).toString()));
+
+           }
+          ui->Table_pokoje->setVerticalHeaderItem(index,new QTableWidgetItem(query.value("Numer").toString()));     //nr ID
+          index++;
+          }
+
+      }
+ui->Table_pokoje->setRowCount(index);
  ui->Table_pokoje->show();
      ui->Table_pokoje->resizeColumnsToContents();
 }
 
 void Hotel_wyslij::on_pushButton_2_clicked()
 {
-    QTcpSocket *socket = new QTcpSocket();
-    socket->setSocketDescriptor(ui->lineEdit->text().toInt());
-    socket->write("POW#cos#cos\n");
-    socket->flush();
+    if(ui->Table_pokoje->selectedItems().length()>0)
+    {
+        QTcpSocket *socket = new QTcpSocket();
+        QString socket_number = ui->Table_pokoje->item(ui->Table_pokoje->currentRow(),ui->Table_pokoje->columnCount()-1)->text();
+        if(!socket->setSocketDescriptor(socket_number.toInt()))
+        {
+        message_box("Błąd połączenia","Brak połączenia z użytkownikiem.Brak połączenia z użytkownikiem.Brak połączenia z użytkownikiem.",this);
+
+        }
+        else
+        {
+        QByteArray wiadomosc="POW#";
+        wiadomosc.append(ui->lineEdit_title->text()+"#");
+        wiadomosc.append(ui->textEdit_msg->toPlainText()+"\n");
+        socket->write(wiadomosc);
+        socket->flush();
+        }
+    }
 }

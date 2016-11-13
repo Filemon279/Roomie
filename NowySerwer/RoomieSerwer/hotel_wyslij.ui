@@ -34,7 +34,7 @@
          <string notr="true">color:white</string>
         </property>
         <property name="text">
-         <string>Wybierz Adresata</string>
+         <string>Zalogowani Użytkownicy</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -277,7 +277,7 @@ color:white;</string>
        </widget>
       </item>
       <item row="5" column="0">
-       <widget class="QTextEdit" name="textEdit">
+       <widget class="QTextEdit" name="textEdit_msg">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
           <horstretch>0</horstretch>
@@ -318,7 +318,7 @@ color:white</string>
        </spacer>
       </item>
       <item row="3" column="0">
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="lineEdit_title">
         <property name="font">
          <font>
           <family>Arial</family>
