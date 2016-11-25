@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Hotel_button_t {
     QByteArrayData data[7];
-    char stringdata0[68];
+    char stringdata0[69];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,13 +32,13 @@ static const qt_meta_stringdata_Hotel_button_t qt_meta_stringdata_Hotel_button =
 QT_MOC_LITERAL(0, 0, 12), // "Hotel_button"
 QT_MOC_LITERAL(1, 13, 9), // "send_name"
 QT_MOC_LITERAL(2, 23, 0), // ""
-QT_MOC_LITERAL(3, 24, 12), // "QPushButton*"
-QT_MOC_LITERAL(4, 37, 15), // "mousePressEvent"
-QT_MOC_LITERAL(5, 53, 12), // "QMouseEvent*"
-QT_MOC_LITERAL(6, 66, 1) // "e"
+QT_MOC_LITERAL(3, 24, 13), // "Hotel_button*"
+QT_MOC_LITERAL(4, 38, 15), // "mousePressEvent"
+QT_MOC_LITERAL(5, 54, 12), // "QMouseEvent*"
+QT_MOC_LITERAL(6, 67, 1) // "e"
 
     },
-    "Hotel_button\0send_name\0\0QPushButton*\0"
+    "Hotel_button\0send_name\0\0Hotel_button*\0"
     "mousePressEvent\0QMouseEvent*\0e"
 };
 #undef QT_MOC_LITERAL
@@ -77,7 +77,7 @@ void Hotel_button::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         Hotel_button *_t = static_cast<Hotel_button *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: { int _r = _t->send_name((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QPushButton*(*)>(_a[2])));
+        case 0: { int _r = _t->send_name((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< Hotel_button*(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 1: _t->mousePressEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         default: ;
@@ -89,7 +89,7 @@ void Hotel_button::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 1:
-                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QPushButton* >(); break;
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< Hotel_button* >(); break;
             }
             break;
         }
@@ -97,7 +97,7 @@ void Hotel_button::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         int *result = reinterpret_cast<int *>(_a[0]);
         void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef int (Hotel_button::*_t)(QString , QPushButton * );
+            typedef int (Hotel_button::*_t)(QString , Hotel_button * );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Hotel_button::send_name)) {
                 *result = 0;
                 return;
@@ -143,7 +143,7 @@ int Hotel_button::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-int Hotel_button::send_name(QString _t1, QPushButton * _t2)
+int Hotel_button::send_name(QString _t1, Hotel_button * _t2)
 {
     int _t0 = int();
     void *_a[] = { const_cast<void*>(reinterpret_cast<const void*>(&_t0)), const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };

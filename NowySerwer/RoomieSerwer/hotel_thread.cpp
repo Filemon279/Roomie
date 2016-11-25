@@ -76,20 +76,49 @@ void Hotel_thread::readyRead()
          QSqlQuery query(polecenie);
          sendLogs(polecenie);
 
+
+
+
          if(query.next())
          {
-             QString polecenie="INSERT INTO uslugi(Numer,Info_ID,Info) VALUES (";
-             polecenie.append(query.value("Numer").toString()+",\"");
-             polecenie.append(msg.value(0)+"\",\"");
-             QString koniec = msg.value(1);
-             koniec.chop(1);
-             polecenie.append(koniec+"\")");
+             QString numer = query.value("Numer").toString();
+             QString polecenie="SELECT * FROM uslugi WHERE Numer=";
+             polecenie.append(query.value("Numer").toString()+" AND Info_ID=\"");
+             polecenie.append(msg.value(0)+"\"");
              qDebug(polecenie.toUtf8());
              query.exec(polecenie);
-             emit createButton(msg,1);
-         }
 
+             if(query.next())
+             {
+
+                 polecenie="UPDATE uslugi SET Info=\"";
+                 QString koniec = msg.value(1);
+                 koniec.chop(1);
+                 polecenie.append(koniec+"\" WHERE Numer=");
+                 polecenie.append(query.value("Numer").toString()+" AND Info_ID=\"");
+                 polecenie.append(msg.value(0)+"\"");
+                 qDebug(polecenie.toUtf8());
+                 query.exec(polecenie);
+                 //emit createButton(msg.value(0),1); //Nie trzeba bo tylko robimy update istniejacego juz buttona
+             }
+             else{
+                 polecenie="INSERT INTO uslugi(Numer,Info_ID,Info) VALUES (";
+                 polecenie.append(numer+",\"");
+                 polecenie.append(msg.value(0)+"\",\"");
+                 QString koniec = msg.value(1);
+                 koniec.chop(1);
+                 polecenie.append(koniec+"\")");
+                 qDebug(polecenie.toUtf8());
+                 query.exec(polecenie);
+                 emit createButton(msg.value(0),1);
+             }
+         }
      }
+
+
+
+
+
 
 
     else if(msg.value(0)=="LOGREQ"){

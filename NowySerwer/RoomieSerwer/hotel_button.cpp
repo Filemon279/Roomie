@@ -2,6 +2,7 @@
 
 Hotel_button::Hotel_button(QWidget *parent,QString Info_ID) : QPushButton(parent)
 {
+    Info_ID_OUT=Info_ID;
  this->setStyleSheet("QPushButton:hover{background-color:"
                      "qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(214, 137, 0, 255), stop:1 rgba(255, 234, 97, 255))}"
                      "QPushButton{color:white;font-weight:bold;font-size:25px;background-color: "
@@ -67,8 +68,14 @@ Hotel_button::Hotel_button(QWidget *parent,QString Info_ID) : QPushButton(parent
 
 void Hotel_button::mousePressEvent(QMouseEvent *e)
 {
+
     if(e->button()==Qt::LeftButton) emit send_name(this->text(),this);
 
+}
+
+QString Hotel_button::getInfo_ID()
+{
+    return Info_ID_OUT;
 }
 
 

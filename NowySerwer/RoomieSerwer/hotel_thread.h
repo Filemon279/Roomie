@@ -17,7 +17,7 @@ signals:
     void error(QTcpSocket::SocketError socketerror);
     void sendThreadLogs(QString);
     void sendThreadUser(QString);
-    void createButton(QStringList,int);
+    void createButton(QString,int);
 
 public slots:
     void readyRead();

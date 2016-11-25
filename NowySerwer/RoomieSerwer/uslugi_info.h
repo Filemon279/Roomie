@@ -6,6 +6,7 @@
 #include "bazadanych.h"
 #include <QPointer>
 #include "uslugi_odpowiedz.h"
+#include "hotel_button.h"
 
 namespace Ui {
 class Uslugi_info;
@@ -16,9 +17,9 @@ class Uslugi_info : public QDialog
     Q_OBJECT
 
 public:
-    explicit Uslugi_info(QWidget *parent = 0,QPushButton *b=0);
+    explicit Uslugi_info(QWidget *parent = 0,Hotel_button *b=0);
     ~Uslugi_info();
-    QPushButton* bb;
+    Hotel_button* bb;
     int nr;
 private slots:
     getNumber(int number);
@@ -32,6 +33,7 @@ private slots:
 private:
     Ui::Uslugi_info *ui;
     Uslugi_odpowiedz *Odp;
+
 
 };
 

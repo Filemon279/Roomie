@@ -1,7 +1,7 @@
 #include "uslugi_info.h"
 #include "ui_uslugi_info.h"
 
-Uslugi_info::Uslugi_info(QWidget *parent,QPushButton *b) :
+Uslugi_info::Uslugi_info(QWidget *parent,Hotel_button *b) :
     QDialog(parent),
     ui(new Ui::Uslugi_info)
 {
@@ -18,7 +18,7 @@ Uslugi_info::~Uslugi_info()
 
 Uslugi_info::getNumber(int number)
 {
-ui->label_imie->setText("MARCELLO");
+
 ui->label_numer->setText(QString::number(number).rightJustified(3,'0'));
 
 nr = number;
@@ -52,22 +52,29 @@ query.next();
 ui->label_imie->setText(query.value("Imie").toString());
 ui->label_nazwisko->setText(query.value("Nazwisko").toString());
 
-polecenie = "SELECT Info_ID, Info, Data FROM uslugi WHERE Numer=";
-polecenie.append(QString::number(number));
+polecenie = "SELECT Info, Data FROM uslugi WHERE Numer=";
+polecenie.append(QString::number(number)+" AND Info_ID=\"");
+polecenie.append(bb->getInfo_ID()+"\"");
 query.exec(polecenie);
 query.next();
 ui->textEdit->setText(query.value("Info").toString());
-
 }
 
 void Uslugi_info::on_pushButton_usun_clicked()
 {
+QString polecenie = "DELETE FROM uslugi WHERE Numer=";
+polecenie.append(QString::number(nr)+" AND Info_ID=\"");
+polecenie.append(bb->getInfo_ID()+"\"");
+qDebug(polecenie.toUtf8());
+QSqlQuery query(polecenie);
+
 delete bb;
 delete this;
 }
 
 void Uslugi_info::on_pushButton_close_clicked()
 {
+
     delete this;
 }
 

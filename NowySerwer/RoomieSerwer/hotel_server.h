@@ -20,12 +20,12 @@ private:
 signals:
     void sendLogs(QString);
     void sendUser(QString);
-    void passButtonNext(QStringList,int);
+    void passButtonNext(QString,int);
 
 private slots:
     void receiveLogs(QString text);
     void receiveThreadUser(QString text);
-    void passButton(QStringList msg,int socket);
+    void passButton(QString msg,int socket);
 
 protected:
     void incomingConnection(qintptr socketDescriptor);

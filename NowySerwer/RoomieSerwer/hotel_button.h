@@ -12,9 +12,11 @@ class Hotel_button : public QPushButton
 Q_OBJECT
 public:
    Hotel_button(QWidget *parent,QString Info_ID);
+   QString getInfo_ID();
+   QString Info_ID_OUT;
 
 signals:
-   send_name(QString,QPushButton*);
+   send_name(QString,Hotel_button*);
 
 private slots:
    void mousePressEvent(QMouseEvent *e);

@@ -75,12 +75,12 @@ static const uint qt_meta_data_Hotel_server[] = {
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, QMetaType::QString,    2,
-    QMetaType::Void, QMetaType::QStringList, QMetaType::Int,    2,    2,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int,    2,    2,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    6,
     QMetaType::Void, QMetaType::QString,    6,
-    QMetaType::Void, QMetaType::QStringList, QMetaType::Int,    9,   10,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int,    9,   10,
 
        0        // eod
 };
@@ -93,10 +93,10 @@ void Hotel_server::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         switch (_id) {
         case 0: _t->sendLogs((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->sendUser((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 2: _t->passButtonNext((*reinterpret_cast< QStringList(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 2: _t->passButtonNext((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 3: _t->receiveLogs((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 4: _t->receiveThreadUser((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 5: _t->passButton((*reinterpret_cast< QStringList(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 5: _t->passButton((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -117,7 +117,7 @@ void Hotel_server::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
             }
         }
         {
-            typedef void (Hotel_server::*_t)(QStringList , int );
+            typedef void (Hotel_server::*_t)(QString , int );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Hotel_server::passButtonNext)) {
                 *result = 2;
                 return;
@@ -177,7 +177,7 @@ void Hotel_server::sendUser(QString _t1)
 }
 
 // SIGNAL 2
-void Hotel_server::passButtonNext(QStringList _t1, int _t2)
+void Hotel_server::passButtonNext(QString _t1, int _t2)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);

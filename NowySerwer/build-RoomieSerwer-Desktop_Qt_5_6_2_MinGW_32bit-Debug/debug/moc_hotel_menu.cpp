@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Hotel_menu_t {
     QByteArrayData data[15];
-    char stringdata0[229];
+    char stringdata0[230];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,8 +42,8 @@ QT_MOC_LITERAL(9, 185, 3), // "msg"
 QT_MOC_LITERAL(10, 189, 6), // "socket"
 QT_MOC_LITERAL(11, 196, 12), // "handleButton"
 QT_MOC_LITERAL(12, 209, 4), // "name"
-QT_MOC_LITERAL(13, 214, 12), // "QPushButton*"
-QT_MOC_LITERAL(14, 227, 1) // "b"
+QT_MOC_LITERAL(13, 214, 13), // "Hotel_button*"
+QT_MOC_LITERAL(14, 228, 1) // "b"
 
     },
     "Hotel_menu\0sendNumber\0\0"
@@ -52,7 +52,7 @@ QT_MOC_LITERAL(14, 227, 1) // "b"
     "on_pushButton_Wymelduj_clicked\0"
     "on_pushButton_Zamelduj_clicked\0"
     "on_pushButton_clicked\0createButton\0"
-    "msg\0socket\0handleButton\0name\0QPushButton*\0"
+    "msg\0socket\0handleButton\0name\0Hotel_button*\0"
     "b"
 };
 #undef QT_MOC_LITERAL
@@ -91,7 +91,7 @@ static const uint qt_meta_data_Hotel_menu[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QStringList, QMetaType::Int,    9,   10,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int,    9,   10,
     QMetaType::Void, QMetaType::QString, 0x80000000 | 13,   12,   14,
 
        0        // eod
@@ -110,8 +110,8 @@ void Hotel_menu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->on_pushButton_Wymelduj_clicked(); break;
         case 4: _t->on_pushButton_Zamelduj_clicked(); break;
         case 5: _t->on_pushButton_clicked(); break;
-        case 6: _t->createButton((*reinterpret_cast< QStringList(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 7: _t->handleButton((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QPushButton*(*)>(_a[2]))); break;
+        case 6: _t->createButton((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 7: _t->handleButton((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< Hotel_button*(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -121,7 +121,7 @@ void Hotel_menu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 1:
-                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QPushButton* >(); break;
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< Hotel_button* >(); break;
             }
             break;
         }

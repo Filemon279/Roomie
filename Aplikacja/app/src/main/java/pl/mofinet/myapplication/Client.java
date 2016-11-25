@@ -37,7 +37,7 @@ public final class Client {
     public Socket client;
     public static PrintWriter printwriter;
     private BufferedReader bufferedReader;
-    private String CHAT_SERVER_IP = "192.168.0.102"; // Adres kompa w sieci lokalnej // Bledny sprawia ze aplikacja nie uruchomi sie
+    private String CHAT_SERVER_IP = "192.168.0.103"; // Adres kompa w sieci lokalnej // Bledny sprawia ze aplikacja nie uruchomi sie
 
 
     private class ChatOperator extends AsyncTask<Void, Void, Void> {

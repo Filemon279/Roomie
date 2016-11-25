@@ -13,7 +13,7 @@ Hotel_menu::Hotel_menu(QWidget *parent,QString Info_ID) :
     server = new Hotel_server(this);
     connect(server,SIGNAL(sendLogs(QString)), Pokoje,SLOT(receiveLogs(QString)));
     connect(server,SIGNAL(sendUser(QString)), Pokoje,SLOT(receiveUser(QString)));
-    connect(server,SIGNAL(passButtonNext(QStringList,int)), this,SLOT(createButton(QStringList,int)));
+    connect(server,SIGNAL(passButtonNext(QString,int)), this,SLOT(createButton(QString,int)));
 
     server->startServer();
     layout_requests = new FlowLayout(5,10,10);
@@ -41,7 +41,7 @@ Hotel_menu::Hotel_menu(QWidget *parent,QString Info_ID) :
            ui->label_info->setStyleSheet("color:green;");
       }
 
-
+loadButtons();
 
 }
 
@@ -50,18 +50,8 @@ Hotel_menu::~Hotel_menu()
     delete ui;
 }
 
-void Hotel_menu::createButton(QStringList msg,int socket){
-
-/*QString polecenie="INSERT INTO uslugi(Numer,Info_ID,Info) VALUES (";
-polecenie.append(QString::number(socket)+",\"");
-polecenie.append(msg.value(0)+"\",\"");
-QString koniec = msg.value(1);
-koniec.chop(1);
-polecenie.append(koniec+"\")");
-qDebug(polecenie.toUtf8());
-QSqlQuery query(polecenie);*/
-//nowePolecenie(socket,msg.value(0));
-qDebug("poszło");
+void Hotel_menu::createButton(QString msg,int socket){
+nowePolecenie(socket,msg);
 }
 
 
@@ -117,6 +107,8 @@ i++;*/
 
 }
 
+
+
 void Hotel_menu::nowePolecenie(int numer,QString Info_ID="")
 {
     Hotel_button *b=new Hotel_button(this,Info_ID);
@@ -124,7 +116,7 @@ void Hotel_menu::nowePolecenie(int numer,QString Info_ID="")
     b->setFixedHeight(200);
     b->setFixedWidth(200);
     b->setText(QString::number(numer).rightJustified(3,'0'));
-    connect(b, SIGNAL (send_name(QString,QPushButton*)),this, SLOT (handleButton(QString,QPushButton*)));
+    connect(b, SIGNAL (send_name(QString,Hotel_button*)),this, SLOT (handleButton(QString,Hotel_button*)));
     layout_requests->addWidget(b);
 }
 
@@ -136,11 +128,11 @@ void Hotel_menu::nowePolecenie2(int numer,QString Info_ID)
     b->setFixedHeight(200);
     b->setFixedWidth(200);
     b->setText(QString::number(numer).rightJustified(3,'0'));
-    connect(b, SIGNAL (send_name(QString,QPushButton*)),this, SLOT (handleButton(QString,QPushButton*)));
+    connect(b, SIGNAL (send_name(QString,Hotel_button*)),this, SLOT (handleButton(QString,Hotel_button*)));
     layout_requests->addWidget(b);
 }
 
-void Hotel_menu::handleButton(QString name,QPushButton *b)
+void Hotel_menu::handleButton(QString name,Hotel_button *b)
 {
 
     Info = new Uslugi_info(this,b);
@@ -149,4 +141,14 @@ void Hotel_menu::handleButton(QString name,QPushButton *b)
     connect(this, SIGNAL (sendNumber(int)),Info, SLOT (getNumber(int)));
     emit sendNumber(name.toInt());
     Info->exec();
+}
+
+void Hotel_menu::loadButtons()
+{
+    QString polecenie = "SELECT * FROM uslugi";
+    QSqlQuery query(polecenie);
+    while(query.next())
+    {
+       nowePolecenie(query.value("Numer").toInt(),query.value("Info_ID").toString());
+    }
 }

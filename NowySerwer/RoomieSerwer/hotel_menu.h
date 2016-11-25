@@ -41,9 +41,9 @@ private slots:
 
     void on_pushButton_clicked();
 
-    void createButton(QStringList msg,int socket);
+    void createButton(QString msg,int socket);
 
-    void handleButton(QString name,QPushButton* b);
+    void handleButton(QString name,Hotel_button* b);
 
 private:
     Ui::Hotel_menu *ui;
@@ -54,6 +54,7 @@ private:
     Hotel_zamelduj *Zamelduj;
     FlowLayout *layout_requests ;
     void nowePolecenie(int numer,QString Info_ID);
+    void loadButtons();
 
 };
 
