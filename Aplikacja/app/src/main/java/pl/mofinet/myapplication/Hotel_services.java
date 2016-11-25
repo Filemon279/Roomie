@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -43,7 +44,28 @@ public class Hotel_services extends AppCompatActivity {
         // }
 
     });
+        repair = (Button) findViewById(R.id.button_repair_room);
+        repair.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
+
+
+
+            }
+
+            // }
+
+        });
+        food = (Button) findViewById(R.id.button_order_food);
+        food.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Client.sendRequest("REPAIR#Proszę o naprawę świata, bo się zaczyna psuć.");
+            }
+
+            // }
+
+        });
 
 to=this;
 

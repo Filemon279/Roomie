@@ -2,6 +2,7 @@
 #define HOTEL_SERVER_H
 
 #include <QTcpServer>
+#include <QStringList>
 #include "hotel_thread.h"
 #include "bazadanych.h"
 
@@ -19,10 +20,12 @@ private:
 signals:
     void sendLogs(QString);
     void sendUser(QString);
+    void passButtonNext(QStringList,int);
 
 private slots:
     void receiveLogs(QString text);
     void receiveThreadUser(QString text);
+    void passButton(QStringList msg,int socket);
 
 protected:
     void incomingConnection(qintptr socketDescriptor);

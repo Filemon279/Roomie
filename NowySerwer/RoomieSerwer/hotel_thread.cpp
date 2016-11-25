@@ -69,7 +69,30 @@ void Hotel_thread::readyRead()
        sendLogs("POLACZONO");
     }
 
-    if(msg.value(0)=="LOGREQ"){
+
+     if(msg.value(0)=="REPAIR"){
+         QString polecenie = "SELECT * FROM pokoje WHERE status=\"";
+         polecenie.append(QString::number(socketDescriptor)+"\"");
+         QSqlQuery query(polecenie);
+         sendLogs(polecenie);
+
+         if(query.next())
+         {
+             QString polecenie="INSERT INTO uslugi(Numer,Info_ID,Info) VALUES (";
+             polecenie.append(query.value("Numer").toString()+",\"");
+             polecenie.append(msg.value(0)+"\",\"");
+             QString koniec = msg.value(1);
+             koniec.chop(1);
+             polecenie.append(koniec+"\")");
+             qDebug(polecenie.toUtf8());
+             query.exec(polecenie);
+             emit createButton(msg,1);
+         }
+
+     }
+
+
+    else if(msg.value(0)=="LOGREQ"){
         //Sprawdzamy gdzie i kto chce sie zalogować
         //I czy pokoj jest zarejestrowany
         QString polecenie = "SELECT * FROM pokoje WHERE Numer=";
@@ -95,6 +118,20 @@ void Hotel_thread::readyRead()
                 socket->write("loginConfirmed\n");
                 socket->flush();
                 sendLogs(QString::number(socketDescriptor)+" ZALOGOWANO Nr: "+msg.value(1));
+
+                //Wysylam checkIN CHECK OUT
+                //CHECKINOUT#zameldowanie/wymeldowanie
+                polecenie = "SELECT checkIn, checkOut FROM pokoje WHERE Numer=";
+                polecenie.append(msg.value(1));
+                query.exec(polecenie);
+                query.next();
+                QByteArray msg1 = "CHECKINOUT#";
+                msg1.append(query.value("checkIn").toString()+"#");
+                msg1.append(query.value("checkOut").toString()+"\n");
+                sendLogs(QString::number(socketDescriptor)+" Wysylam "+msg1);
+
+                socket->write(msg1);
+                socket->flush();
             }
             else
             {

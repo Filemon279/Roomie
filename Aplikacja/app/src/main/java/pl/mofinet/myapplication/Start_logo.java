@@ -113,13 +113,13 @@ public static void showMainActiv(){
     Intent oknoGlowne = new Intent(Startlogo, MainActivity.class);
 
     Startlogo.startActivity(oknoGlowne);
-startlogoactiv.finish();
+//startlogoactiv.finish();
 }
     public static void showLoginActiv(){
         Intent oknoGlowne = new Intent(Startlogo, LoginActivity.class);
 
         Startlogo.startActivity(oknoGlowne);
-    startlogoactiv.finish();
+    //startlogoactiv.finish();
     }
 
     public static int calculateInSampleSize(

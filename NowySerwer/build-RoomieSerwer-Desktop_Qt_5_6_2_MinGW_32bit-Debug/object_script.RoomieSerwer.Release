@@ -9,6 +9,10 @@ INPUT(
 ./release\hotel_zamelduj.o
 ./release\hotel_pokoje.o
 ./release\hotel_wyslij.o
+./release\flowlayout.o
+./release\uslugi_info.o
+./release\hotel_button.o
+./release\uslugi_odpowiedz.o
 ./release\qrc_resources.o
 ./release\moc_hotel_server.o
 ./release\moc_hotel_thread.o
@@ -17,4 +21,7 @@ INPUT(
 ./release\moc_hotel_zamelduj.o
 ./release\moc_hotel_pokoje.o
 ./release\moc_hotel_wyslij.o
+./release\moc_uslugi_info.o
+./release\moc_hotel_button.o
+./release\moc_uslugi_odpowiedz.o
 );

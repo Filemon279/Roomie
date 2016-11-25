@@ -40,8 +40,6 @@ public:
     QPushButton *pushButton;
     QWidget *widget;
     QGridLayout *gridLayout_4;
-    QPushButton *pushButton_2;
-    QSpacerItem *verticalSpacer_2;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_2;
     QRadioButton *radioButton_issp;
@@ -54,10 +52,12 @@ public:
     QRadioButton *radioButton_dolar;
     QLabel *label_3;
     QTextEdit *textEdit_msg;
-    QSpacerItem *verticalSpacer;
-    QLineEdit *lineEdit_title;
     QLabel *label_2;
+    QLineEdit *lineEdit_title;
     QLabel *label_info;
+    QSpacerItem *verticalSpacer_3;
+    QPushButton *pushButton_2;
+    QSpacerItem *verticalSpacer_2;
 
     void setupUi(QDialog *Hotel_wyslij)
     {
@@ -110,20 +110,9 @@ public:
         widget->setObjectName(QStringLiteral("widget"));
         gridLayout_4 = new QGridLayout(widget);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
-        pushButton_2 = new QPushButton(widget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setMinimumSize(QSize(0, 40));
-        pushButton_2->setFont(font);
-        pushButton_2->setStyleSheet(QStringLiteral("background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 187, 0, 255), stop:1 rgba(182, 97, 46, 255));"));
-
-        gridLayout_4->addWidget(pushButton_2, 8, 0, 1, 1);
-
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout_4->addItem(verticalSpacer_2, 6, 0, 1, 1);
-
         groupBox = new QGroupBox(widget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setStyleSheet(QStringLiteral("color:white"));
         gridLayout_2 = new QGridLayout(groupBox);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         radioButton_issp = new QRadioButton(groupBox);
@@ -192,7 +181,7 @@ public:
         gridLayout_2->addWidget(radioButton_dolar, 0, 8, 1, 1);
 
 
-        gridLayout_4->addWidget(groupBox, 0, 0, 1, 1);
+        gridLayout_4->addWidget(groupBox, 1, 0, 1, 1);
 
         label_3 = new QLabel(widget);
         label_3->setObjectName(QStringLiteral("label_3"));
@@ -220,9 +209,12 @@ public:
 
         gridLayout_4->addWidget(textEdit_msg, 5, 0, 1, 1);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        label_2 = new QLabel(widget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setFont(font);
+        label_2->setStyleSheet(QStringLiteral("color:white"));
 
-        gridLayout_4->addItem(verticalSpacer, 1, 0, 1, 1);
+        gridLayout_4->addWidget(label_2, 2, 0, 1, 1);
 
         lineEdit_title = new QLineEdit(widget);
         lineEdit_title->setObjectName(QStringLiteral("lineEdit_title"));
@@ -232,17 +224,26 @@ public:
 
         gridLayout_4->addWidget(lineEdit_title, 3, 0, 1, 1);
 
-        label_2 = new QLabel(widget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setFont(font);
-        label_2->setStyleSheet(QStringLiteral("color:white"));
-
-        gridLayout_4->addWidget(label_2, 2, 0, 1, 1);
-
         label_info = new QLabel(widget);
         label_info->setObjectName(QStringLiteral("label_info"));
 
         gridLayout_4->addWidget(label_info, 7, 0, 1, 1);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_4->addItem(verticalSpacer_3, 0, 0, 1, 1);
+
+        pushButton_2 = new QPushButton(widget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setMinimumSize(QSize(0, 40));
+        pushButton_2->setFont(font);
+        pushButton_2->setStyleSheet(QStringLiteral("background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 187, 0, 255), stop:1 rgba(182, 97, 46, 255));"));
+
+        gridLayout_4->addWidget(pushButton_2, 8, 0, 1, 1);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_4->addItem(verticalSpacer_2, 6, 0, 1, 1);
 
 
         horizontalLayout_2->addWidget(widget);
@@ -258,7 +259,6 @@ public:
         Hotel_wyslij->setWindowTitle(QApplication::translate("Hotel_wyslij", "Dialog", 0));
         label->setText(QApplication::translate("Hotel_wyslij", "Zalogowani U\305\274ytkownicy", 0));
         pushButton->setText(QApplication::translate("Hotel_wyslij", "Zaznacz Wszystkich", 0));
-        pushButton_2->setText(QApplication::translate("Hotel_wyslij", "Wy\305\233lij", 0));
         groupBox->setTitle(QApplication::translate("Hotel_wyslij", "Ikona powiadomienia", 0));
         radioButton_issp->setText(QString());
         label_6->setText(QString());
@@ -269,8 +269,11 @@ public:
         label_4->setText(QString());
         radioButton_dolar->setText(QString());
         label_3->setText(QApplication::translate("Hotel_wyslij", "Wiadomo\305\233\304\207 (max.120 znak\303\263w)", 0));
+        textEdit_msg->setPlaceholderText(QApplication::translate("Hotel_wyslij", "Wiadomo\305\233\304\207", 0));
         label_2->setText(QApplication::translate("Hotel_wyslij", "Tytu\305\202", 0));
+        lineEdit_title->setPlaceholderText(QApplication::translate("Hotel_wyslij", "Tytu\305\202", 0));
         label_info->setText(QApplication::translate("Hotel_wyslij", "Label_info", 0));
+        pushButton_2->setText(QApplication::translate("Hotel_wyslij", "Wy\305\233lij", 0));
     } // retranslateUi
 
 };

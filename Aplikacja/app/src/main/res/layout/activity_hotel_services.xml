@@ -74,7 +74,7 @@
                                 android:layout_margin="0dp">
 
                                 <Button
-                                    style="?android:attr/buttonStyleSmall"
+                                    style="@android:style/Widget.Material.Light.Button.Small"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Zamów Posiłek"

@@ -6,6 +6,7 @@
 #include <QDebug>
 #include "hotel_server.h"
 
+
 class Hotel_thread : public QThread
 {
     Q_OBJECT
@@ -16,6 +17,7 @@ signals:
     void error(QTcpSocket::SocketError socketerror);
     void sendThreadLogs(QString);
     void sendThreadUser(QString);
+    void createButton(QStringList,int);
 
 public slots:
     void readyRead();

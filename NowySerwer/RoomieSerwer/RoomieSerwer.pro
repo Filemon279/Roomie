@@ -23,7 +23,11 @@ SOURCES += main.cpp\
     hotel_ustawienia.cpp \
     hotel_zamelduj.cpp \
     hotel_pokoje.cpp \
-    hotel_wyslij.cpp
+    hotel_wyslij.cpp \
+    flowlayout.cpp \
+    uslugi_info.cpp \
+    hotel_button.cpp \
+    uslugi_odpowiedz.cpp
 
 HEADERS  += \
     hotel_server.h \
@@ -35,7 +39,11 @@ HEADERS  += \
     hotel_ustawienia.h \
     hotel_zamelduj.h \
     hotel_pokoje.h \
-    hotel_wyslij.h
+    hotel_wyslij.h \
+    flowlayout.h \
+    uslugi_info.h \
+    hotel_button.h \
+    uslugi_odpowiedz.h
 
 FORMS    += \
     hotel_menu.ui \
@@ -43,7 +51,9 @@ FORMS    += \
     hotel_ustawienia.ui \
     hotel_zamelduj.ui \
     hotel_pokoje.ui \
-    hotel_wyslij.ui
+    hotel_wyslij.ui \
+    uslugi_info.ui \
+    uslugi_odpowiedz.ui
 
 DISTFILES +=
 

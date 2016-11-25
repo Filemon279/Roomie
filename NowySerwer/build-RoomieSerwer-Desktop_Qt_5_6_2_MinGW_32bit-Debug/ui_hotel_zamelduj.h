@@ -188,6 +188,7 @@ public:
         sizePolicy3.setHeightForWidth(lineEdit_inne->sizePolicy().hasHeightForWidth());
         lineEdit_inne->setSizePolicy(sizePolicy3);
         lineEdit_inne->setMinimumSize(QSize(0, 40));
+        lineEdit_inne->setFont(font1);
         lineEdit_inne->setStyleSheet(QLatin1String("background-color: rgba(0, 0, 0, 110);\n"
 "color:white"));
 
@@ -301,6 +302,11 @@ public:
         label_4->setText(QApplication::translate("Hotel_zamelduj", "Has\305\202o", 0));
         label_3->setText(QApplication::translate("Hotel_zamelduj", "Nr. Pokoju", 0));
         label_2->setText(QApplication::translate("Hotel_zamelduj", "Nazwisko", 0));
+        lineEdit_imie->setPlaceholderText(QApplication::translate("Hotel_zamelduj", "Imi\304\231", 0));
+        lineEdit_nazwisko->setPlaceholderText(QApplication::translate("Hotel_zamelduj", "Nazwisko", 0));
+        lineEdit_nrPokoju->setPlaceholderText(QApplication::translate("Hotel_zamelduj", "Nr. Pokoju", 0));
+        lineEdit_inne->setPlaceholderText(QApplication::translate("Hotel_zamelduj", "Inne uwagi", 0));
+        lineEdit_haslo->setPlaceholderText(QApplication::translate("Hotel_zamelduj", "Has\305\202o", 0));
         label_6->setText(QApplication::translate("Hotel_zamelduj", "Check OUT", 0));
         label_5->setText(QApplication::translate("Hotel_zamelduj", "Check IN", 0));
         pushButton_dodaj->setText(QApplication::translate("Hotel_zamelduj", "Dodaj", 0));

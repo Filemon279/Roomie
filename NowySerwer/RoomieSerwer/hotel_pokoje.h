@@ -24,6 +24,7 @@ private:
      void zapiszBaze();
      void addRecord();
      void deleteRecord();
+
 private slots:
     void receiveLogs(QString text);
     void receiveUser(QString text);

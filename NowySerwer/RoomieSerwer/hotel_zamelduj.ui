@@ -214,6 +214,9 @@
             <string notr="true">background-color: rgba(0, 0, 0, 110);
 color:white</string>
            </property>
+           <property name="placeholderText">
+            <string>Imię</string>
+           </property>
           </widget>
          </item>
          <item row="3" column="1" colspan="2">
@@ -233,6 +236,9 @@ color:white</string>
            <property name="styleSheet">
             <string notr="true">background-color: rgba(0, 0, 0, 110);
 color:white</string>
+           </property>
+           <property name="placeholderText">
+            <string>Nazwisko</string>
            </property>
           </widget>
          </item>
@@ -254,6 +260,9 @@ color:white</string>
             <string notr="true">background-color: rgba(0, 0, 0, 110);
 color:white</string>
            </property>
+           <property name="placeholderText">
+            <string>Nr. Pokoju</string>
+           </property>
           </widget>
          </item>
          <item row="9" column="1">
@@ -270,9 +279,18 @@ color:white</string>
              <height>40</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: rgba(0, 0, 0, 110);
 color:white</string>
+           </property>
+           <property name="placeholderText">
+            <string>Inne uwagi</string>
            </property>
           </widget>
          </item>
@@ -293,6 +311,9 @@ color:white</string>
            <property name="styleSheet">
             <string notr="true">background-color: rgba(0, 0, 0, 110);
 color:white</string>
+           </property>
+           <property name="placeholderText">
+            <string>Hasło</string>
            </property>
           </widget>
          </item>

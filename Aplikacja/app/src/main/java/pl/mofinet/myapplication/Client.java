@@ -206,11 +206,10 @@ public final class Client {
 
 //LOGREQ-LoginRequest
     public static void sendRequest(String command) {
-        if(!logined) {
+      //  if(!logined) {
             printwriter.println(command);
             printwriter.flush();
-
-        }
+     //   }
 
 
 

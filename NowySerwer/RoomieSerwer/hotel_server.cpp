@@ -55,6 +55,7 @@ void Hotel_server::incomingConnection(qintptr socketDescriptor)
     connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
     connect(thread, SIGNAL(sendThreadLogs(QString)), this,SLOT(receiveLogs(QString)));
     connect(thread, SIGNAL(sendThreadUser(QString)), this,SLOT(receiveThreadUser(QString)));
+    connect(thread, SIGNAL(createButton(QStringList,int)), this,SLOT(passButton(QStringList,int)));
 
     thread->start();
 }
@@ -73,5 +74,10 @@ emit sendUser(text);
 void Hotel_server::receiveLogs(QString text)
 {
 sendLog(text);
+}
+
+void Hotel_server::passButton(QStringList msg,int socket)
+{
+emit passButtonNext(msg,socket);
 }
 

@@ -5,5 +5,8 @@
         <file>img/notiimg2.png</file>
         <file>img/notiimg3.png</file>
         <file>img/notiimg4.png</file>
+        <file>img/info_bg.jpeg</file>
+        <file>img/main_bg_2.jpg</file>
+        <file>img/pexels-photo.jpg</file>
     </qresource>
 </RCC>
