@@ -2297,6 +2297,9 @@ release/moc_uslugi_info.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QDia
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtNetwork/QTcpSocket \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtNetwork/qtcpsocket.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtNetwork/qabstractsocket.h \
+		../RoomieSerwer/hotel_button.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QWidget \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui/QMouseEvent \
 		../RoomieSerwer/uslugi_info.h
 	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -IC:/Users/Filemon/Documents/GitHub/Roomie/NowySerwer/RoomieSerwer -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtNetwork -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtSql -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore -I. ..\RoomieSerwer\uslugi_info.h -o release\moc_uslugi_info.cpp
 
@@ -5976,6 +5979,9 @@ release/uslugi_info.o: ../RoomieSerwer/uslugi_info.cpp ../RoomieSerwer/uslugi_in
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtNetwork/QTcpSocket \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtNetwork/qtcpsocket.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtNetwork/qabstractsocket.h \
+		../RoomieSerwer/hotel_button.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QWidget \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui/QMouseEvent \
 		ui_uslugi_info.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore/QVariant \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QAction \

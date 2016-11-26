@@ -1,5 +1,6 @@
 package pl.mofinet.myapplication;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -10,15 +11,20 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
 
 public class Service_food extends AppCompatActivity {
     private static EditText DateEdit;
+    Button SEND;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -38,6 +44,43 @@ public class Service_food extends AppCompatActivity {
 
         ImageView background = (ImageView) findViewById(R.id.background_food);
         background.setImageBitmap(ImageLoad.decodeImage(getResources(),R.mipmap.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+       final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
+        final RadioGroup posilek = (RadioGroup) findViewById(R.id.radiogroupposilek);
+        SEND = (Button) findViewById(R.id.buttonSEND);
+        SEND.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String info="FOOD#";
+
+                if(DateEdit.length()<4) ImageLoad.popupInfo("Uzupełnij godzinę","Proszę uzupełnić godzinę przed wysłaniem polecenia",builder);
+                else {
+                    EditText edit = (EditText) findViewById(R.id.edit_uwagi);
+
+                    int selectedId = radioGroup.getCheckedRadioButtonId();
+                    RadioButton radioButton = (RadioButton) findViewById(selectedId);
+
+                int selectedIdposilek = posilek.getCheckedRadioButtonId();
+                RadioButton posilek_button = (RadioButton) findViewById(selectedIdposilek);
+
+                    info += "Poproszę " + posilek_button.getText() + " na " + radioButton.getText() + " na godzinę: " + DateEdit.getText() + ".\nDodatkowo poproszę: ";
+                    CheckBox it = (CheckBox) findViewById(R.id.checkf_herbata);
+                    if (it.isChecked()) info += "herbatę | ";
+                    it = (CheckBox) findViewById(R.id.checkf_kawa);
+                    if (it.isChecked()) info += "kawę | ";
+                    it = (CheckBox) findViewById(R.id.checkf_woda);
+                    if (it.isChecked()) info += "wodę | ";
+                    it = (CheckBox) findViewById(R.id.checkf_alkohol);
+                    if (it.isChecked()) info += "alkohol | ";
+
+                    if (edit.length() > 1) info += "\nDodatkowe Uwagi: " + edit.getText();
+                    Client.sendRequest(info);
+                }
+
+            }
+
+        });
+
 
     }
     public void showTruitonDatePickerDialog(View v) {

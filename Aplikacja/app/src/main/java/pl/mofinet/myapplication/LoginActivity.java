@@ -135,9 +135,6 @@ public class LoginActivity extends AppCompatActivity {
                 })
                 .show();
 
-     //   popupInfoText.setText(text);
-       // popupWindow.showAtLocation(relativeLayout, Gravity.NO_GRAVITY, (int) (size.x / 2 - ((size.x * .9) / 2)), (int) (size.y / 2 - ((size.y * .2) / 2)));
-
     }
 
 public static EditText getNrPokoju(){

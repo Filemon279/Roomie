@@ -22,7 +22,7 @@ import java.net.UnknownHostException;
 import static pl.mofinet.myapplication.Start_logo.showMainActiv;
 
 /**
- * Created by filemon on 03.04.16.
+ * 
  */
 public final class Client {
     boolean zainicjowano=false;

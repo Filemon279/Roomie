@@ -19,7 +19,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 
 public class Hotel_services extends AppCompatActivity {
 
-    Button food,repair,items,clean;
+    Button food,repair,items,clean,contact;
     ImageView background;
     static Activity to;
     final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -50,7 +50,6 @@ public class Hotel_services extends AppCompatActivity {
                 Intent items = new Intent(Hotel_services.this, Service_room.class);
                 Hotel_services.this.startActivity(items);
 
-
             }
 
             // }
@@ -64,14 +63,36 @@ public class Hotel_services extends AppCompatActivity {
             public void onClick(View v) {
                 Intent food = new Intent(Hotel_services.this, Service_food.class);
                 Hotel_services.this.startActivity(food);
-
             }
 
             // }
 
         });
 
-to=this;
+        repair = (Button) findViewById(R.id.button_repair_room);
+        repair.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent repair = new Intent(Hotel_services.this, Service_repair.class);
+                Hotel_services.this.startActivity(repair);
+            }
+
+            // }
+
+        });
+
+
+        contact = (Button) findViewById(R.id.button_reception);
+        contact.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent contact = new Intent(Hotel_services.this, Service_contact.class);
+                Hotel_services.this.startActivity(contact);
+            }
+
+            // }
+
+        });
+
+        to=this;
 
     }
     public void onBackPressed() {

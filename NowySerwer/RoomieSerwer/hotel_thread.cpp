@@ -70,7 +70,9 @@ void Hotel_thread::readyRead()
     }
 
 
-     if(msg.value(0)=="REPAIR"){
+     if(msg.value(0)=="REPAIR"||msg.value(0)=="CLEAN"||msg.value(0)=="HELP"
+          ||msg.value(0)=="ROOM"||msg.value(0)=="CONTACT"
+             ||msg.value(0)=="DRIVE"||msg.value(0)=="FOOD"){
          QString polecenie = "SELECT * FROM pokoje WHERE status=\"";
          polecenie.append(QString::number(socketDescriptor)+"\"");
          QSqlQuery query(polecenie);

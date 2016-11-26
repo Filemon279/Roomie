@@ -41,9 +41,9 @@ import android.widget.RemoteViews;
 import android.widget.TextView;
 
 /**
- * This is the main activity class for Client-Server Chat App.
  *
- * @author Lak J Comspace (http://lakjeewa.blogspot.com)
+ *
+ *
  *
  */
 public class MainActivity extends Activity {

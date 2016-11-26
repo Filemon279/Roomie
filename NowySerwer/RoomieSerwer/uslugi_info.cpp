@@ -66,9 +66,9 @@ QString polecenie = "DELETE FROM uslugi WHERE Numer=";
 polecenie.append(QString::number(nr)+" AND Info_ID=\"");
 polecenie.append(bb->getInfo_ID()+"\"");
 qDebug(polecenie.toUtf8());
-QSqlQuery query(polecenie);
+    QSqlQuery query(polecenie);
 
-delete bb;
+bb->ExplodeInGreatStyle();
 delete this;
 }
 

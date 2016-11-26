@@ -23,7 +23,7 @@ class Hotel_menu : public QDialog
     Q_OBJECT
 
 public:
-    explicit Hotel_menu(QWidget *parent = 0,QString Info_ID="");
+    explicit Hotel_menu(QWidget *parent = 0);
     ~Hotel_menu();
     Hotel_server *server;
     void nowePolecenie2(int numer,QString Info_ID);
@@ -31,6 +31,7 @@ signals:
     sendNumber(int);
 
 private slots:
+    void remove_IN(Hotel_button* b);
     void on_pushButton_Ustawienia_clicked();
 
     void on_pushButton_Zarzadzaj_clicked();

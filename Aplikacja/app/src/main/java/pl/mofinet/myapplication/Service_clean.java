@@ -1,9 +1,13 @@
 package pl.mofinet.myapplication;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import java.util.Calendar;
@@ -14,10 +18,16 @@ import android.support.v4.app.DialogFragment;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class Service_clean extends AppCompatActivity {
     private static EditText DateEdit;
+    RadioGroup radioGroup;
+
+    Button SEND;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -35,9 +45,31 @@ public class Service_clean extends AppCompatActivity {
                 showTruitonTimePickerDialog(v);
             }
         });
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         ImageView background = (ImageView) findViewById(R.id.background_clean);
         background.setImageBitmap(ImageLoad.decodeImage(getResources(),R.mipmap.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+
+        radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
+        SEND = (Button) findViewById(R.id.buttonSEND);
+        SEND.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+             String info="CLEAN#";
+            if(DateEdit.length()<4) ImageLoad.popupInfo("Uzupełnij godzinę","Proszę uzupełnić godzinę przed wysłaniem polecenia",builder);
+            else{
+                 EditText edit = (EditText) findViewById(R.id.editText_uwagi);
+
+                 int selectedId = radioGroup.getCheckedRadioButtonId();
+                 RadioButton radioButton = (RadioButton) findViewById(selectedId);
+                 info+="Poproszę sprzątanie na "+ radioButton.getText()+" na godzinę: "+DateEdit.getText()+".";
+                if(edit.length()>1) info+="\nDodatkowe: "+edit.getText();
+                 Client.sendRequest(info);
+             }
+
+            }
+
+        });
+
 
     }
 

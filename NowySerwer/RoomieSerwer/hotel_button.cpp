@@ -78,4 +78,10 @@ QString Hotel_button::getInfo_ID()
     return Info_ID_OUT;
 }
 
+void Hotel_button::ExplodeInGreatStyle()
+{  qDebug("slll");
+    emit removeOUT(this);
+  //close();
+}
+
 

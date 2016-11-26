@@ -14,9 +14,11 @@ public:
    Hotel_button(QWidget *parent,QString Info_ID);
    QString getInfo_ID();
    QString Info_ID_OUT;
+   void ExplodeInGreatStyle();
 
 signals:
    send_name(QString,Hotel_button*);
+   removeOUT(Hotel_button*);
 
 private slots:
    void mousePressEvent(QMouseEvent *e);

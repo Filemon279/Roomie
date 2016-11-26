@@ -80,7 +80,9 @@
         <activity android:name=".settings" />
         <activity android:name=".Service_clean" />
         <activity android:name=".Service_food" />
-        <activity android:name=".Service_room"></activity>
+        <activity android:name=".Service_room" />
+        <activity android:name=".Service_repair" />
+        <activity android:name=".Service_contact"></activity>
     </application>
 
 </manifest>

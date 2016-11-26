@@ -2,7 +2,7 @@
 #include "ui_hotel_menu.h"
 
 
-Hotel_menu::Hotel_menu(QWidget *parent,QString Info_ID) :
+Hotel_menu::Hotel_menu(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Hotel_menu)
 {
@@ -89,8 +89,8 @@ int i=1;
 
 void Hotel_menu::on_pushButton_clicked()
 {
-//QSqlQuery query("INSERT INTO uslugi(Numer,Info_ID,Info,Data) VALUES (10,\"CLEAN\",\"Posprzarac caly pokoj\",\"15:45\")");
-/*nowePolecenie(i,"FOOD");
+/*QSqlQuery query("INSERT INTO uslugi(Numer,Info_ID,Info,Data) VALUES (10,\"CLEAN\",\"Posprzarac caly pokoj\",\"15:45\")");
+nowePolecenie(i,"FOOD");
 i++;
 nowePolecenie(i,"DRIVE");
 i++;
@@ -105,6 +105,7 @@ i++;
 nowePolecenie(i,"ROOM");
 i++;*/
 
+
 }
 
 
@@ -117,7 +118,9 @@ void Hotel_menu::nowePolecenie(int numer,QString Info_ID="")
     b->setFixedWidth(200);
     b->setText(QString::number(numer).rightJustified(3,'0'));
     connect(b, SIGNAL (send_name(QString,Hotel_button*)),this, SLOT (handleButton(QString,Hotel_button*)));
+    connect(b, SIGNAL (removeOUT(Hotel_button*)),this, SLOT (remove_IN(Hotel_button*)));
     layout_requests->addWidget(b);
+  //layout_requests->removeWidget(b);
 }
 
 
@@ -131,6 +134,15 @@ void Hotel_menu::nowePolecenie2(int numer,QString Info_ID)
     connect(b, SIGNAL (send_name(QString,Hotel_button*)),this, SLOT (handleButton(QString,Hotel_button*)));
     layout_requests->addWidget(b);
 }
+
+void Hotel_menu::remove_IN(Hotel_button *b)
+{
+    qDebug("ss");
+    layout_requests->removeWidget(b);
+    b->close();
+
+}
+
 
 void Hotel_menu::handleButton(QString name,Hotel_button *b)
 {
