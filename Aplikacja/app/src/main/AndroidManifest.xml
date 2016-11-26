@@ -12,7 +12,8 @@
 
     <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.GET_TASKS"/>
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -77,8 +78,9 @@
 
         <activity android:name=".language" />
         <activity android:name=".settings" />
-        <activity android:name=".Hotel_clean_options"></activity>
-
+        <activity android:name=".Service_clean" />
+        <activity android:name=".Service_food" />
+        <activity android:name=".Service_room"></activity>
     </application>
 
 </manifest>

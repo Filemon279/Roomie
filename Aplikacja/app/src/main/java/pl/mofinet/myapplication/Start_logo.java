@@ -29,8 +29,8 @@ public class Start_logo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_logo);
-    Startlogo=this;
-    startlogoactiv=this;
+        Startlogo=this;
+        startlogoactiv=this;
         builder = new AlertDialog.Builder(this);
 
         ImageView logo = (ImageView) findViewById(R.id.start_logo_logo);
@@ -41,8 +41,8 @@ public class Start_logo extends AppCompatActivity {
                         getWindowManager().getDefaultDisplay().getHeight()));
 
 
-    logo.setImageBitmap(
-            decodeSampledBitmapFromResource(getResources(), R.drawable.roomie_logo_shadow, 400,400));
+        logo.setImageBitmap(
+                decodeSampledBitmapFromResource(getResources(), R.drawable.roomie_logo_shadow, 400,400));
         logo.clearAnimation();
 
         issp_logo.setImageBitmap(
@@ -50,7 +50,7 @@ public class Start_logo extends AppCompatActivity {
         issp_logo.clearAnimation();
 
         Animation show = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.show);
-        show.setStartOffset(1600);
+        show.setStartOffset(200);//1600
         logo.startAnimation(show);
         issp_logo.startAnimation(show);
 
@@ -79,7 +79,7 @@ public class Start_logo extends AppCompatActivity {
                     finish();
 
 
-            }
+                }
             }
         });
 
@@ -96,30 +96,30 @@ public class Start_logo extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                    //  System.exit(0); <-- Prawidłowe
+                        //  System.exit(0); <-- Prawidłowe
                         showMainActiv(); // <--Testy
                     }
                 })
                 .show();
 
-          // popupInfoText.setText(text);
-          // popupWindow.showAtLocation(relativeLayout, Gravity.NO_GRAVITY, (int) (size.x / 2 - ((size.x * .9) / 2)), (int) (size.y / 2 - ((size.y * .2) / 2)));
+        // popupInfoText.setText(text);
+        // popupWindow.showAtLocation(relativeLayout, Gravity.NO_GRAVITY, (int) (size.x / 2 - ((size.x * .9) / 2)), (int) (size.y / 2 - ((size.y * .2) / 2)));
 
     }
 
-public static void showMainActiv(){
+    public static void showMainActiv(){
 
 
-    Intent oknoGlowne = new Intent(Startlogo, MainActivity.class);
+        Intent oknoGlowne = new Intent(Startlogo, MainActivity.class);
 
-    Startlogo.startActivity(oknoGlowne);
+        Startlogo.startActivity(oknoGlowne);
 //startlogoactiv.finish();
-}
+    }
     public static void showLoginActiv(){
         Intent oknoGlowne = new Intent(Startlogo, LoginActivity.class);
 
         Startlogo.startActivity(oknoGlowne);
-    //startlogoactiv.finish();
+        //startlogoactiv.finish();
     }
 
     public static int calculateInSampleSize(

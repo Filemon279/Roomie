@@ -35,20 +35,20 @@ public class Hotel_services extends AppCompatActivity {
     clean.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
 
-            Intent oknoGlowne = new Intent(Hotel_services.this, Hotel_clean_options.class);
-            Hotel_services.this.startActivity(oknoGlowne);
-
+            Intent clean = new Intent(Hotel_services.this, Service_clean.class);
+            Hotel_services.this.startActivity(clean);
 
         }
 
         // }
 
     });
-        repair = (Button) findViewById(R.id.button_repair_room);
-        repair.setOnClickListener(new View.OnClickListener() {
+        items = (Button) findViewById(R.id.button_fill_needs);
+        items.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-
+                Intent items = new Intent(Hotel_services.this, Service_room.class);
+                Hotel_services.this.startActivity(items);
 
 
             }
@@ -56,11 +56,15 @@ public class Hotel_services extends AppCompatActivity {
             // }
 
         });
+
+
+
         food = (Button) findViewById(R.id.button_order_food);
         food.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent food = new Intent(Hotel_services.this, Service_food.class);
+                Hotel_services.this.startActivity(food);
 
-                Client.sendRequest("REPAIR#Proszę o naprawę świata, bo się zaczyna psuć.");
             }
 
             // }
@@ -73,44 +77,7 @@ to=this;
     public void onBackPressed() {
         to.finish();
     }
-    public static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
 
-        if (height > reqHeight || width > reqWidth) {
-
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) > reqHeight
-                    && (halfWidth / inSampleSize) > reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
-
-        return inSampleSize;
-    }
-
-    public static Bitmap decodeImage(Resources res, int resId,
-                                     int reqWidth, int reqHeight) {
-
-        // First decode with inJustDecodeBounds=true to check dimensions
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
-
-        // Calculate inSampleSize
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-
-        // Decode bitmap with inSampleSize set
-        options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
-    }
 
 
 }
