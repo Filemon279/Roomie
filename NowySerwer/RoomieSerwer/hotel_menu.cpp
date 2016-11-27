@@ -43,6 +43,62 @@ Hotel_menu::Hotel_menu(QWidget *parent) :
 
 loadButtons();
 
+//
+   minimizeAction = new QAction(tr("Ukryj"),this);
+   connect(minimizeAction, SIGNAL(triggered()), this, SLOT(hide()));
+
+   maximizeAction = new QAction(tr("FullScreen"),this);
+   connect(maximizeAction,SIGNAL(triggered()),this,SLOT(show()));
+
+   quitAction = new QAction(tr("Zamknij"),this);
+   connect(quitAction,SIGNAL(triggered()),qApp,SLOT(quit()));
+
+   trayIconMenu = new QMenu(this);
+   trayIconMenu->addAction(minimizeAction);
+   trayIconMenu->addAction(maximizeAction);
+   trayIconMenu->addSeparator();
+   trayIconMenu->addAction(quitAction);
+
+
+QIcon *icon = new QIcon(":/img/img/warning_icon.png");
+trayIcon = new QSystemTrayIcon(this);
+connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+        this,SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
+connect(trayIcon,SIGNAL(messageClicked()),this,SLOT(messageClicked()));
+trayIcon->setContextMenu(trayIconMenu);
+trayIcon->setIcon(*icon);
+trayIcon->show();
+
+
+
+}
+
+void Hotel_menu::iconActivated(QSystemTrayIcon::ActivationReason reason)
+{
+    switch (reason)
+    {
+    case QSystemTrayIcon::DoubleClick:
+        this->show();
+        break;
+    case QSystemTrayIcon::MiddleClick:
+        this->showMinimized();
+        break;
+    default:
+        ;
+    }
+}
+
+void Hotel_menu::showMessage(QString title,QString message)
+{
+    if(this->isHidden())trayIcon->showMessage(title,message);
+}
+
+void Hotel_menu::messageClicked()
+{
+
+  this->show();
+  // layout_requests->invalidate();
+  layout_requests->update();
 }
 
 Hotel_menu::~Hotel_menu()
@@ -54,7 +110,15 @@ void Hotel_menu::createButton(QString msg,int socket){
 nowePolecenie(socket,msg);
 }
 
+void Hotel_menu::keyPressEvent(QKeyEvent *e) {
+    if(e->key() == Qt::Key_Escape){
+    // message_box("Minimalizuj","Aplikacja zostanie zminimalizowana. Zamknij ją przez pasek MENU",this);
 
+       this->hide();
+    showMessage("Roomie wciąż działa","Aplikacja została zminimalizowana do paska zadań");
+    }
+    else {/* minimize */}
+}
 
 
 void Hotel_menu::on_pushButton_Ustawienia_clicked()
@@ -112,6 +176,18 @@ i++;*/
 
 void Hotel_menu::nowePolecenie(int numer,QString Info_ID="")
 {
+    if(numer<0)
+    {
+        if(this->isHidden())
+        {
+        QString title = "Pokój nr: ";
+        title.append(QString::number(-1*numer));
+        QString msg = "Aktualizacja prośby o ID: #";
+        msg.append(Info_ID);
+        showMessage(title,msg);
+        }
+    }
+   else{
     Hotel_button *b=new Hotel_button(this,Info_ID);
     b->setGeometry(0,0,100,100);
     b->setFixedHeight(200);
@@ -120,7 +196,16 @@ void Hotel_menu::nowePolecenie(int numer,QString Info_ID="")
     connect(b, SIGNAL (send_name(QString,Hotel_button*)),this, SLOT (handleButton(QString,Hotel_button*)));
     connect(b, SIGNAL (removeOUT(Hotel_button*)),this, SLOT (remove_IN(Hotel_button*)));
     layout_requests->addWidget(b);
-  //layout_requests->removeWidget(b);
+
+       if(this->isHidden())
+        {
+        QString title = "Pokój nr: ";
+        title.append(QString::number(numer));
+        QString msg = "Nowa prośba o ID: #";
+        msg.append(Info_ID);
+        showMessage(title,msg);
+        }
+    }
 }
 
 
@@ -132,6 +217,7 @@ void Hotel_menu::nowePolecenie2(int numer,QString Info_ID)
     b->setFixedWidth(200);
     b->setText(QString::number(numer).rightJustified(3,'0'));
     connect(b, SIGNAL (send_name(QString,Hotel_button*)),this, SLOT (handleButton(QString,Hotel_button*)));
+    connect(b, SIGNAL (removeOUT(Hotel_button*)),this, SLOT (remove_IN(Hotel_button*)));
     layout_requests->addWidget(b);
 }
 
@@ -161,6 +247,6 @@ void Hotel_menu::loadButtons()
     QSqlQuery query(polecenie);
     while(query.next())
     {
-       nowePolecenie(query.value("Numer").toInt(),query.value("Info_ID").toString());
+       nowePolecenie2(query.value("Numer").toInt(),query.value("Info_ID").toString());
     }
 }

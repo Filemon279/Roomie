@@ -8,5 +8,6 @@
         <file>img/info_bg.jpeg</file>
         <file>img/main_bg_2.jpg</file>
         <file>img/pexels-photo.jpg</file>
+        <file>img/warning_icon.png</file>
     </qresource>
 </RCC>

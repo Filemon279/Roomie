@@ -109,37 +109,37 @@
                                     android:text="Telewizor"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_telewizor" />
+                                    android:id="@+id/checkr_telewizor" />
 
                                 <CheckBox
                                     android:text="Dekoder"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_dekoder" />
+                                    android:id="@+id/checkr_dekoder" />
 
                                 <CheckBox
                                     android:text="Internet"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_internet" />
+                                    android:id="@+id/checkr_internet" />
 
                                 <CheckBox
                                     android:text="Oświetlenie"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_oswietlenie" />
+                                    android:id="@+id/checkr_oswietlenie" />
 
                                 <CheckBox
                                     android:text="Okna"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_okna" />
+                                    android:id="@+id/checkr_okna" />
 
                                 <CheckBox
                                     android:text="Meble"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_meble" />
+                                    android:id="@+id/checkr_meble" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -152,37 +152,37 @@
                                     android:text="Klimatyzacja"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_klima" />
+                                    android:id="@+id/checkr_klima" />
 
                                 <CheckBox
                                     android:text="Ogrzewanie"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_ogrzewanie" />
+                                    android:id="@+id/checkr_ogrzewanie" />
 
                                 <CheckBox
                                     android:text="Hydraulika"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_hydraulika" />
+                                    android:id="@+id/checkr_hydraulika" />
 
                                 <CheckBox
                                     android:text="Drzwi"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_drzwi" />
+                                    android:id="@+id/checkr_drzwi" />
 
                                 <CheckBox
                                     android:text="AGD/RTV"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_agdrtv" />
+                                    android:id="@+id/checkr_agdrtv" />
 
                                 <CheckBox
                                     android:text="Prąd"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_prad" />
+                                    android:id="@+id/checkr_prad" />
 
                             </LinearLayout>
                         </LinearLayout>
@@ -208,7 +208,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/textView15"
+                                android:id="@+id/textView18"
                                 android:textColor="#ffffff"
                                 android:text="Dodatkowe Uwagi (100znaków)" />
 
@@ -226,7 +226,7 @@
                                 android:layout_height="wrap_content"
                                 android:inputType="textMultiLine"
                                 android:ems="10"
-                                android:id="@+id/edit_uwagi"
+                                android:id="@+id/editr_uwagi"
                                 android:layout_weight="1"
                                 android:maxLength="100"
                                 android:maxLines="8" />

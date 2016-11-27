@@ -86,7 +86,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/textView15"
+                                android:id="@+id/textView19"
                                 android:textColor="#ffffff"
                                 android:text="Higiena" />
 
@@ -109,25 +109,25 @@
                                     android:text="Szampon"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_szampon" />
+                                    android:id="@+id/checkro_szampon" />
 
                                 <CheckBox
                                     android:text="Mydło"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_mydlo" />
+                                    android:id="@+id/checkro_mydlo" />
 
                                 <CheckBox
                                     android:text="Papier toaletowy"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_papier" />
+                                    android:id="@+id/checkro_papier" />
 
                                 <CheckBox
                                     android:text="Odświeżacz"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_odswiezacz" />
+                                    android:id="@+id/checkro_odswiezacz" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -140,19 +140,19 @@
                                     android:text="Ręcznik"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_recznik" />
+                                    android:id="@+id/checkro_recznik" />
 
                                 <CheckBox
                                     android:text="Szlafrok"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_szlafrok" />
+                                    android:id="@+id/checkro_szlafrok" />
 
                                 <CheckBox
                                     android:text="Kapcie"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_kapcie" />
+                                    android:id="@+id/checkro_kapcie" />
 
                             </LinearLayout>
                         </LinearLayout>
@@ -178,7 +178,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/textView15"
+                                android:id="@+id/textView18"
                                 android:textColor="#ffffff"
                                 android:text="Pokój" />
 
@@ -201,18 +201,18 @@
                                     android:text="Pościel"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_posciel" />
+                                    android:id="@+id/checkro_posciel" />
 
                                 <CheckBox
                                     android:text="Poszewki"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_poszewki" />
+                                    android:id="@+id/checkro_poszewki" />
 
                                 <CheckBox
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_przescieradlo"
+                                    android:id="@+id/checkro_przescieradlo"
                                     android:text="Prześcieradło" />
 
                             </LinearLayout>
@@ -227,19 +227,13 @@
                                     android:text="Baterie do pilota"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_baterie" />
+                                    android:id="@+id/checkro_baterie" />
 
                                 <CheckBox
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_zastawa"
+                                    android:id="@+id/checkro_zastawa"
                                     android:text="Zastawa" />
-
-                                <CheckBox
-                                    android:text="Kapcie"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/check_kapcie" />
 
                             </LinearLayout>
                         </LinearLayout>
@@ -288,13 +282,13 @@
                                     android:text="Woda"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_woda" />
+                                    android:id="@+id/checkro_woda" />
 
                                 <CheckBox
                                     android:text="Napoje/Soki"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_napojesoki" />
+                                    android:id="@+id/checkro_napojesoki" />
 
                             </LinearLayout>
 
@@ -308,12 +302,12 @@
                                     android:text="Przekąski"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_przekaski" />
+                                    android:id="@+id/checkro_przekaski" />
 
                                 <CheckBox
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/check_alkohole"
+                                    android:id="@+id/checkro_alkohole"
                                     android:text="Alkohole" />
 
                             </LinearLayout>

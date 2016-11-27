@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context=".Hotel_sos"
+    tools:context=".MainMenu.Hotel_sos"
     android:id="@+id/Hotel_sos"
     >
 

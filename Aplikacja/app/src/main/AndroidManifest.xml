@@ -37,13 +37,13 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".Start.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Menu_page"
+            android:name=".Map_tabs.Menu_page"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Start_logo"
+            android:name=".Start.Start_logo"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,18 +52,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Hotel_services"
+            android:name=".MainMenu.Hotel_services"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Hotel_transport"
+            android:name=".MainMenu.Hotel_transport"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Hotel_sos"
+            android:name=".MainMenu.Hotel_sos"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Hotel_map"
+            android:name=".MainMenu.Hotel_map"
             android:label="@string/title_activity_hotel_map" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".Start.LoginActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -76,13 +76,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAV2gz-ijII_9NJEUxby5sEstOHl0uKEmQ" />
 
-        <activity android:name=".language" />
-        <activity android:name=".settings" />
-        <activity android:name=".Service_clean" />
-        <activity android:name=".Service_food" />
-        <activity android:name=".Service_room" />
-        <activity android:name=".Service_repair" />
-        <activity android:name=".Service_contact"></activity>
+        <activity android:name=".Start.language" />
+        <activity android:name=".MainMenu.settings" />
+        <activity android:name=".Services.Service_clean" />
+        <activity android:name=".Services.Service_food" />
+        <activity android:name=".Services.Service_room" />
+        <activity android:name=".Services.Service_repair" />
+        <activity android:name=".Services.Service_contact"></activity>
     </application>
 
 </manifest>

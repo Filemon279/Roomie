@@ -101,7 +101,7 @@ void Hotel_thread::readyRead()
                  polecenie.append(msg.value(0)+"\"");
                  qDebug(polecenie.toUtf8());
                  query.exec(polecenie);
-                 //emit createButton(msg.value(0),1); //Nie trzeba bo tylko robimy update istniejacego juz buttona
+                 emit createButton(msg.value(0),-1*numer.toInt());  // sygnal do traya
              }
              else{
                  polecenie="INSERT INTO uslugi(Numer,Info_ID,Info) VALUES (";
@@ -112,7 +112,7 @@ void Hotel_thread::readyRead()
                  polecenie.append(koniec+"\")");
                  qDebug(polecenie.toUtf8());
                  query.exec(polecenie);
-                 emit createButton(msg.value(0),1);
+                 emit createButton(msg.value(0),numer.toInt());
              }
          }
      }
