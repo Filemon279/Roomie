@@ -8,11 +8,8 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="16" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -22,6 +19,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <meta-data android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -82,7 +81,8 @@
         <activity android:name=".Services.Service_food" />
         <activity android:name=".Services.Service_room" />
         <activity android:name=".Services.Service_repair" />
-        <activity android:name=".Services.Service_contact"></activity>
+        <activity android:name=".Services.Service_contact" />
+        <activity android:name=".SOS_call" />
     </application>
 
 </manifest>

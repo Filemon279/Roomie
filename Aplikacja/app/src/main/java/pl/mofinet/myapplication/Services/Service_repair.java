@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import pl.mofinet.myapplication.Funkcje.Client;
 import pl.mofinet.myapplication.Funkcje.MyFunc;
@@ -68,7 +69,17 @@ public class Service_repair extends AppCompatActivity {
 
                     MyFunc.popupInfo("Błędny komunikat","Proszę wybrać przynajmniej jedną usterkę",builder);
                 }
-                else Client.sendRequest(info);
+
+                else{
+                    try{
+                    Client.sendRequest(info);
+                    Service_repair.super.finish();
+                    Toast.makeText(Service_repair.this, "Twoja prośba została wysłana pomyślnie",
+                            Toast.LENGTH_LONG).show();}
+                    catch  (Exception e){
+                        MyFunc.popupInfo("Problem z Serverem","Nie można nawiązać połączenia z Serwerem. Proszę spróbować później",builder);
+                    }
+                }
 
 
             }

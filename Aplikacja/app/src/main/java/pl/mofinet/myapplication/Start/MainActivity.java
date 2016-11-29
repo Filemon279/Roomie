@@ -1,11 +1,21 @@
 package pl.mofinet.myapplication.Start;
 
 
+import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationManager;
 
 import android.content.Context;
-
+import android.app.Activity;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -14,8 +24,6 @@ import android.graphics.Color;
 import android.graphics.Point;
 
 import android.os.Build;
-import android.os.Bundle;
-import android.app.Activity;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +32,15 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RemoteViews;
-import android.widget.TextView;
+
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.android.gms.location.LocationServices;
 
 import pl.mofinet.myapplication.MainMenu.Hotel_map;
 import pl.mofinet.myapplication.MainMenu.Hotel_services;
@@ -35,12 +51,11 @@ import pl.mofinet.myapplication.R;
 /**
  *
  *
- *
- *
  */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private static ImageButton service,transport,sos,map,settings;
+    private static ImageButton service, transport, sos, map, settings;
     private static NotificationManager notificationManager;
     private static Context MainActivityOut;
     private static String packName;
@@ -49,30 +64,40 @@ public class MainActivity extends Activity {
     private static LayoutInflater layoutInflater;
     private Display display;
     static Point size = new Point();
+    public float Longitude,Latitude;
+
+    GoogleApiClient mGoogleApiClient;
+    public static Location mLastLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
+        WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
+//////////////////////////
+
+        buildGoogleApiClient();
+        if (mGoogleApiClient != null) {
+            mGoogleApiClient.connect();
+        } else
+            Toast.makeText(this, "Not connected...", Toast.LENGTH_SHORT).show();
+////////////////////////
+
+
         ImageView background = (ImageView) findViewById(R.id.main_background);
-        background.setImageBitmap(decodeImage(getResources(),R.mipmap.hotel_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(decodeImage(getResources(), R.mipmap.hotel_bg, getWindowManager().getDefaultDisplay().getWidth(), getWindowManager().getDefaultDisplay().getHeight()));
         ImageView logo_issp = (ImageView) findViewById(R.id.main_logo);
-        logo_issp.setImageBitmap(decodeImage(getResources(),R.drawable.black_issp2,200,200));
+        logo_issp.setImageBitmap(decodeImage(getResources(), R.drawable.black_issp2, 200, 200));
 
 
-
-        MainActivityOut=this;
-      notificationManager =(NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        packName= getPackageName();
+        MainActivityOut = this;
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        packName = getPackageName();
         layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         display = getWindow().getWindowManager().getDefaultDisplay();
         display.getSize(size);
@@ -94,10 +119,9 @@ public class MainActivity extends Activity {
 
         transport.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            //    Client.sendRequest("CLEAN#12:30#12.04.2016#Prosze o umycie telewizora");
                 Intent window_transport = new Intent(MainActivity.this, Hotel_transport.class);
                 MainActivity.this.startActivity(window_transport);
-                //  img_animation.clearAnimation();
+
             }
 
         });
@@ -142,31 +166,15 @@ public class MainActivity extends Activity {
 
         });
 
-/*
-
-
-
-
-        menu.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent oknoGlowne = new Intent(MainActivity.this, Menu_page.class);
-                MainActivity.this.startActivity(oknoGlowne);
-              //  img_animation.clearAnimation();
-            }
-
-        });*/
-
-
-
-
-
-
-//LoginActivity.client.inicjuj();
-
     }
 
-
-
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+    }
 
 
     public static void createNotification(String[] msgPositions) {
@@ -180,11 +188,9 @@ public class MainActivity extends Activity {
             foregroundNote = mNotifyBuilder.setContentTitle(msgPositions[1])
                     .setContentText("Przeciagnij w dol by przeczytać")
                     .setSmallIcon(R.drawable.ic_mood_black_24dp)
-                     .setLights(Color.BLUE, 3000, 3000)
-                 .setVibrate(new long[]{700, 700, 700, 700, 700})
+                    .setLights(Color.BLUE, 3000, 3000)
+                    .setVibrate(new long[]{700, 700, 700, 700, 700})
                     .build();
-
-
 
 
         }
@@ -221,7 +227,7 @@ public class MainActivity extends Activity {
     }
 
     public static Bitmap decodeImage(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
+                                     int reqWidth, int reqHeight) {
 
         // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -237,5 +243,45 @@ public class MainActivity extends Activity {
     }
 
 
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+
+        if (mLastLocation != null) {
+            Latitude = ( float)mLastLocation.getLatitude();
+            Longitude = (float)mLastLocation.getLongitude();
+            Log.i(String.valueOf(Latitude),String.valueOf(Longitude));
+            Log.i("UWAGA!!!!!!!!!!!!!!!","Latitude: "+ String.valueOf(mLastLocation.getLatitude())+"Longitude: "+
+                    String.valueOf(mLastLocation.getLongitude()));
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Toast.makeText(this, "Połączenie GPS zawieszone", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Toast.makeText(this, "GPS stracił połączenie", Toast.LENGTH_SHORT).show();
+    }
+
+    public Location getLocation()
+    {
+        return mLastLocation;
+    }
 }
 

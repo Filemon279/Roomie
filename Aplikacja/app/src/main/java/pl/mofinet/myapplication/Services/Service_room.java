@@ -10,9 +10,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.net.UnknownHostException;
 
 import pl.mofinet.myapplication.Funkcje.Client;
 import pl.mofinet.myapplication.Funkcje.MyFunc;
+import pl.mofinet.myapplication.MainMenu.Hotel_services;
 import pl.mofinet.myapplication.R;
 
 public class Service_room extends AppCompatActivity {
@@ -73,7 +77,18 @@ public class Service_room extends AppCompatActivity {
 
                 if(info==puste) MyFunc.popupInfo("Błędny komunikat","Proszę wybrać przynajmniej jedną usterkę",builder);
 
-                else Client.sendRequest(info);
+                else {
+                    try{
+                        Client.sendRequest(info);
+                        Toast.makeText(Service_room.this, "Twoja prośba została wysłana pomyślnie",
+                        Toast.LENGTH_LONG).show();
+                        Service_room.super.finish();
+                    } catch  (Exception e){
+                        MyFunc.popupInfo("Problem z Serverem","Nie można nawiązać połączenia z Serwerem. Proszę spróbować później",builder);
+                    }
+
+
+                    }
 
 
             }

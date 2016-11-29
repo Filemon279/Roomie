@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -78,7 +79,15 @@ public class Service_food extends AppCompatActivity {
                     if (it.isChecked()) info += "alkohol | ";
 
                     if (edit.length() > 1) info += "\nDodatkowe Uwagi: " + edit.getText();
+
+                    try{
                     Client.sendRequest(info);
+                    Service_food.super.finish();
+                    Toast.makeText(Service_food.this, "Twoja prośba została wysłana pomyślnie",
+                            Toast.LENGTH_LONG).show();}
+                    catch  (Exception e){
+                        MyFunc.popupInfo("Problem z Serverem","Nie można nawiązać połączenia z Serwerem. Proszę spróbować później",builder);
+                    }
                 }
 
             }

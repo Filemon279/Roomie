@@ -23,8 +23,10 @@ public class Hotel_services extends AppCompatActivity {
 
     Button food,repair,items,clean,contact;
     ImageView background;
-    static Activity to;
+    public static Activity Activity;
     final BitmapFactory.Options options = new BitmapFactory.Options();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -94,11 +96,11 @@ public class Hotel_services extends AppCompatActivity {
 
         });
 
-        to=this;
+        Activity=this;
 
     }
     public void onBackPressed() {
-        to.finish();
+        Activity.finish();
     }
 
 

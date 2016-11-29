@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import pl.mofinet.myapplication.Funkcje.Client;
 import pl.mofinet.myapplication.Funkcje.MyFunc;
@@ -30,7 +31,7 @@ public class Service_contact extends AppCompatActivity {
         ImageView background = (ImageView) findViewById(R.id.background_room);
         background.setImageBitmap(MyFunc.decodeImage(getResources(),R.mipmap.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
-        call = (ImageButton) findViewById(R.id.imageButton);
+        call = (ImageButton) findViewById(R.id.button_call);
         call.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.phone_flat,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
 
@@ -52,8 +53,15 @@ public class Service_contact extends AppCompatActivity {
                    EditText edit = (EditText) findViewById(R.id.edit_wiadomosc);
                 if(edit.length()>2)
                 {
+                    try{
                     info+=edit.getText();
                     Client.sendRequest(info);
+                    Service_contact.super.finish();
+                    Toast.makeText(Service_contact.this, "Twoja prośba została wysłana pomyślnie",
+                            Toast.LENGTH_LONG).show();}
+                    catch  (Exception e){
+                        MyFunc.popupInfo("Problem z Serverem","Nie można nawiązać połączenia z Serwerem. Proszę spróbować później",builder);
+                    }
                 }
                 else MyFunc.popupInfo("Pusta Wiadomość","Wiadomośc powinna posiadać przynajmniej 2 znaki",builder);
 

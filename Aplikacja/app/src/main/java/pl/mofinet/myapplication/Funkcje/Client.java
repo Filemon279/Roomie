@@ -25,6 +25,7 @@ public final class Client {
 
 
     public Client(){
+
         ChatOperator chatOperator = new ChatOperator();
         chatOperator.execute();
     }
@@ -32,11 +33,11 @@ public final class Client {
     public Socket client;
     public static PrintWriter printwriter;
     private BufferedReader bufferedReader;
-    private String CHAT_SERVER_IP = "94.231.229.133"; // Adres kompa w sieci lokalnej // Bledny sprawia ze aplikacja nie uruchomi sie
+    private String CHAT_SERVER_IP = "94.231.229.133"; // Adres kompa w sieci lokalnej // Bledny sprawia ze aplikacja nie uruchamia sie
 
 
     private class ChatOperator extends AsyncTask<Void, Void, Void> {
-
+        boolean running=true;
         @Override
         protected Void doInBackground(Void... arg0) {
 
@@ -53,30 +54,28 @@ public final class Client {
                     printwriter = new PrintWriter(client.getOutputStream(), true);
                     InputStreamReader inputStreamReader = new InputStreamReader(client.getInputStream());
                     bufferedReader = new BufferedReader(inputStreamReader);
-                    //inFromServer = new BufferedReader(new InputStreamReader(client.getInputStream()));
+                    running=true;
 
 
 
                 } else System.exit(1);
 
             } catch (UnknownHostException e) {
-//                e.printStackTrace();
+            running=false;
             } catch (IOException e) {
-              //  Start_logo.popupInfo("Błąd połączenia z Serwerem");
+            running=false;
                 e.printStackTrace();
             }
            return null;
         }
 
-        /**
-         * Following method is executed at the end of doInBackground method.
-         */
-
         protected void onPostExecute(Void result) {
 
-            Log.i("UWAGA !!!!!!!!!!!!!!!","nasluchuje");
-            Receiver receiver = new Receiver(); // Initialize chat receiver AsyncTask.
-            receiver.execute();
+     if(running) {
+         Receiver receiver = new Receiver(); // Initialize chat receiver AsyncTask.
+         receiver.execute();
+     }
+            else Log.i("ROOMIE WARNING","NIE MOZNA NAWIĄZAC POLĄCZENIA");
 
 
         }
@@ -86,11 +85,6 @@ public final class Client {
     }
 
 
-
-    /**
-     * This AsyncTask continuously reads the input buffer and show the chat
-     * message if a message is availble.
-     */
     private class Receiver extends AsyncTask<Void, Void, Void> {
 
 
@@ -100,17 +94,10 @@ public final class Client {
         @Override
         protected Void doInBackground(Void... params) {
 
-
-
-
-            Log.i("UWAGA !!!!!!!!!!!!!!!","nasluchuje do it in");
             while (true) {
                 try {
-
                     if (bufferedReader.ready()) {
-                        Log.i("UWAGA !!!!!!!!!!!!!!!","czeka na komunikat");
                         message = bufferedReader.readLine();
-                        Log.i("UWAGA !!!!!!!!!!!!!!!","doszlo cos");
                         publishProgress(null);
                     }
                 } catch (UnknownHostException e) {
@@ -131,8 +118,7 @@ public final class Client {
     //    if(zainicjowano)    //textViewIn.append("Server: " + message + "\n");
 
 
-            Log.i("UWAGA !!!!!!!!!!!!!!!","odbiera wiadomosci");
-            Log.i("UWAGA !!!!!!!!!!!!!!!",message);
+
             if(message.equals( "loginConfirmed")) {
                 logined = true;
                showMainActiv();
@@ -169,9 +155,6 @@ public final class Client {
         }
     }
 
-    /**
-     * This AsyncTask sends the chat message through the output stream.
-     */
     private class Sender extends AsyncTask<Void, Void, Void>  {
 
         private String message = " ";

@@ -39,8 +39,6 @@ public class LoginActivity extends AppCompatActivity {
     public String PREFS_USERNAME= "prefsUsername";
     public String PREFS_PASSWORD="prefsPassword";
 
-    // Client client = Start_logo.client;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

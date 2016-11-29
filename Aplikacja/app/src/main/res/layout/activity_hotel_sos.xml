@@ -108,7 +108,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:text="Poproś Hotel o połączenie"
-                            android:id="@+id/button_order_food"
+                            android:id="@+id/button_call_help"
                             android:background="@drawable/button_call_click"
                             android:textColor="#ffffff" />
 
@@ -117,7 +117,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:text="Pokaż drogę do Hotelu"
-                            android:id="@+id/button_clean_room"
+                            android:id="@+id/button_show_route"
                             android:background="@drawable/button_find_click"
                             android:textColor="#ffffff" />
 

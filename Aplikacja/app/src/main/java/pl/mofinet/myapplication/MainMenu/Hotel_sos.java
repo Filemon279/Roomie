@@ -2,20 +2,27 @@ package pl.mofinet.myapplication.MainMenu;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import pl.mofinet.myapplication.R;
+import pl.mofinet.myapplication.SOS_call;
+import pl.mofinet.myapplication.Services.Service_food;
 
 
 public class Hotel_sos extends AppCompatActivity {
+
     ImageView background;
+    Button call;
     final BitmapFactory.Options options = new BitmapFactory.Options();
     Activity to;
 
@@ -26,7 +33,22 @@ public class Hotel_sos extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel_sos);
+
     to=this;
+
+
+        call = (Button) findViewById(R.id.button_call_help);
+        call.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent help = new Intent(Hotel_sos.this, SOS_call.class);
+                Hotel_sos.this.startActivity(help);
+            }
+
+            // }
+
+        });
+
 
         background = (ImageView) findViewById(R.id.background_sos);
         background.setImageBitmap(decodeImage(getResources(),R.mipmap.service_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));

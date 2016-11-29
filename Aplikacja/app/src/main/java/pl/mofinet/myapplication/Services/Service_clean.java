@@ -19,6 +19,7 @@ import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import pl.mofinet.myapplication.Funkcje.Client;
 import pl.mofinet.myapplication.Funkcje.MyFunc;
@@ -64,7 +65,14 @@ public class Service_clean extends AppCompatActivity {
                  RadioButton radioButton = (RadioButton) findViewById(selectedId);
                  info+="Poproszę sprzątanie na "+ radioButton.getText()+" na godzinę: "+DateEdit.getText()+".";
                 if(edit.length()>1) info+="\nDodatkowe: "+edit.getText();
-                 Client.sendRequest(info);
+                try {
+                    Client.sendRequest(info);
+                    Service_clean.super.finish();
+                    Toast.makeText(Service_clean.this, "Twoja prośba została wysłana pomyślnie",
+                            Toast.LENGTH_LONG).show();
+                } catch  (Exception e){
+                    MyFunc.popupInfo("Problem z Serverem","Nie można nawiązać połączenia z Serwerem. Proszę spróbować później",builder);
+                }
              }
 
             }

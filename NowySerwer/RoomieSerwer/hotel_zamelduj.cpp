@@ -70,6 +70,7 @@ void Hotel_zamelduj::on_pushButton_dodaj_clicked()
     polecenie.append("\""+ui->calendar_checkOUT->selectedDate().toString("yyyy-MM-dd")+"\",");
     polecenie.append("\""+ui->lineEdit_inne->text()+"\")");
     QSqlQuery query(polecenie);
+    delete this;
 
 }
 

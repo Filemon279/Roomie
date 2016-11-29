@@ -67,6 +67,7 @@ public class Start_logo extends AppCompatActivity {
 
                 if (client.client == null) {
                     popupInfo("Brak połączenia z Serwerem Hotelu. Skontaktuj się z obsługą");
+
                 }
 
                 else{
