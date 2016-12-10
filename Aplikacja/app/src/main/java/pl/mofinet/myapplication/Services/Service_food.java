@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import java.util.Calendar;
 
 import pl.mofinet.myapplication.Funkcje.Client;
 import pl.mofinet.myapplication.Funkcje.MyFunc;
+import pl.mofinet.myapplication.MainMenu.Hotel_services;
 import pl.mofinet.myapplication.R;
 
 public class Service_food extends AppCompatActivity {
@@ -48,7 +50,7 @@ public class Service_food extends AppCompatActivity {
         });
 
         ImageView background = (ImageView) findViewById(R.id.background_food);
-        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.mipmap.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
        final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
@@ -99,6 +101,13 @@ public class Service_food extends AppCompatActivity {
     public void showTruitonDatePickerDialog(View v) {
         DialogFragment newFragment = new Service_food.DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Hotel_services.class);
+        startActivity(intent);
+        finish();
     }
 
     public static class DatePickerFragment extends DialogFragment implements

@@ -68,7 +68,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
-                            android:layout_weight="2">
+                            android:layout_weight="6">
 
                             <TextView
                                 android:layout_width="fill_parent"
@@ -103,29 +103,43 @@
                                 android:background="#30ffffff" />
                         </LinearLayout>
 
-                        <Button
-                            style="?android:attr/buttonStyleSmall"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Poproś Hotel o połączenie"
-                            android:id="@+id/button_call_help"
-                            android:background="@drawable/button_call_click"
-                            android:textColor="#ffffff" />
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5">
 
-                        <Button
-                            style="?android:attr/buttonStyleSmall"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Pokaż drogę do Hotelu"
-                            android:id="@+id/button_show_route"
-                            android:background="@drawable/button_find_click"
-                            android:textColor="#ffffff" />
+                            <Button
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Poproś Hotel o połączenie"
+                                android:id="@+id/button_call_help"
+                                android:background="@drawable/button_call_click"
+                                android:textColor="#ffffff" />
+                        </LinearLayout>
 
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="2"
+                            android:layout_weight="5">
+
+                            <Button
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Pokaż drogę do Hotelu"
+                                android:id="@+id/button_show_route"
+                                android:background="@drawable/button_find_click"
+                                android:textColor="#ffffff" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
                             android:gravity="center">
 
                             <TextView

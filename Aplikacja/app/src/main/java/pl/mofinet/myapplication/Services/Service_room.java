@@ -1,6 +1,7 @@
 package pl.mofinet.myapplication.Services;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +31,7 @@ public class Service_room extends AppCompatActivity {
         setContentView(R.layout.activity_service_room);
 
         ImageView background = (ImageView) findViewById(R.id.background_room);
-        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.mipmap.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -97,4 +98,11 @@ public class Service_room extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Hotel_services.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

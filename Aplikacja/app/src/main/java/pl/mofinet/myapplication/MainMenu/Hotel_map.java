@@ -113,7 +113,7 @@ public class Hotel_map  extends AppCompatActivity implements OnMapReadyCallback 
         });
 
         background = (ImageView) findViewById(R.id.background_map);
-        background.setImageBitmap(decodeImage(getResources(),R.mipmap.map_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(decodeImage(getResources(),R.drawable.map_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                         .findFragmentById(R.id.map);
                 mapFragment.getMapAsync(this);
@@ -133,7 +133,9 @@ public class Hotel_map  extends AppCompatActivity implements OnMapReadyCallback 
 
     @Override
     public void onBackPressed() {
-        finish();
+        super.onBackPressed();
+        this.finish();
+        System.gc();
     }
 
     public static int calculateInSampleSize(

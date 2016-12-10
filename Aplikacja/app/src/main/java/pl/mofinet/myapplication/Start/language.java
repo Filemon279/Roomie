@@ -26,7 +26,7 @@ public class language extends AppCompatActivity {
         setContentView(R.layout.activity_language);
 
         ImageView background = (ImageView) findViewById(R.id.start_logo_language);
-        background.setImageBitmap(decodeImage(getResources(),R.mipmap.service_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(decodeImage(getResources(),R.drawable.service_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
         pol = (ImageButton) findViewById(R.id.pl_flag);
         de = (ImageButton) findViewById(R.id.de_flat_but);
         eng = (ImageButton) findViewById(R.id.uk_flag_but);

@@ -51,7 +51,7 @@ public class Hotel_sos extends AppCompatActivity {
 
 
         background = (ImageView) findViewById(R.id.background_sos);
-        background.setImageBitmap(decodeImage(getResources(),R.mipmap.service_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(decodeImage(getResources(),R.drawable.service_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
 
     }
@@ -59,9 +59,10 @@ public class Hotel_sos extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-       to.finish();
+        super.onBackPressed();
+        this.finish();
+        System.gc();
     }
-
     public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image

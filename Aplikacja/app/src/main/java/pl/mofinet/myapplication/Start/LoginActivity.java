@@ -20,44 +20,44 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import pl.mofinet.myapplication.Funkcje.Client;
+import pl.mofinet.myapplication.Funkcje.MyFunc;
 import pl.mofinet.myapplication.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static PopupWindow popupWindow;
-    private static LayoutInflater layoutInflater;
-    private static RelativeLayout relativeLayout;
-    public static Button buttonZaloguj1;
-    private static EditText nrPokoju,hasloPokoju;
+    private PopupWindow popupWindow;
+    LayoutInflater layoutInflater;
+    RelativeLayout relativeLayout;
+    Button buttonZaloguj1;
+    EditText nrPokoju,hasloPokoju;
     private static AlertDialog.Builder builder;
-    public static Context LoginActivityOut;
-    static Point size = new Point();
+    Context LoginActivityOut;
+    Point size = new Point();
     private Display display;
 
 
-    public static final String PREFS_NAME = "LoginAndPass";
+    final String PREFS_NAME = "LoginAndPass";
     public String PREFS_USERNAME= "prefsUsername";
     public String PREFS_PASSWORD="prefsPassword";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        LoginActivityOut = this.getApplicationContext();
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
 
         ImageView logo = (ImageView) findViewById(R.id.login_logo);
         ImageView background = (ImageView) findViewById(R.id.background_login);
-        background.setImageBitmap(decodeImage(getResources(),R.mipmap.login_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
-        logo.setImageBitmap(
-        decodeImage(getResources(), R.drawable.roomie_logo_shadow, 400, 400));
+        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.login_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        logo.setImageBitmap(MyFunc.decodeImage(getResources(), R.drawable.roomie_logo_shadow, 400, 400));
 
 
         buttonZaloguj1 = (Button) findViewById(R.id.buttonZaloguj);
         nrPokoju = (EditText) findViewById(R.id.nrPokoju);
         hasloPokoju = (EditText) findViewById(R.id.hasloPokoju);
         layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-        builder = new AlertDialog.Builder(this);
+        builder = new AlertDialog.Builder( LoginActivityOut);
         display = getWindow().getWindowManager().getDefaultDisplay();
         display.getSize(size);
 
@@ -87,8 +87,8 @@ public class LoginActivity extends AppCompatActivity {
                             .commit();
 
 
-            //        Intent oknoGlowne = new Intent(LoginActivity.this, MainActivity.class);
-                 //   LoginActivity.this.startActivity(oknoGlowne);
+            //        Intent oknoGlowne = new Intent( LoginActivityOut, MainActivity.class);
+                 //    LoginActivityOut.startActivity(oknoGlowne);
 
                 //    finish();
                 }
@@ -117,10 +117,6 @@ public class LoginActivity extends AppCompatActivity {
                 .show();
 
     }
-
-public static EditText getNrPokoju(){
-    return nrPokoju;
-}
 
 
     @Override

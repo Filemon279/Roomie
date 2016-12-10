@@ -33,8 +33,11 @@ Activity to;
 to=this;
 
     }
+    @Override
     public void onBackPressed() {
-        to.finish();
+        super.onBackPressed();
+        this.finish();
+        System.gc();
     }
     public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {

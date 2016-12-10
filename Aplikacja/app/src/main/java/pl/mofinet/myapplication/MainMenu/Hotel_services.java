@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,18 +18,19 @@ import pl.mofinet.myapplication.Services.Service_contact;
 import pl.mofinet.myapplication.Services.Service_food;
 import pl.mofinet.myapplication.Services.Service_repair;
 import pl.mofinet.myapplication.Services.Service_room;
+import pl.mofinet.myapplication.Start.MainActivity;
 
 
 public class Hotel_services extends AppCompatActivity {
 
     Button food,repair,items,clean,contact;
-    ImageView background;
-    public static Activity Activity;
     final BitmapFactory.Options options = new BitmapFactory.Options();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Runtime.getRuntime().gc();
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -39,8 +41,10 @@ public class Hotel_services extends AppCompatActivity {
     clean.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
 
-            Intent clean = new Intent(Hotel_services.this, Service_clean.class);
-            Hotel_services.this.startActivity(clean);
+            Intent clean = new Intent(getApplicationContext(), Service_clean.class);
+            clean.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(clean);
+            finish();
 
         }
 
@@ -50,10 +54,11 @@ public class Hotel_services extends AppCompatActivity {
         items = (Button) findViewById(R.id.button_fill_needs);
         items.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                Intent items = new Intent(Hotel_services.this, Service_room.class);
-                Hotel_services.this.startActivity(items);
-
+                System.gc();
+                Intent items = new Intent(getApplicationContext(), Service_room.class);
+                items.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               startActivity(items);
+                finish();
             }
 
             // }
@@ -65,8 +70,10 @@ public class Hotel_services extends AppCompatActivity {
         food = (Button) findViewById(R.id.button_order_food);
         food.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent food = new Intent(Hotel_services.this, Service_food.class);
-                Hotel_services.this.startActivity(food);
+                Intent food = new Intent(getApplicationContext(), Service_food.class);
+                food.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               startActivity(food);
+                finish();
             }
 
             // }
@@ -76,8 +83,10 @@ public class Hotel_services extends AppCompatActivity {
         repair = (Button) findViewById(R.id.button_repair_room);
         repair.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent repair = new Intent(Hotel_services.this, Service_repair.class);
-                Hotel_services.this.startActivity(repair);
+                Intent repair = new Intent(getApplicationContext(), Service_repair.class);
+                repair.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               startActivity(repair);
+                finish();
             }
 
             // }
@@ -88,19 +97,25 @@ public class Hotel_services extends AppCompatActivity {
         contact = (Button) findViewById(R.id.button_reception);
         contact.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent contact = new Intent(Hotel_services.this, Service_contact.class);
-                Hotel_services.this.startActivity(contact);
+                Intent contact = new Intent(getApplicationContext(), Service_contact.class);
+                contact.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               startActivity(contact);
+                finish();
+
             }
 
             // }
 
         });
 
-        Activity=this;
+
 
     }
+    @Override
     public void onBackPressed() {
-        Activity.finish();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 

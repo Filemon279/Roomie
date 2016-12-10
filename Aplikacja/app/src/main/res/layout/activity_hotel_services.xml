@@ -74,13 +74,14 @@
                                 android:layout_margin="0dp">
 
                                 <Button
-                                    style="@android:style/Widget.Material.Light.Button.Small"
-                                    android:layout_width="wrap_content"
+                                    style="?android:attr/buttonStyleSmall"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Zamów Posiłek"
                                     android:id="@+id/button_order_food"
                                     android:background="@drawable/button_food_click"
-                                    android:textColor="#ffffff" />
+                                    android:textColor="#ffffff"
+                                    />
 
                                 <Button
                                     style="?android:attr/buttonStyleSmall"
@@ -107,12 +108,13 @@
                                     android:text="Naprawa sprzęru"
                                     android:id="@+id/button_repair_room"
                                     android:background="@drawable/button_repair_click"
-                                    android:textColor="#ffffff" />
+                                    android:textColor="#ffffff"
+                                    android:elevation="0dp" />
 
                                 <Button
                                     style="?android:attr/buttonStyleSmall"
                                     android:layout_width="fill_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:text="Kontakt z recepcją"
                                     android:id="@+id/button_reception"
                                     android:background="@drawable/button_reception_click"

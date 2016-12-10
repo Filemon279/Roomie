@@ -1,6 +1,8 @@
 package pl.mofinet.myapplication.Funkcje;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -14,7 +16,6 @@ import java.net.UnknownHostException;
 import pl.mofinet.myapplication.Start.LoginActivity;
 import pl.mofinet.myapplication.Start.MainActivity;
 
-import static pl.mofinet.myapplication.Start.Start_logo.showMainActiv;
 
 /**
  * 
@@ -23,14 +24,17 @@ public final class Client {
     boolean zainicjowano=false;
     static boolean logined = false;
 
+    private final Context context;
 
-    public Client(){
 
+
+    public Client(Context context){
+        this.context = context;
         ChatOperator chatOperator = new ChatOperator();
         chatOperator.execute();
     }
 
-    public Socket client;
+    public static Socket client;
     public static PrintWriter printwriter;
     private BufferedReader bufferedReader;
     private String CHAT_SERVER_IP = "94.231.229.133"; // Adres kompa w sieci lokalnej // Bledny sprawia ze aplikacja nie uruchamia sie
@@ -121,7 +125,11 @@ public final class Client {
 
             if(message.equals( "loginConfirmed")) {
                 logined = true;
-               showMainActiv();
+                Intent intent = new Intent();
+                intent.setClass(context, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                context.startActivity(intent);
+                System.gc();
             }
             else if(message.equals("passwordWrong")) {
              //   Start_logo.showLoginActiv();
@@ -147,9 +155,9 @@ public final class Client {
             else if(message.contains("CHECKINOUT#"))
             {
                 //Przykladowy z Servera:" CHECKINOUT#dataZameldowania#dataWymeldowania"
-               String[] messageInfo = message.split("#");
-              MainActivity.checkIn.setText("CHECK IN: "+messageInfo[1]);
-             MainActivity.checkOut.setText("CHECK OUT: " +messageInfo[2]);
+             //  String[] messageInfo = message.split("#");
+            //  MainActivity.checkIn.setText("CHECK IN: "+messageInfo[1]);
+            // MainActivity.checkOut.setText("CHECK OUT: " +messageInfo[2]);
             }
 
         }

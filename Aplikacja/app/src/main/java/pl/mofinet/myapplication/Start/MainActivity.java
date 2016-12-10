@@ -42,6 +42,7 @@ import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.location.LocationServices;
 
+import pl.mofinet.myapplication.Funkcje.MyFunc;
 import pl.mofinet.myapplication.MainMenu.Hotel_map;
 import pl.mofinet.myapplication.MainMenu.Hotel_services;
 import pl.mofinet.myapplication.MainMenu.Hotel_sos;
@@ -55,12 +56,12 @@ import pl.mofinet.myapplication.R;
 public class MainActivity extends Activity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private static ImageButton service, transport, sos, map, settings;
+    private ImageButton service, transport, sos, map, settings;
     private static NotificationManager notificationManager;
     private static Context MainActivityOut;
-    private static String packName;
-    public static TextView checkIn;
-    public static TextView checkOut;
+    private String packName;
+    public TextView checkIn;
+    public TextView checkOut;
     private static LayoutInflater layoutInflater;
     private Display display;
     static Point size = new Point();
@@ -71,9 +72,8 @@ public class MainActivity extends Activity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Runtime.getRuntime().gc();
         super.onCreate(savedInstanceState);
-
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -85,17 +85,17 @@ public class MainActivity extends Activity implements
         if (mGoogleApiClient != null) {
             mGoogleApiClient.connect();
         } else
-            Toast.makeText(this, "Not connected...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Not connected...", Toast.LENGTH_SHORT).show();
 ////////////////////////
 
 
         ImageView background = (ImageView) findViewById(R.id.main_background);
-        background.setImageBitmap(decodeImage(getResources(), R.mipmap.hotel_bg, getWindowManager().getDefaultDisplay().getWidth(), getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(MyFunc.decodeImage(getResources(), R.drawable.hotel_bg, getWindowManager().getDefaultDisplay().getWidth(), getWindowManager().getDefaultDisplay().getHeight()));
         ImageView logo_issp = (ImageView) findViewById(R.id.main_logo);
-        logo_issp.setImageBitmap(decodeImage(getResources(), R.drawable.black_issp2, 200, 200));
+        logo_issp.setImageBitmap(MyFunc.decodeImage(getResources(), R.drawable.black_issp2, 200, 200));
 
 
-        MainActivityOut = this;
+        MainActivityOut = getApplicationContext();
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         packName = getPackageName();
         layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -105,11 +105,13 @@ public class MainActivity extends Activity implements
         checkOut = (TextView) findViewById(R.id.check_out_field);
 
         service = (ImageButton) findViewById(R.id.button_service);
-
+       // service.setImageBitmap(decodeImage(getResources(), R.drawable.phone_flat, getWindowManager().getDefaultDisplay().getWidth(), getWindowManager().getDefaultDisplay().getHeight()));
         service.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent window_service = new Intent(MainActivity.this, Hotel_services.class);
-                MainActivity.this.startActivity(window_service);
+                Intent window_service = new Intent(getApplicationContext(), Hotel_services.class);
+                window_service.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               startActivity(window_service);
+                finish();
 
             }
 
@@ -119,8 +121,8 @@ public class MainActivity extends Activity implements
 
         transport.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent window_transport = new Intent(MainActivity.this, Hotel_transport.class);
-                MainActivity.this.startActivity(window_transport);
+                Intent window_transport = new Intent(getApplicationContext(), Hotel_transport.class);
+               startActivity(window_transport);
 
             }
 
@@ -132,8 +134,8 @@ public class MainActivity extends Activity implements
         sos.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Intent window_sos = new Intent(MainActivity.this, Hotel_sos.class);
-                MainActivity.this.startActivity(window_sos);
+                Intent window_sos = new Intent(getApplicationContext(), Hotel_sos.class);
+                startActivity(window_sos);
                 //  img_animation.clearAnimation();
             }
 
@@ -144,8 +146,8 @@ public class MainActivity extends Activity implements
         map.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Intent window_sos = new Intent(MainActivity.this, Hotel_map.class);
-                MainActivity.this.startActivity(window_sos);
+                Intent window_sos = new Intent(getApplicationContext(), Hotel_map.class);
+              startActivity(window_sos);
                 //  img_animation.clearAnimation();
 
             }
@@ -158,8 +160,8 @@ public class MainActivity extends Activity implements
             public void onClick(View v) {
 
 
-                Intent window_sos = new Intent(MainActivity.this, pl.mofinet.myapplication.MainMenu.settings.class);
-                MainActivity.this.startActivity(window_sos);
+                Intent window_sos = new Intent(getApplicationContext(), pl.mofinet.myapplication.MainMenu.settings.class);
+               startActivity(window_sos);
                 //  img_animation.clearAnimation();
 
             }
@@ -169,7 +171,7 @@ public class MainActivity extends Activity implements
     }
 
     protected synchronized void buildGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
+        mGoogleApiClient = new GoogleApiClient.Builder(getApplicationContext())
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
@@ -245,7 +247,7 @@ public class MainActivity extends Activity implements
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -270,13 +272,13 @@ public class MainActivity extends Activity implements
 
     @Override
     public void onConnectionSuspended(int i) {
-        Toast.makeText(this, "Połączenie GPS zawieszone", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Połączenie GPS zawieszone", Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Toast.makeText(this, "GPS stracił połączenie", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "GPS stracił połączenie", Toast.LENGTH_SHORT).show();
     }
 
     public Location getLocation()

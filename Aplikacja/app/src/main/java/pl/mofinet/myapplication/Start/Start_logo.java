@@ -10,42 +10,42 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.view.animation.*;
 import android.view.animation.AnimationUtils;
 
 import pl.mofinet.myapplication.Funkcje.Client;
+import pl.mofinet.myapplication.Funkcje.MyFunc;
 import pl.mofinet.myapplication.R;
 
 public class Start_logo extends AppCompatActivity {
-    ImageView background;
-    static Context Startlogo;
-    static Activity startlogoactiv;
-    public Client client = new Client();
-    private static AlertDialog.Builder builder;
+    private ImageView background;
+    private Context Startlogo;
+    private Activity startlogoactiv;
+    public Client client = new Client(Startlogo);
+    private AlertDialog.Builder builder;
     final BitmapFactory.Options options = new BitmapFactory.Options();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_logo);
         Startlogo=this;
-        startlogoactiv=this;
-        builder = new AlertDialog.Builder(this);
+        builder = new AlertDialog.Builder(Startlogo);
 
         ImageView logo = (ImageView) findViewById(R.id.start_logo_logo);
         ImageView issp_logo = (ImageView) findViewById(R.id.issp_logo);
         background = (ImageView) findViewById(R.id.start_logo_bg);
-        background.setImageBitmap(
-                decodeSampledBitmapFromResource(getResources(), R.mipmap.service_bg, getWindowManager().getDefaultDisplay().getWidth(),
+        background.setImageBitmap(decodeImage(getResources(), R.drawable.service_bg, getWindowManager().getDefaultDisplay().getWidth(),
                         getWindowManager().getDefaultDisplay().getHeight()));
 
 
         logo.setImageBitmap(
-                decodeSampledBitmapFromResource(getResources(), R.drawable.roomie_logo_shadow, 400,400));
+                decodeImage(getResources(), R.drawable.roomie_logo_shadow, 400,400));
         logo.clearAnimation();
 
         issp_logo.setImageBitmap(
-                decodeSampledBitmapFromResource(getResources(), R.drawable.white_issp, 400,400));
+               decodeImage(getResources(), R.drawable.white_issp, 400,400));
         issp_logo.clearAnimation();
 
         Animation show = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.show);
@@ -74,12 +74,14 @@ public class Start_logo extends AppCompatActivity {
 
                     // showLoginActiv();//tylko na testy
 
-                    Intent oknoGlowne = new Intent(Start_logo.this, LoginActivity.class);
-                    Start_logo.this.startActivity(oknoGlowne);
-                    finish();
+                   // Intent oknoGlowne = new Intent(Startlogo, LoginActivity.class);
+                   // Startlogo.startActivity(oknoGlowne);
+
 
 
                 }
+               // Runtime.getRuntime().gc();
+               // finish();
             }
         });
 
@@ -87,7 +89,7 @@ public class Start_logo extends AppCompatActivity {
 
     }
 
-    public static void popupInfo(String text)
+    public void popupInfo(String text)
     {
 
         builder
@@ -98,6 +100,8 @@ public class Start_logo extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //  System.exit(0); <-- Prawidłowe
                         showMainActiv(); // <--Testy
+                        Runtime.getRuntime().gc();
+                        finish();
                     }
                 })
                 .show();
@@ -107,23 +111,24 @@ public class Start_logo extends AppCompatActivity {
 
     }
 
-    public static void showMainActiv(){
+    public void showMainActiv(){
 
 
         Intent oknoGlowne = new Intent(Startlogo, MainActivity.class);
-
         Startlogo.startActivity(oknoGlowne);
-//startlogoactiv.finish();
+        finish();
+        System.gc();
+
     }
-    public static void showLoginActiv(){
+    public void showLoginActiv(){
         Intent oknoGlowne = new Intent(Startlogo, LoginActivity.class);
-
+        oknoGlowne.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         Startlogo.startActivity(oknoGlowne);
+
         //startlogoactiv.finish();
     }
 
-    public static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    public int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;
         final int width = options.outWidth;
@@ -136,17 +141,17 @@ public class Start_logo extends AppCompatActivity {
 
             // Calculate the largest inSampleSize value that is a power of 2 and keeps both
             // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) > reqHeight
-                    && (halfWidth / inSampleSize) > reqWidth) {
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
                 inSampleSize *= 2;
             }
         }
+        Log.i("SAMPLE SIZE!!!!!!:",String.valueOf(inSampleSize));
 
         return inSampleSize;
     }
 
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
+    public Bitmap decodeImage(Resources res, int resId, int reqWidth, int reqHeight) {
 
         // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -158,6 +163,8 @@ public class Start_logo extends AppCompatActivity {
 
         // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
+        options.inDither = true;
+
         return BitmapFactory.decodeResource(res, resId, options);
     }
 

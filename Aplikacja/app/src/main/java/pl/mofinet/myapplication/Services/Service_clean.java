@@ -1,6 +1,8 @@
 package pl.mofinet.myapplication.Services;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
@@ -23,15 +25,19 @@ import android.widget.Toast;
 
 import pl.mofinet.myapplication.Funkcje.Client;
 import pl.mofinet.myapplication.Funkcje.MyFunc;
+import pl.mofinet.myapplication.MainMenu.Hotel_services;
 import pl.mofinet.myapplication.R;
 
 public class Service_clean extends AppCompatActivity {
-    private static EditText DateEdit;
+    private EditText DateEdit;
+    Context TenContext;
     RadioGroup radioGroup;
 
     Button SEND;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
+        TenContext = getApplicationContext();
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -50,7 +56,7 @@ public class Service_clean extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         ImageView background = (ImageView) findViewById(R.id.background_clean);
-        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.mipmap.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
         radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
         SEND = (Button) findViewById(R.id.buttonSEND);
@@ -68,7 +74,7 @@ public class Service_clean extends AppCompatActivity {
                 try {
                     Client.sendRequest(info);
                     Service_clean.super.finish();
-                    Toast.makeText(Service_clean.this, "Twoja prośba została wysłana pomyślnie",
+                    Toast.makeText(TenContext, "Twoja prośba została wysłana pomyślnie",
                             Toast.LENGTH_LONG).show();
                 } catch  (Exception e){
                     MyFunc.popupInfo("Problem z Serverem","Nie można nawiązać połączenia z Serwerem. Proszę spróbować później",builder);
@@ -89,8 +95,9 @@ public class Service_clean extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    public static class DatePickerFragment extends DialogFragment implements
+    public class DatePickerFragment extends DialogFragment implements
             DatePickerDialog.OnDateSetListener {
+
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -115,7 +122,7 @@ public class Service_clean extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 
-    public static class TimePickerFragment extends DialogFragment implements
+    public class TimePickerFragment extends DialogFragment implements
             TimePickerDialog.OnTimeSetListener {
 
         @Override
@@ -136,6 +143,14 @@ public class Service_clean extends AppCompatActivity {
             String min = String.format("%02d",minute);
             DateEdit.setText(hour + ":" + min);
         }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(TenContext, Hotel_services.class);
+        startActivity(intent);
+        finish();
     }
 }
 

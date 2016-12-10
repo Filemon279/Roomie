@@ -26,7 +26,7 @@ public class SOS_call extends AppCompatActivity {
         setContentView(R.layout.activity_sos_call);
 
         ImageView background = (ImageView) findViewById(R.id.background_call);
-        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.mipmap.zenit_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.zenit_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
         emergrncy = (ImageButton) findViewById(R.id.button_sos_emergency);
         emergrncy.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.emergency,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));

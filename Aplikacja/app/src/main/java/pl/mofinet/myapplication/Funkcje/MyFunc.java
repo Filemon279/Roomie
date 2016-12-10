@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
+
 import pl.mofinet.myapplication.R;
 /**
  * Created by Filemon on 11/26/2016.
@@ -12,8 +14,7 @@ import pl.mofinet.myapplication.R;
 
 public class MyFunc {
 
-    public static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;
         final int width = options.outWidth;
@@ -26,17 +27,17 @@ public class MyFunc {
 
             // Calculate the largest inSampleSize value that is a power of 2 and keeps both
             // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) > reqHeight
-                    && (halfWidth / inSampleSize) > reqWidth) {
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
                 inSampleSize *= 2;
             }
         }
+    Log.i("SAMPLE SIZE!!!!!!:",String.valueOf(inSampleSize));
 
         return inSampleSize;
     }
 
-    public static Bitmap decodeImage(Resources res, int resId,
-                                     int reqWidth, int reqHeight) {
+    public static Bitmap decodeImage(Resources res, int resId, int reqWidth, int reqHeight) {
 
         // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -48,8 +49,21 @@ public class MyFunc {
 
         // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
+        options.inDither = true;
+
         return BitmapFactory.decodeResource(res, resId, options);
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
     public static void popupInfo(String title,String text, AlertDialog.Builder builder)

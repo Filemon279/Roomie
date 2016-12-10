@@ -1,6 +1,7 @@
 package pl.mofinet.myapplication.Services;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import pl.mofinet.myapplication.Funkcje.Client;
 import pl.mofinet.myapplication.Funkcje.MyFunc;
+import pl.mofinet.myapplication.MainMenu.Hotel_services;
 import pl.mofinet.myapplication.R;
 
 public class Service_repair extends AppCompatActivity {
@@ -27,7 +29,7 @@ public class Service_repair extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_repair);
         ImageView background = (ImageView) findViewById(R.id.background_room);
-        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.mipmap.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         SEND = (Button) findViewById(R.id.buttonSEND);
@@ -88,5 +90,11 @@ public class Service_repair extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Hotel_services.class);
+        startActivity(intent);
+        finish();
     }
 }

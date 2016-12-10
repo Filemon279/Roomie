@@ -76,7 +76,7 @@
 
                                 <Button
                                     style="?android:attr/buttonStyleSmall"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="fill_parent"
                                     android:layout_height="match_parent"
                                     android:text="Komunikacja Miejska"
                                     android:id="@+id/button_fill_needs"

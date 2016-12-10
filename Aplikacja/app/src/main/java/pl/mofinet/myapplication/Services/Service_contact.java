@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import pl.mofinet.myapplication.Funkcje.Client;
 import pl.mofinet.myapplication.Funkcje.MyFunc;
+import pl.mofinet.myapplication.MainMenu.Hotel_services;
 import pl.mofinet.myapplication.R;
 
 public class Service_contact extends AppCompatActivity {
@@ -29,13 +30,13 @@ public class Service_contact extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_contact);
         ImageView background = (ImageView) findViewById(R.id.background_room);
-        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.mipmap.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
         call = (ImageButton) findViewById(R.id.button_call);
         call.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.phone_flat,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
 
-        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.mipmap.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
         call.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -70,7 +71,12 @@ public class Service_contact extends AppCompatActivity {
 
         });
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Hotel_services.class);
+        startActivity(intent);
+        finish();
+    }
     private void dialContactPhone(final String phoneNumber) {
         startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null)));
     }

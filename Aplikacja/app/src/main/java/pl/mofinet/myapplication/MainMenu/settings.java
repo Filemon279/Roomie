@@ -30,7 +30,7 @@ public class settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         ImageView background = (ImageView) findViewById(R.id.settings_bg);
-        background.setImageBitmap(decodeImage(getResources(),R.mipmap.service_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+        background.setImageBitmap(decodeImage(getResources(),R.drawable.service_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
 
         logout = (Button) findViewById(R.id.button_logout);
@@ -57,7 +57,12 @@ public class settings extends AppCompatActivity {
 
 
     }
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+        System.gc();
+    }
     public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
