@@ -1,210 +1,189 @@
-html,body	
+@charset "utf-8";
+
+
+@import url//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
+
+html,body 
 {
-	margin: 0;
+  margin: 0;
+  padding: 0;
+  background-image: url('img/bg/hotel.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+/* ---------- GENERAL ---------- */
+
+* {
+  box-sizing: border-box;
+   margin:0px auto;
+font-family: 'Hammersmith One', sans-serif;
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+
+}
+
+body {
+   
+  color: #606468;
+  font: 87.5%/1.5em 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+a {
+	color: #eee;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+input {
+	border: none;
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 14px;
+	line-height: 1.5em;
 	padding: 0;
-	background-image: url('img/bg/bg_bed.jpg');
-	background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-    -moz-user-select: none; /* mozilla browsers */
-    -khtml-user-select: none; /* webkit (konqueror) browsers */
-    -ms-user-select: none; /* IE10+ */
-}
-#logo	
-{
-position: absolute;
--webkit-filter: drop-shadow(0px 8px 5px #111111);
- filter: drop-shadow(0px 8px 5px #111111);
-top:10px;
-margin-left: auto;
-margin-right: auto;
-left: 0;
-right: 0;
-}
-#top	
-{position: relative;
-	height: 70px;
-	width: auto;
-	margin: 0;
-	background-color: #ffcc00;
-	box-shadow: 0px 8px 15px #111111;
-	 z-index: 10;
+	-webkit-appearance: none;
 }
 
-.serverInfo,.serverSettings{
-padding: 40px 20px;
-overflow:auto;
-background-color: #ffcc00;
-width: 13%;
+p {
+	line-height: 1.5em;
 }
 
-.serverInfo div:first-of-type,.serverSettings div:first-of-type
-{
-border: 3px solid black;
-margin-top: 10%;
-padding: 10px 20px 20px 20px;
-overflow:auto;
-background-color: #303030;
-}
-
-.serverInfo > div,.serverSettings > div
-{
-	
-margin-top: 5%;
-border: 3px solid black;
-padding: 10px 20px 20px 20px;
-overflow:auto;
-background-color: #303030;
-}
+/* ---------- LOGIN ---------- */
 
 
-
-#adminPanel{	
-	padding: 20px 100px;
+.topContainer{
 	position: relative;
-	margin: 0px 0 0 20px;
-	font-family: 'Hammersmith One', sans-serif;
-	color: black;
-	font-size: 30px;
-	text-shadow: 1px 1px #ffffff;
+	padding-left: 3%;
+	width: auto;
+	height: 40px;
+	background-color: rgba(0,0,0,0.8);
+}
+.topContainer p{
+	color: #fff;
+	font-size: 15px;
+	display: inline-block;
+}
+.topContainer p[id="infoTitle"]{
+	color: #ffcc00;
+	padding: 0.5%;
+	padding-left: 3%;
+	font-size: 15px;
+	display: inline-block;
 }
 
-p
-{
-	margin: 0;
-	font-family: 'Hammersmith One', sans-serif;
-	color: black;
-	font-size: 20px;
-	text-shadow: 1px 1px #888888;
+/* The side navigation menu */
+.sidenav {
+    height: 100%; 
+    width: 0;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    background-color: #111; 
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.5s; 
 }
-
-.serverInfo > div p:first-of-type,.serverSettings> div p:first-of-type
-{
-	margin: 0;
-	font-family: 'Hammersmith One', sans-serif;
-	color: white;
-	font-size: 18px;
-	font-weight: bold
-}
-
-.serverInfo div p,.serverSettings  div p
-{
-	margin: 0;
-	font-family: 'Hammersmith One', sans-serif;
-	color:  #ff1a1a;
-	font-size: 23px;
-	text-shadow: 1px 1px #000000;
-}
-
-
-
-.serverSettings{
-	position: absolute;
-	right: 0;
-}
-
-.requestsPanel
+#showMenuSpan
 {
 	position: absolute;
-margin: 100px 18% auto;
-left: 0;
-right: 0;
-height: 700px;
-background-color: rgba(255, 255, 255, 0.1)
+	padding: 0.5%;
+	left: 2%;
+	color:#fff;
+	font-size: 25px;
 }
-
-
-.request
-{display: inline-block; 
-	font-family: 'Hammersmith One', sans-serif;
-	font-size: auto;
-	text-align:center;
-	color: #29cdf2;
-	text-shadow: 3px 3px #101010;
-	margin: 15px;
-	border-radius: 25px;
-	width: 18%;
-	overflow: auto;
-	padding: 15PX;
-	background-color: green;
-
-	background-color: rgba(0, 0, 0, 0.4);
-	 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+#closeMenu
+{
+	color:#fff;
+	font-size: 35px;
 }
-.request:hover
+#showMenuSpan:hover, #closeMenu:hover,.sidenav a:hover
 {
 	color: #ffcc00;
-	 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8);
 }
-
-.request:active
+#showMenuSpan:active, #closeMenu:active,.sidenav a:active
 {
-	color: #ffcc00;
-	 box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.8);
+	color: #ffaa00;
+	text-shadow: 0px 0px 8px #fff;
 }
-button
-{
-	font-family: 'Hammersmith One', sans-serif;
-	font-size: 15px;
-	margin-bottom: 2%;
-  	background-color:#ffcc00; 
-    border: none;
-    color: black;
-    padding: 15px 32px;
+/* The navigation menu links */
+.sidenav a {
+    padding: 5px 5px 25px 32px;
     text-decoration: none;
-    position: relative;
-	bottom: 0;
-	right: 0;
-	float: center;
-    font-size: 16px;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    transition: 0.3s
+}
+
+/* When you mouse over the navigation links, change their color */
+.offcanvas a:focus{
+    color: #ffcc00;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
 }
 
 
-button:hover
-{
-	font-family: 'Hammersmith One', sans-serif;
-	font-size: 15px;
-	margin-bottom: 2%;
-  	background-color:#ffee00; 
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-decoration: none;
-    position: relative;
-	bottom: 0;
-	right: 0;
-	float: center;
-	box-shadow: 0px 0px 15px #ffffff;
-    font-size: 16px;
-}
 
 .popupInfo #title
 {
+	border-radius: 10px 10px 0px 0px;
 	margin: 0;
 	text-align: center;
-	padding: 10px;
-	font-size: 40px;
-	background-color: #303030;
-	color: #ffcc00;
+	padding: 5px;
+	font-size: 30px;
+	background-color: rgba(255,255,255,0.9);
+	color: #000;
 	box-shadow: 0 5px 5px 0 #303030;
 }
 
 .popupInfo #room
 {
 	text-align: center;
-	padding: 15px;
-	font-size: 25px;
-		background-color: #303030;
-	color: #ffcc00;
+	padding: 5px;
+	font-size: 17px;
+	background-color: #ffaa00;
+	color: #fff;
 	box-shadow: 0 5px 5px 0 #303030;
 }
 
 .popupInfo #info
 {
+	color: #000;
 	text-align: center;
-	padding: 18px;
-	font-size: 20px;
+	padding: 15px;
+	font-size: 18px;
 }
 
 .popupInfo #infoFooter
@@ -212,10 +191,10 @@ button:hover
 	border-bottom-right-radius: 8px;
 	border-bottom-left-radius: 8px;
 	text-align: center;
-	padding: 18px;
-	font-size: 12px;
-	background-color: #303030;
-	color: #ffcc00;
+	padding: 5px;
+	font-size: 13px;
+	background-color: #ffaa00;
+	color: #fff;
 	box-shadow: 0 5px 5px 0 #303030;
 }
 
@@ -223,17 +202,180 @@ button:hover
 {
 display: none;
 position: absolute;
-width: 30%;
+width: 25%;
 border-radius: 15px;
 border: 2px solid #303030;
-min-height: 200px;
-background-color: #ffcc00;
+min-height: 180px;
+background-color: rgba(255,255,255,1);
 box-shadow: 0px 8px 13px 0px #a0a0a0;
 }
 
+.infoAction
+{
 
-.color1 { color: #000000}
-.color2 { color: #ffcc00}
-.color3 { color: #cfa600}
+}
+#deleteReq, #responseReq
+{
+padding: 10px;
+color: white;
+border: none;
+width: 50%;
+}
+
+#deleteReq,#closeCreator
+{
+background-color: red;
+}
+#deleteReq:hover,#closeCreator:hover
+{
+background-color: darkred;
+}
+#responseReq,#createAccount
+{
+background-color: green;
+}
+#responseReq:hover,#createAccount:hover
+{
+background-color: darkgreen;
+}
+#deleteReq:active, #responseReq:active,#closeCreator:active,#createAccount:active
+{
+background-color: #ffcc00;
+}
+
+.requestsPanel
+{
+position: absolute;
+margin: 100px 10% auto;
+left: 0;
+right: 0;
+height: auto;
+background-color: rgba(255, 255, 255, 0.1)
+}
+
+.fa-bed
+{
+color: #3333ff;
+}
+.fa-wrench{
+color: #cc0000;
+}
+.fa-cutlery{
+color: #ff9900;
+}
+.fa-globe{
+color: #00cc00;
+}
+.fa-bus{
+color: #ffff66;
+}
+.fa-medkit{
+color: #800000;
+}
+.request
+{
+	display: inline-block; 
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: auto;
+	text-align:center;
+	color: #29cdf2;
+	text-shadow: 3px 3px #101010;
+	margin: 15px;
+	border-radius: 25px;
+	width: auto;
+	min-width: 150px;
+	overflow: auto;
+	padding: 15px;
+	background-color: rgba(0, 0, 0, 0.8);
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+}
+.request:hover
+{
+	color: #ffcc00;
+	 box-shadow: 0px 8px 16px 0px rgba(255,230,00,0.3);
+}
+
+.request:active
+{
+	color: #ffcc00;
+	 box-shadow: 0px 4px 8px 0px rgba(255,230,00,0.4);
+}
 
 
+.createAccount
+{
+display: none;
+position: absolute;
+width: 25%;
+border-radius: 15px;
+border: 2px solid #303030;
+min-height: 180px;
+background-color: rgba(255,204,0,1);
+box-shadow: 0px 8px 13px 0px #a0a0a0;
+}
+
+.createAccount #title
+{
+	border-radius: 10px 10px 0px 0px;
+	margin: 0;
+	text-align: center;
+	padding: 5px;
+	font-size: 30px;
+	background-color: rgba(255,255,255,0.9);
+	color: #000;
+	box-shadow: 0 5px 5px 0 #303030;
+}
+
+#nameField,#surnameField{
+display: inline-block;
+}
+.createAccount .fa{
+background-color:rgba(0,0,0,0.7);
+	border-radius: 3px 0px 0px 3px;
+	color: #ffcc00;
+	height: 37px;
+    font-size:25px;
+	line-height: 27px;
+	text-align: center;
+	width: 50px;
+}
+.createAccount input{
+background-color: rgba(0,0,0,0.7);
+padding: 8px 3px 8px 3px;
+width: auto;
+color:white;
+}
+.createAccount input:focus{
+background-color: rgba(255,204,0,0.5);
+color:black;
+}
+
+
+
+.createAccount #nameSurname,#numberPass,#checkInOut,#others
+{
+	text-align: center;
+	padding: 5px;
+	font-size: 17px;
+	background-color: #ffcc00;
+	color: #000;
+}
+#closeCreator, #createAccount
+{
+padding: 10px;
+color: white;
+border: none;
+width: 50%;
+}
+#createAccount
+{
+	border-bottom-right-radius: 10px;
+}
+#closeCreator
+{
+	border-bottom-left-radius: 10px;
+}
+.othersArea
+{
+	margin-bottom: 5px;
+}

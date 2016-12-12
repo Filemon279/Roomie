@@ -1,159 +1,212 @@
-html,body	
+@charset "utf-8";
+
+
+@import url//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
+
+html,body 
 {
-	margin: 0;
-	padding: 0;
-	background-image: url('img/bg/bg_bed.jpg');
-	background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-#logo	
-{
--webkit-filter: drop-shadow(0px 8px 5px #111111);
- filter: drop-shadow(0px 8px 5px #111111);
- margin: 10px;
-}
-#top	
-{
-	height: 70px;
-	width: auto;
-	margin: 0;
-	background-color: #ffcc00;
-	box-shadow: 0px 8px 15px #111111;
+  margin: 0;
+  padding: 0;
+  background-image: url('img/bg/hotel.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-#loginDiv
-{overflow:auto;
-border-radius: 15px;
-	height: auto;
-	width: auto;
-	margin: 12% 35% 5%;
-	background-color: #ffcc00;
-	box-shadow: 0px 8px 15px #111111;
+div.main{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1e767+0,feb645+100;Yellow+3D */
+
+height:calc(100vh);
+width:100%;
 }
 
-#loginFields
-{	
-	overflow:auto;
-	background-color: #303030;
-	margin: 5%;
-	box-shadow: 0px 8px 15px #111111;
-	height: auto;
-
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
 }
 
-hr
-{
-	width:95%;
+/* ---------- GENERAL ---------- */
 
-	visibility: hidden;
-	
-}
-
-#loginArea,#passArea
-{
-margin: 5% 5% 5% 5%;
-}
-
-#passArea
-{
-
-float: right;
-}
-
-#loginArea
-{
-	float: left
-}
-
-#loginDivTop
-{	 overflow:auto;
-	font-family: 'Hammersmith One', sans-serif;
-	color: white;
-	font-size: 30px;
-	height: auto
-	width: auto;
-	
-	text-align: center;
-
-	background-color: #303030;
-	box-shadow: 0px 8px 15px #111111;
-}
-
-#textLogin
-{
-	position: relative;
-	
-}
-
-
-#serverStatus
-{	 overflow:auto;
-	font-family: 'Hammersmith One', sans-serif;
-	color: white;
-	font-size: 10px;
-	height: auto;
-	width: auto;
-	margin: 10;
-	text-align: center;
-	position: relative;
-	background-color: #303030;
-	box-shadow: 0px 8px 15px #111111;
-}
-
-
-#fieldsLabel
-{
-
+* {
+  box-sizing: border-box;
+    margin:0px auto;
 font-family: 'Hammersmith One', sans-serif;
-font-size: 15px;
-color: white;
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+
 }
 
-input
+body {
+   
+    color: #606468;
+  font: 87.5%/1.5em 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+a {
+	color: #eee;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+input {
+	border: none;
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.5em;
+	padding: 0;
+	-webkit-appearance: none;
+}
+
+p {
+	line-height: 1.5em;
+}
+
+.clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+}
+
+.container {
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ---------- LOGIN ---------- */
+
+#login form{
+	width: 250px;
+}
+#login, .logo{
+    display:inline-block;
+    width:40%;
+}
+#login{
+border-right:1px solid #fff;
+  padding: 0px 22px;
+  width: 59%;
+}
+.logo{
+color:#fff;
+font-size:50px;
+line-height: 125px;
+margin-top: 20px;
+}
+
+#login form span.fa {
+	background-color: #ffcc00;
+	border-radius: 3px 0px 0px 3px;
+	color: #000;
+	display: block;
+	float: left;
+	height: 50px;
+    font-size:24px;
+	line-height: 50px;
+	text-align: center;
+	width: 50px;
+}
+
+#login form input {
+	height: 50px;
+}
+fieldset{
+    padding:0;
+    border:0;
+    margin: 0;
+
+}
+#login form input[type="text"], input[type="password"] {
+	background-color: rgba(0,0,0,0.3);
+	border-radius: 0px 3px 3px 0px;
+	color: #fff;
+	margin-bottom: 1em;
+	padding: 0 16px;
+	width: 200px;
+}
+
+#login form input[type="text"]:focus, input[type="password"]:focus {
+  background-color: rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 8px rgba(255,255,255,0.4);
+  }
+
+#login form button[type="submit"] {
+  border-radius: 3px;
+  border: none;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  background-color: #ffffff;
+  color: #000;
+  font-weight: bold;
+  /* margin-bottom: 2em; */
+  text-transform: uppercase;
+  padding: 5px 10px;
+  height: 30px;
+}
+
+#login form button[type="submit"]:hover {
+	background-color: #ffcc00;
+}
+#login form button[type="submit"]:active {
+  background-color: #ffbb00;
+  box-shadow: 0px 0px 5px #fff;
+}
+
+#login > p {
+	text-align: center;
+}
+
+#login > p span {
+	padding-left: 5px;
+}
+.middle {
+  padding-top: 4%;
+  border-radius: 30px 30px 0px 30px;
+  display: flex;
+  width: 600px;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.connectionInfo
 {
-	font-family: 'Hammersmith One', sans-serif;
-font-size: 15px;
+  width: 30%;
+  height: 30px;
+  float: right;
+  border-radius: 0px 0px 15px 15px;
+  background-color: rgba(0,0,0,0.7);
 }
-
-
-
-button
+.connectionInfo p
 {
-	font-family: 'Hammersmith One', sans-serif;
-	font-size: 15px;
-	margin-bottom: 2%;
-  	background-color:#ffcc00; 
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-decoration: none;
-    position: relative;
-	bottom: 0;
-	right: 0;
-	float: center;
-    font-size: 16px;
+display: inline-block;
+color: #fff;
+font-size: 13px;
+padding-left: 10px;
 }
-button:hover
+.connectionInfo p[id="disconnected"]
 {
-	font-family: 'Hammersmith One', sans-serif;
-	font-size: 15px;
-	margin-bottom: 2%;
-  	background-color:#ffee00; 
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-decoration: none;
-    position: relative;
-	bottom: 0;
-	right: 0;
-	float: center;
-	box-shadow: 0px 0px 15px #ffffff;
-    font-size: 16px;
+ color: red;
+}
+.connectionInfo p[id="connected"]
+{
+ color: green;
 }
 
-
-
-.color1 { color: #000000}
-.color2 { color: #ffcc00}
-.color3 { color: #cfa600}
+.small-text
+{
+  font-size: 12px;
+}

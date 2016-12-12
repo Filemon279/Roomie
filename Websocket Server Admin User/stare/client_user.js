@@ -12,13 +12,9 @@
         
         if(dane[0]=="USER_DATA")
         {
-           $("#user_number").html(dane[1]);           //#1 Numer
-            $("#user_name").html(dane[2]);             //#2 Imie
-            $("#user_surname").html(dane[3]);             //#3 Nazwisko
-            $("#user_checkIn").html(dane[4]);             //#4 checkIN
-            $("#user_checkOut").html(dane[5]);             //#5 checkOUT
+          $("#userPanel").html("<i class=\"fa fa-bed fa-lg\" aria-hidden=\"true\"></i>    Twój pokój: <b>"+dane[1]+"</b>");
         }
-           
+
          //show(evt.data);
       };
        

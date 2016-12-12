@@ -1,0 +1,159 @@
+html,body	
+{
+	margin: 0;
+	padding: 0;
+	background-image: url('img/bg/bg_bed.jpg');
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#logo	
+{
+-webkit-filter: drop-shadow(0px 8px 5px #111111);
+ filter: drop-shadow(0px 8px 5px #111111);
+ margin: 10px;
+}
+#top	
+{
+	height: 70px;
+	width: auto;
+	margin: 0;
+	background-color: #ffcc00;
+	box-shadow: 0px 8px 15px #111111;
+}
+
+#loginDiv
+{overflow:auto;
+border-radius: 15px;
+	height: auto;
+	width: auto;
+	margin: 12% 35% 5%;
+	background-color: #ffcc00;
+	box-shadow: 0px 8px 15px #111111;
+}
+
+#loginFields
+{	
+	overflow:auto;
+	background-color: #303030;
+	margin: 5%;
+	box-shadow: 0px 8px 15px #111111;
+	height: auto;
+
+}
+
+hr
+{
+	width:95%;
+
+	visibility: hidden;
+	
+}
+
+#loginArea,#passArea
+{
+margin: 5% 5% 5% 5%;
+}
+
+#passArea
+{
+
+float: right;
+}
+
+#loginArea
+{
+	float: left
+}
+
+#loginDivTop
+{	 overflow:auto;
+	font-family: 'Hammersmith One', sans-serif;
+	color: white;
+	font-size: 30px;
+	height: auto
+	width: auto;
+	
+	text-align: center;
+
+	background-color: #303030;
+	box-shadow: 0px 8px 15px #111111;
+}
+
+#textLogin
+{
+	position: relative;
+	
+}
+
+
+#serverStatus
+{	 overflow:auto;
+	font-family: 'Hammersmith One', sans-serif;
+	color: white;
+	font-size: 10px;
+	height: auto;
+	width: auto;
+	margin: 10;
+	text-align: center;
+	position: relative;
+	background-color: #303030;
+	box-shadow: 0px 8px 15px #111111;
+}
+
+
+#fieldsLabel
+{
+
+font-family: 'Hammersmith One', sans-serif;
+font-size: 15px;
+color: white;
+}
+
+input
+{
+	font-family: 'Hammersmith One', sans-serif;
+font-size: 15px;
+}
+
+
+
+button
+{
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 15px;
+	margin-bottom: 2%;
+  	background-color:#ffcc00; 
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-decoration: none;
+    position: relative;
+	bottom: 0;
+	right: 0;
+	float: center;
+    font-size: 16px;
+}
+button:hover
+{
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 15px;
+	margin-bottom: 2%;
+  	background-color:#ffee00; 
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-decoration: none;
+    position: relative;
+	bottom: 0;
+	right: 0;
+	float: center;
+	box-shadow: 0px 0px 15px #ffffff;
+    font-size: 16px;
+}
+
+
+
+.color1 { color: #000000}
+.color2 { color: #ffcc00}
+.color3 { color: #cfa600}

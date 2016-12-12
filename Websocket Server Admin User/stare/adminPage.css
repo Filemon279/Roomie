@@ -1,0 +1,239 @@
+html,body	
+{
+	margin: 0;
+	padding: 0;
+	background-image: url('img/bg/bg_bed.jpg');
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+#logo	
+{
+position: absolute;
+-webkit-filter: drop-shadow(0px 8px 5px #111111);
+ filter: drop-shadow(0px 8px 5px #111111);
+top:10px;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+}
+#top	
+{position: relative;
+	height: 70px;
+	width: auto;
+	margin: 0;
+	background-color: #ffcc00;
+	box-shadow: 0px 8px 15px #111111;
+	 z-index: 10;
+}
+
+.serverInfo,.serverSettings{
+padding: 40px 20px;
+overflow:auto;
+background-color: #ffcc00;
+width: 13%;
+}
+
+.serverInfo div:first-of-type,.serverSettings div:first-of-type
+{
+border: 3px solid black;
+margin-top: 10%;
+padding: 10px 20px 20px 20px;
+overflow:auto;
+background-color: #303030;
+}
+
+.serverInfo > div,.serverSettings > div
+{
+	
+margin-top: 5%;
+border: 3px solid black;
+padding: 10px 20px 20px 20px;
+overflow:auto;
+background-color: #303030;
+}
+
+
+
+#adminPanel{	
+	padding: 20px 100px;
+	position: relative;
+	margin: 0px 0 0 20px;
+	font-family: 'Hammersmith One', sans-serif;
+	color: black;
+	font-size: 30px;
+	text-shadow: 1px 1px #ffffff;
+}
+
+p
+{
+	margin: 0;
+	font-family: 'Hammersmith One', sans-serif;
+	color: black;
+	font-size: 20px;
+	text-shadow: 1px 1px #888888;
+}
+
+.serverInfo > div p:first-of-type,.serverSettings> div p:first-of-type
+{
+	margin: 0;
+	font-family: 'Hammersmith One', sans-serif;
+	color: white;
+	font-size: 18px;
+	font-weight: bold
+}
+
+.serverInfo div p,.serverSettings  div p
+{
+	margin: 0;
+	font-family: 'Hammersmith One', sans-serif;
+	color:  #ff1a1a;
+	font-size: 23px;
+	text-shadow: 1px 1px #000000;
+}
+
+
+
+.serverSettings{
+	position: absolute;
+	right: 0;
+}
+
+.requestsPanel
+{
+	position: absolute;
+margin: 100px 18% auto;
+left: 0;
+right: 0;
+height: 700px;
+background-color: rgba(255, 255, 255, 0.1)
+}
+
+
+.request
+{display: inline-block; 
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: auto;
+	text-align:center;
+	color: #29cdf2;
+	text-shadow: 3px 3px #101010;
+	margin: 15px;
+	border-radius: 25px;
+	width: 18%;
+	overflow: auto;
+	padding: 15PX;
+	background-color: green;
+
+	background-color: rgba(0, 0, 0, 0.4);
+	 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+}
+.request:hover
+{
+	color: #ffcc00;
+	 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8);
+}
+
+.request:active
+{
+	color: #ffcc00;
+	 box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.8);
+}
+button
+{
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 15px;
+	margin-bottom: 2%;
+  	background-color:#ffcc00; 
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-decoration: none;
+    position: relative;
+	bottom: 0;
+	right: 0;
+	float: center;
+    font-size: 16px;
+}
+
+
+button:hover
+{
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 15px;
+	margin-bottom: 2%;
+  	background-color:#ffee00; 
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-decoration: none;
+    position: relative;
+	bottom: 0;
+	right: 0;
+	float: center;
+	box-shadow: 0px 0px 15px #ffffff;
+    font-size: 16px;
+}
+
+.popupInfo #title
+{
+	margin: 0;
+	text-align: center;
+	padding: 10px;
+	font-size: 40px;
+	background-color: #303030;
+	color: #ffcc00;
+	box-shadow: 0 5px 5px 0 #303030;
+}
+
+.popupInfo #room
+{
+	text-align: center;
+	padding: 15px;
+	font-size: 25px;
+		background-color: #303030;
+	color: #ffcc00;
+	box-shadow: 0 5px 5px 0 #303030;
+}
+
+.popupInfo #info
+{
+	text-align: center;
+	padding: 18px;
+	font-size: 20px;
+}
+
+.popupInfo #infoFooter
+{
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	text-align: center;
+	padding: 18px;
+	font-size: 12px;
+	background-color: #303030;
+	color: #ffcc00;
+	box-shadow: 0 5px 5px 0 #303030;
+}
+
+.popupInfo
+{
+display: none;
+position: absolute;
+width: 30%;
+border-radius: 15px;
+border: 2px solid #303030;
+min-height: 200px;
+background-color: #ffcc00;
+box-shadow: 0px 8px 13px 0px #a0a0a0;
+}
+
+
+.color1 { color: #000000}
+.color2 { color: #ffcc00}
+.color3 { color: #cfa600}
+
+

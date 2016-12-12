@@ -8,13 +8,14 @@
 	
       function runWebSocket() {
       websocket = new WebSocket(wsUri,'echo-pro');
-      runLogin()
+      runLogin();
       
        
       }
 	
     function onOpen(evt) {
-         $("#serverStatus").html("<p id=\"textLogin\">Połączono z serwerem</p>");
+        $(".connectionInfo .info").attr("id","connected");
+        $(".connectionInfo .info").html("Połączonoo")
       }
     
       function getUsers()
@@ -24,18 +25,13 @@
 
       function show(text)
       {
-          $("#serverStatus").html("<p id=\"textLogin\">"+text+"</p>");
+        
       }
 
       function zaloguj()
       {
-         if($("#login").val()=="")   $("#serverStatus").html("<p id=\"textLogin\">Podaj login</p>");
-         else if($("#pass").val()=="")   $("#serverStatus").html("<p id=\"textLogin\">Podaj hasło</p>");
-         else{var msg = $("#wiadomosc").val();
-          
-            websocket.send("#"+$("#login").val()+"#"+$("#pass").val());
-      
-      }
+        console.log("#"+$("#loginField").val()+"#"+$("#passField").val());
+        websocket.send("#"+$("#loginField").val()+"#"+$("#passField").val());
       }
 
 
