@@ -73,7 +73,9 @@ public class Service_clean extends AppCompatActivity {
                 if(edit.length()>1) info+="\nDodatkowe: "+edit.getText();
                 try {
                     Client.sendRequest(info);
-                    Service_clean.super.finish();
+                    Intent intent = new Intent(TenContext, Hotel_services.class);
+                    startActivity(intent);
+                    finish();
                     Toast.makeText(TenContext, "Twoja prośba została wysłana pomyślnie",
                             Toast.LENGTH_LONG).show();
                 } catch  (Exception e){

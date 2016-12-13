@@ -21,7 +21,7 @@ import pl.mofinet.myapplication.R;
 
 public class Start_logo extends AppCompatActivity {
     private ImageView background;
-    private Context Startlogo;
+    private static Context Startlogo;
     private Activity startlogoactiv;
     public Client client = new Client(Startlogo);
     private AlertDialog.Builder builder;
@@ -74,8 +74,8 @@ public class Start_logo extends AppCompatActivity {
 
                     // showLoginActiv();//tylko na testy
 
-                   // Intent oknoGlowne = new Intent(Startlogo, LoginActivity.class);
-                   // Startlogo.startActivity(oknoGlowne);
+                    Intent oknoGlowne = new Intent(Startlogo, LoginActivity.class);
+                    Startlogo.startActivity(oknoGlowne);
 
 
 
@@ -111,12 +111,11 @@ public class Start_logo extends AppCompatActivity {
 
     }
 
-    public void showMainActiv(){
+    public static void showMainActiv(){
 
 
         Intent oknoGlowne = new Intent(Startlogo, MainActivity.class);
         Startlogo.startActivity(oknoGlowne);
-        finish();
         System.gc();
 
     }

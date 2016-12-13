@@ -54,18 +54,6 @@ public class MyFunc {
         return BitmapFactory.decodeResource(res, resId, options);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     public static void popupInfo(String title,String text, AlertDialog.Builder builder)
     {
         builder

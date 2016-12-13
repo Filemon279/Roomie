@@ -1,6 +1,7 @@
 package pl.mofinet.myapplication.Services;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,7 @@ public class Service_contact extends AppCompatActivity {
     Button SEND;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final Context TenContext = getApplicationContext();
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -57,7 +59,9 @@ public class Service_contact extends AppCompatActivity {
                     try{
                     info+=edit.getText();
                     Client.sendRequest(info);
-                    Service_contact.super.finish();
+                        Intent intent = new Intent(TenContext, Hotel_services.class);
+                        startActivity(intent);
+                        finish();
                     Toast.makeText(Service_contact.this, "Twoja prośba została wysłana pomyślnie",
                             Toast.LENGTH_LONG).show();}
                     catch  (Exception e){

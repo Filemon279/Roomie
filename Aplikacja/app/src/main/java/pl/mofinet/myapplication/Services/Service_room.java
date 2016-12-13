@@ -1,6 +1,7 @@
 package pl.mofinet.myapplication.Services;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,7 +34,7 @@ public class Service_room extends AppCompatActivity {
         ImageView background = (ImageView) findViewById(R.id.background_room);
         background.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
-
+        final Context TenContext = getApplicationContext();
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         SEND = (Button) findViewById(R.id.buttonSEND);
         SEND.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +84,9 @@ public class Service_room extends AppCompatActivity {
                         Client.sendRequest(info);
                         Toast.makeText(Service_room.this, "Twoja prośba została wysłana pomyślnie",
                         Toast.LENGTH_LONG).show();
-                        Service_room.super.finish();
+                        Intent intent = new Intent(TenContext, Hotel_services.class);
+                        startActivity(intent);
+                        finish();
                     } catch  (Exception e){
                         MyFunc.popupInfo("Problem z Serverem","Nie można nawiązać połączenia z Serwerem. Proszę spróbować później",builder);
                     }

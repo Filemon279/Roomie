@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,7 @@ public class Service_food extends AppCompatActivity {
                 showTruitonTimePickerDialog(v);
             }
         });
-
+        final Context TenContext = getApplicationContext();
         ImageView background = (ImageView) findViewById(R.id.background_food);
         background.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 
@@ -84,7 +85,9 @@ public class Service_food extends AppCompatActivity {
 
                     try{
                     Client.sendRequest(info);
-                    Service_food.super.finish();
+                        Intent intent = new Intent(TenContext, Hotel_services.class);
+                        startActivity(intent);
+                        finish();
                     Toast.makeText(Service_food.this, "Twoja prośba została wysłana pomyślnie",
                             Toast.LENGTH_LONG).show();}
                     catch  (Exception e){

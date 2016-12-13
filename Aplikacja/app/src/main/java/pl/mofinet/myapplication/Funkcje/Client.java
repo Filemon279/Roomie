@@ -15,6 +15,7 @@ import java.net.UnknownHostException;
 
 import pl.mofinet.myapplication.Start.LoginActivity;
 import pl.mofinet.myapplication.Start.MainActivity;
+import pl.mofinet.myapplication.Start.Start_logo;
 
 
 /**
@@ -125,11 +126,7 @@ public final class Client {
 
             if(message.equals( "loginConfirmed")) {
                 logined = true;
-                Intent intent = new Intent();
-                intent.setClass(context, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                context.startActivity(intent);
-                System.gc();
+                Start_logo.showMainActiv();
             }
             else if(message.equals("passwordWrong")) {
              //   Start_logo.showLoginActiv();

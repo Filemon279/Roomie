@@ -1,6 +1,7 @@
 package pl.mofinet.myapplication.Services;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ public class Service_repair extends AppCompatActivity {
         setContentView(R.layout.activity_service_repair);
         ImageView background = (ImageView) findViewById(R.id.background_room);
         background.setImageBitmap(MyFunc.decodeImage(getResources(),R.drawable.table_bg,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
-
+        final Context TenContext = getApplicationContext();
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         SEND = (Button) findViewById(R.id.buttonSEND);
         SEND.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +76,9 @@ public class Service_repair extends AppCompatActivity {
                 else{
                     try{
                     Client.sendRequest(info);
-                    Service_repair.super.finish();
+                        Intent intent = new Intent(TenContext, Hotel_services.class);
+                        startActivity(intent);
+                        finish();
                     Toast.makeText(Service_repair.this, "Twoja prośba została wysłana pomyślnie",
                             Toast.LENGTH_LONG).show();}
                     catch  (Exception e){
