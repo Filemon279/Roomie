@@ -4,15 +4,15 @@
    <title>Roomie - Admin</title>
    <head> 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <link rel="stylesheet" type="text/css" href="AdminPage.css">
+      <link rel="stylesheet" type="text/css" href="./AdminPage.css">
       <link rel="stylesheet" href="css/font-awesome.min.css">
       <link href='http://fonts.googleapis.com/css?family=Hammersmith+One&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
    </head>
    
    
   <body id="container">
-  <script language = "javascript" type ="text/javascript" src="Client_login.js"></script>
-  <script language = "javascript" type ="text/javascript" src="Client_admin.js"></script>
+  <script language = "javascript" type ="text/javascript" src="./Client_login.js"></script>
+  <script language = "javascript" type ="text/javascript" src="./Client_admin.js"></script>
 
 
 
@@ -54,6 +54,7 @@
  
 
     <div class="popupInfo">
+    <a href="javascript:void(0)" id="closeMenu" class="closebtn" onclick="bPopup.close();">&times;</a>
     <p id="title">Tytuł</p>
     <p id="room">001 - Imię Nazwisko</p>
     <p id="info">Info info info info info info info info info
@@ -65,41 +66,53 @@
     <div id="infoAction"><button id="deleteReq" onclick="bPopup.close();">Usuń Prośbę</button><button id="responseReq" onclick="bPopup.close();">Wyślij odpowiedź</button></div>  
     <p id="infoFooter">ID#xxxx</p>
     </div>
+
+
+    <div class="popupResponse">
+    <a href="javascript:void(0)" id="closeMenu" class="closebtn" onclick="bPopup.close();">&times;</a>
+    <p id="title">Odpowiedź </p>
+    <p id="room">001 - Imię Nazwisko</p>
+    <p id="info"><textarea id="textResponse" placeholder="Max 80 chars" maxlength="80" rows="4" cols="50">Twoja prośba jest w trakcie realizacji, Pozdrawiamy.</textarea></p>
+    <div id="infoAction"><button id="closeResponse" onclick="bPopup.close();">Zamknij</button><button id="sendResponse" onclick="bPopup.close();">Wyślij</button></div>  
+    <p id="infoFooter">ID#xxxx</p>
+    </div>
+
+
  
     <div class="createAccount">
     <p id="title">Utwórz Nowe Konto</p>
-
-    <p id="numberPass">Numer i Hasło</p>
+    <div id="createInfo">Konto utworzone poprawnie</div>
+    <p id="numberPass">Numer i Hasło:</p>
     <form onsubmit='crtAcc();return false;'>
     <div class="numberPassArea">
     <center> 
-    <p style="display: inline-block;"><i class="fa fa-key" aria-hidden="true"></i></p><input id="numberField" type="text" Placeholder="Numer" required>  
-    <p style="display: inline-block;"><i class="fa fa-lock" aria-hidden="true"></i></p><input id="passField" type="password" Placeholder="Hasło" required>  
+    <p class="in" style="display: inline-block;"><i class="fa fa-key" aria-hidden="true"></i><input autocomplete="off" id="numberField" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' Placeholder="Numer" required></p> 
+    <p class="in" style="display: inline-block;"><i class="fa fa-lock" aria-hidden="true"></i><input autocomplete="off" id="passField" maxlength="10" type="password" Placeholder="Hasło" required></p>
     </center></div>
 
-    <p id="nameSurname">Imię Nazwisko</p>
+    <p id="nameSurname">Imię Nazwisko:</p>
     <div class="nameSurnameArea">
     <center> 
-    <p style="display: inline-block;"><i class="fa fa-address-card-o" aria-hidden="true"></i></p><input id="nameField" type="text" Placeholder="Imię" required>  
-    <p style="display: inline-block;"><i class="fa fa-address-card-o" aria-hidden="true"></i></p><input id="surnameField" type="text" Placeholder="Nazwisko" required>  
+    <p class="in" style="display: inline-block;"><i class="fa fa-address-card-o" aria-hidden="true"></i><input autocomplete="off" maxlength="20" id="nameField" type="text" Placeholder="Imię" required></p>
+    <p class="in" style="display: inline-block;"><i class="fa fa-address-card-o" aria-hidden="true"></i><input autocomplete="off" maxlength="30" id="surnameField" type="text" Placeholder="Nazwisko" required></p>
     </center>
     </div>
-    <p id="checkInOut">CheckIn/checkOut</p>
+    <p id="checkInOut">CheckIn/checkOut:</p>
     <div class="checkInOutArea">
     <center> 
-    <p style="display: inline-block;"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></p><input id="checkINField" type="text" Placeholder="Check In" required>  
-    <p style="display: inline-block;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></p><input id="checkOUTField" type="text" Placeholder="Check Out" required>  
+    <p class="in" style="display: inline-block;"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i><input autocomplete="off" id="checkINField" type="date" Placeholder="Check In" required> </p> 
+    <p class="in" style="display: inline-block;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i><input autocomplete="off" id="checkOUTField" type="date" Placeholder="Check Out" required>  </p>
     </center>  
     </div>
-    <p id="others">Inne</p>
+    <p id="others">Inne:</p>
 
     <div class="othersArea">
     <center> 
-    <p style="display: inline-block;"><i class="fa fa-user" aria-hidden="true"></i></p><input id="othersField" type="text" Placeholder="Inne" required>  
+    <p class="in"><i class="fa fa-user" aria-hidden="true"></i><input autocomplete="off" id="othersField" type="text" value="brak" Placeholder="Inne" required>  </p>
     </center>
     </div>
   
-    <div id="infoAction"><button id="closeCreator" onclick="bPopup.close();">Zamknij</button><button id="createAccount"  type="submit" >Zamelduj</button></div>  
+    <div id="infoAction"><button id="closeCreator" onclick="bPopup.close();">Zamknij</button><button autocomplete="off" id="createAccount"  type="submit" >Zamelduj</button></div>  
     </form>
     </div>
  
@@ -109,6 +122,9 @@
   </body>
 
 <script>
+
+document.getElementById('checkINField').valueAsDate = new Date();
+document.getElementById('checkOUTField').valueAsDate = new Date();
 $('#contactForm').submit(function () {
  sendContactForm();
  return false;
@@ -116,7 +132,7 @@ $('#contactForm').submit(function () {
 var bPopup;
 
 $('body').on('click', '.openCreator', function(){
-  $.getScript('./js/jquery.bpopup.min', function()
+  $.getScript('./js/jquery.bpopup.min.js', function()
   {   
   bPopup = $('.createAccount').bPopup();
   });
@@ -130,6 +146,20 @@ $('body').on('click', '#deleteReq', function(){
   deleteReq(dane[3]);
   console.log("delete: "+dane[3]);
   loadAllReq();
+});
+
+$('body').on('click', '#responseReq', function(){
+bPopup.close();
+bPopup = $('.popupResponse').bPopup();
+});
+
+
+$('body').on('click', '#sendResponse', function(){
+  requestActive.css("background-color","#ffffff");
+  var id = $("#infoFooter").html();
+  var dane = id.split("#");
+  response(dane[2],$("#textResponse").val());
+  console.log("response: "+dane[2]);
 });
 
 
@@ -157,10 +187,12 @@ function closeNav() {
 }
 
 
-
+var requestActive;
 $('body').on('click', '.request', function(){
+  requestActive=$(this);
       var id = $(this).attr("ID");
-  $.getScript('./js/jquery.bpopup.min', function()
+      $(this).css("background-color","#202020");
+  $.getScript('./js/jquery.bpopup.min.js', function()
   {   
   requestInfo(id);
   bPopup = $('.popupInfo').bPopup();

@@ -65,9 +65,11 @@ p {
 
 
 .topContainer{
-	position: relative;
+
+	position: fixed;
 	padding-left: 5%;
-	width: auto;
+	top: 0;
+	width: 100%;
 	height: 40px;
 	background-color: rgba(0,0,0,0.8);
 }
@@ -91,6 +93,7 @@ p {
     position: fixed; 
     z-index: 1; 
     left: 0;
+    top: 0;
     background-color: #111; 
     overflow-x: hidden; 
     padding-top: 60px; 
@@ -154,61 +157,86 @@ p {
     .sidenav a {font-size: 18px;}
 }
 
-
-
+/**********POPUP INFO**********/
 .popupInfo #title
 {
-	border-radius: 10px 10px 0px 0px;
 	margin: 0;
 	text-align: center;
 	padding: 5px;
-	font-size: 30px;
-	background-color: rgba(0,0,0,0.8);
-	color: #ffcc00;
-	box-shadow: 0 5px 5px 0 #303030;
+	font-size: 40px;	
 }
 
 .popupInfo #room
 {
 	text-align: center;
 	padding: 5px;
-	font-size: 17px;
-	background-color: #ffaa00;
-	color: #fff;
+	font-size: 20px;
+	color: #2ee7be;
 	box-shadow: 0 5px 5px 0 #303030;
 }
-
 .popupInfo #info
 {
-	color: #ffcc00;
 	text-align: center;
 	padding: 15px;
-	font-size: 18px;
+	font-size: 13px;
 }
-
 .popupInfo #infoFooter
 {
-	border-bottom-right-radius: 8px;
-	border-bottom-left-radius: 8px;
+	display: none;
 	text-align: center;
 	padding: 5px;
-	font-size: 13px;
-	background-color: #ffaa00;
-	color: #fff;
-	box-shadow: 0 5px 5px 0 #303030;
+	font-size: 11px;
 }
-
 .popupInfo
 {
 display: none;
+color: #fff;
 position: absolute;
 width: 25%;
-border-radius: 15px;
-border: 2px solid #303030;
 min-height: 180px;
-background-color: rgba(0,0,0,1);
-box-shadow: 0px 8px 13px 0px #a0a0a0;
+background-color: #2c2f3e;
+box-shadow: 0px 2px 2px 2px rgba(30,30,30,0.5);
 }
+.popupInfo #closeMenu
+{
+	text-decoration: none;
+	float: right;
+	padding: 5px;
+}
+
+.infoAction
+{
+
+}
+#deleteReq, #responseReq
+{
+padding: 10px;
+color: white;
+border: none;
+width: 50%;
+}
+
+#deleteReq,#closeCreator
+{
+background-color: #2aa7be;
+}
+#deleteReq:hover,#closeCreator:hover
+{
+background-color: #2777be;
+}
+#responseReq,#createAccount
+{
+background-color: #2ff7ff;
+}
+#responseReq:hover,#createAccount:hover
+{
+background-color: #2cc7ff;
+}
+#deleteReq:active, #responseReq:active,#closeCreator:active,#createAccount:active
+{
+background-color: #2ee7be;
+}
+
 
 .requestTitle,.infoPanelTitle
 {
@@ -230,13 +258,15 @@ background-color: rgba(255, 255, 255, 0.7)
 
 .infoPanel
 {
-	height: 400px;
-	background-color: rgba(255, 255, 255, 0.7)
+	-webkit-appearance: none;
+	height: 500px;
+	background-color: rgba(255, 255, 255, 0.7);
+	overflow: auto;
 }
 .informacja
 {
+	-webkit-appearance: none;
 	border-top: 2px solid #fff;
-	position: relative;
 	min-height: 50px;
 	background-color: rgba(225,204,0,0.8);
 }
@@ -256,6 +286,29 @@ background-color: rgba(225,230,0,1);
 	padding: 5px;
 }
 
+
+.info_msg
+{
+
+	border-top: 2px solid #fff;
+	position: relative;
+	min-height: 50px;
+	background-color: rgba(0,138,230,0.8);
+}
+.info_msg:hover
+{
+background-color: rgba(0,138,230,1);
+}
+
+.info_msg p
+{
+	line-height: 50px;
+	color: #000;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+	padding: 5px;
+}
 
 
 .fa-bed

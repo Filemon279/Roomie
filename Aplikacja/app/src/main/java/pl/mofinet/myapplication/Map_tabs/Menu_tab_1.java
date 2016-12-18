@@ -23,10 +23,9 @@ public class Menu_tab_1 extends Fragment {
         final LatLng narodowe_point = Hotel_map.narodowe_point;
         final  LatLng panorama_point = Hotel_map.panorama_point;
         final  LatLng muzeum_point = Hotel_map.muzeum_point;
-        final IMapController mapController;
-        mapController = Hotel_map.mapController;
-     //   Hotel_map.mMap.clear();
-    //    Hotel_map.mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(panorama_point, 16.0f));
+
+
+
         Hotel_map.mMap.addMarker(new MarkerOptions().position(muzeum_point).title("Muzeum Główne Wrocław"));
         Hotel_map.mMap.addMarker(new MarkerOptions().position(panorama_point).title("Panorama Raclawicka"));
 

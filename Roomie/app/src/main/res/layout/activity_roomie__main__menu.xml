@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".Start.MainActivity"
+    android:id="@+id/ActivMain"
+    >
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+
+                >
+
+                <ImageView
+                    android:id="@+id/main_background"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/main_bg"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:id="@+id/linear_logo">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/main_logo"
+                                android:layout_gravity="center"
+                                android:src="@drawable/black_issp2"
+                                android:padding="5dip"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="35dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:id="@+id/Linear_context">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical|center_horizontal">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"></LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="fill_parent"
+                                android:layout_height="match_parent"
+
+                                android:gravity="center"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginTop="50dp"
+                                android:layout_marginRight="50dp"
+                                android:layout_margin="10dp"
+                                android:layout_weight="2">
+
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:gravity="center">
+
+                                    <ImageButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button_service"
+                                        android:src="@drawable/button_service_click"
+                                        android:layout_weight="2"
+                                        android:background="#00000000"
+                                        android:scaleType="centerInside" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Usługi w Hoteluu"
+                                        android:id="@+id/textView6"
+                                        android:textColor="#ffffff" />
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:gravity="center">
+
+                                    <ImageButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button_map"
+                                        android:src="@drawable/button_map_click"
+                                        android:scaleType="centerInside"
+                                        android:layout_weight="2"
+                                        android:background="#00000000"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Poza Hotelem"
+                                        android:id="@+id/textView5"
+                                        android:textColor="#ffffff" />
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"></LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="fill_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginTop="50dp"
+                                android:layout_marginRight="50dp"
+                                android:layout_margin="10dp"
+                                android:layout_weight="2" >
+
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:gravity="center">
+
+                                    <ImageButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button_sos"
+                                        android:src="@drawable/button_sos_click"
+                                        android:scaleType="centerInside"
+                                        android:layout_weight="2"
+                                        android:background="#00000000" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Pomoc"
+                                        android:id="@+id/textView7"
+                                        android:textColor="#ffffff" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:gravity="center">
+
+                                    <ImageButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button_transport"
+                                        android:src="@drawable/button_drive_click"
+                                        android:layout_weight="3"
+                                        android:background="#00000000"
+                                        android:scaleType="centerInside" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Transport"
+                                        android:id="@+id/textView8"
+                                        android:textColor="#ffffff" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"></LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:gravity="bottom"
+                        android:id="@+id/linear_bottom">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:gravity="bottom">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="fill_parent"
+                                android:layout_height="match_parent">
+
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:layout_centerInParent="true"
+                                    android:layout_margin="10dp"
+                                    android:layout_gravity="bottom"
+                                    android:gravity="bottom">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="CHECK IN: 12.03"
+                                        android:id="@+id/check_in_field"
+                                        android:textColor="#ffffff"
+                                        android:layout_gravity="left"
+                                        android:textSize="11dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="CHECK OUT 15.03"
+                                        android:id="@+id/check_out_field"
+                                        android:textColor="#ffffff"
+                                        android:layout_gravity="bottom"
+                                        android:textSize="11dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_gravity="bottom|right"
+                                    android:gravity="bottom">
+
+
+                                    <ImageButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button_setting"
+                                        android:src="@drawable/button_setting_click"
+
+                                        android:background="#00000000"
+                                        android:scaleType="centerInside"
+                                        android:layout_margin="10dp"
+                                        android:layout_gravity="right" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+

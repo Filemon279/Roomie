@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+  >
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/map"
+                tools:context=".MapsActivity"
+                android:name="com.google.android.gms.maps.SupportMapFragment" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+
+                android:layout_weight="2">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/map_bg"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+
+                <ImageView
+
+                    android:id="@+id/imageView"
+                    android:alpha="0.5"
+                    android:scaleType="centerCrop"
+                    android:src="#909090"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/switch_tab">
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/tab_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#000000"
+                        app:tabTextAppearance="@style/MineCustomTabText"
+                        app:tabSelectedTextColor="#ffffff"
+                        app:tabTextColor="#909090"
+                        app:tabGravity="center"
+                        app:tabMode="scrollable"
+                        app:tabIndicatorColor="#ffffff"
+                        android:elevation="6dp"
+                        android:minHeight="?attr/actionBarSize"
+                        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                        android:layout_weight="9" />
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/pager"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/tab_layout"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>
+
+
+
+

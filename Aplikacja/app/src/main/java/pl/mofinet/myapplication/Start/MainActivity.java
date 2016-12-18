@@ -184,7 +184,6 @@ public class MainActivity extends Activity implements
         Notification foregroundNote = null;
         RemoteViews bigView = new RemoteViews(MainActivityOut.getPackageName(),
                 R.layout.widget);
-
         Notification.Builder mNotifyBuilder = new Notification.Builder(MainActivityOut);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             foregroundNote = mNotifyBuilder.setContentTitle(msgPositions[1])
@@ -193,16 +192,12 @@ public class MainActivity extends Activity implements
                     .setLights(Color.BLUE, 3000, 3000)
                     .setVibrate(new long[]{700, 700, 700, 700, 700})
                     .build();
-
-
         }
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             foregroundNote.bigContentView = bigView;
         }
         bigView.setTextViewText(R.id.viewPowiadomienie, msgPositions[2]);
         notificationManager.notify(1, foregroundNote);
-
     }
 
     public static int calculateInSampleSize(

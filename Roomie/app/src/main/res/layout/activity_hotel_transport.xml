@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/Hotel_transport"
+        >
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/background_transport"
+                        android:scaleType="centerCrop"
+                        android:src="#ffffff"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" />
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_margin="0dp"
+                            android:foregroundGravity="center"
+                            android:gravity="center">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                                <Button
+                                    style="?android:attr/buttonStyleSmall"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="ZAMÓW TAKSÓWKĘ"
+                                    android:id="@+id/button_order_food"
+                                    android:background="@drawable/button_taxi_click"
+                                    android:textColor="#ffffff" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                                <Button
+                                    style="?android:attr/buttonStyleSmall"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="Komunikacja Miejska"
+                                    android:id="@+id/button_fill_needs"
+                                    android:background="@drawable/button_tram_click"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_marginBottom="0dp"
+                                    android:textColor="#ffffff"
+                                    android:layout_gravity="bottom"
+                                    android:foregroundGravity="bottom" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                                <Button
+                                    style="?android:attr/buttonStyleSmall"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="Wypożycz Samochód"
+                                    android:id="@+id/button_clean_room"
+                                    android:background="@drawable/button_rent_click"
+                                    android:layout_marginBottom="0dp"
+                                    android:layout_marginTop="0dp"
+                                    android:textColor="#ffffff" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>

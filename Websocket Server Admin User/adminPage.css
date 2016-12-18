@@ -155,66 +155,62 @@ p {
 }
 
 
-
-.popupInfo #title
+/**********POPUP INFO**********/
+.popupInfo #title,.popupResponse #title
 {
-	border-radius: 10px 10px 0px 0px;
 	margin: 0;
 	text-align: center;
 	padding: 5px;
-	font-size: 30px;
-	background-color: rgba(255,255,255,0.9);
-	color: #000;
-	box-shadow: 0 5px 5px 0 #303030;
+	font-size: 40px;	
+}
+.popupResponse #title
+{
+font-size: 30px;	
 }
 
-.popupInfo #room
+.popupInfo #room,.popupResponse #room
 {
 	text-align: center;
 	padding: 5px;
-	font-size: 17px;
-	background-color: #ffaa00;
-	color: #fff;
+	font-size: 20px;
+	color: #2ee7be;
 	box-shadow: 0 5px 5px 0 #303030;
 }
-
-.popupInfo #info
+.popupInfo #info,.popupResponse #info
 {
-	color: #000;
 	text-align: center;
 	padding: 15px;
-	font-size: 18px;
+	font-size: 13px;
 }
-
-.popupInfo #infoFooter
+.popupInfo #infoFooter,.popupResponse #infoFooter
 {
-	border-bottom-right-radius: 8px;
-	border-bottom-left-radius: 8px;
+	display: none;
 	text-align: center;
 	padding: 5px;
-	font-size: 13px;
-	background-color: #ffaa00;
-	color: #fff;
-	box-shadow: 0 5px 5px 0 #303030;
+	font-size: 11px;
 }
-
-.popupInfo
+.popupInfo,.popupResponse
 {
 display: none;
+color: #fff;
 position: absolute;
 width: 25%;
-border-radius: 15px;
-border: 2px solid #303030;
 min-height: 180px;
-background-color: rgba(255,255,255,1);
-box-shadow: 0px 8px 13px 0px #a0a0a0;
+background-color: #2c2f3e;
+box-shadow: 0px 2px 2px 2px rgba(30,30,30,0.5);
+}
+.popupInfo #closeMenu
+{
+	text-decoration: none;
+	float: right;
+	padding: 5px;
 }
 
 .infoAction
 {
 
 }
-#deleteReq, #responseReq
+#deleteReq, #responseReq,#closeResponse,#sendResponse
 {
 padding: 10px;
 color: white;
@@ -222,27 +218,35 @@ border: none;
 width: 50%;
 }
 
-#deleteReq,#closeCreator
+#deleteReq,#closeCreator,#closeResponse
 {
-background-color: red;
+background-color: #2aa7be;
 }
-#deleteReq:hover,#closeCreator:hover
+#deleteReq:hover,#closeCreator:hover,#closeResponse:hover
 {
-background-color: darkred;
+background-color: #2777be;
 }
-#responseReq,#createAccount
+#responseReq,#createAccount,#sendResponse
 {
-background-color: green;
+background-color: #2ff7ff;
 }
-#responseReq:hover,#createAccount:hover
+#responseReq:hover,#createAccount:hover,#sendResponse:hover
 {
-background-color: darkgreen;
+background-color: #2cc7ff;
 }
-#deleteReq:active, #responseReq:active,#closeCreator:active,#createAccount:active
+#deleteReq:active, #responseReq:active,#closeCreator:active,#createAccount:active,#closeResponse:active,#sendResponse:active
 {
-background-color: #ffcc00;
+background-color: #2ee7be;
 }
 
+
+textarea
+{
+	resize: none;
+	overflow: auto;
+	width: 90%;
+}
+/**********REQUEST**********/
 .requestsPanel
 {
 position: absolute;
@@ -252,7 +256,6 @@ right: 0;
 height: auto;
 background-color: rgba(255, 255, 255, 0.1)
 }
-
 .fa-bed
 {
 color: #3333ff;
@@ -276,106 +279,112 @@ color: #800000;
 {
 	display: inline-block; 
 	font-family: 'Hammersmith One', sans-serif;
-	font-size: auto;
+	font-size: 11px;
 	text-align:center;
 	color: #29cdf2;
-	text-shadow: 3px 3px #101010;
-	margin: 15px;
-	border-radius: 25px;
+	text-shadow: 1px 1px #000000;
+	margin: 10px;
+	border-radius: 15px;
 	width: auto;
-	min-width: 150px;
+	min-width: 125px;
 	overflow: auto;
 	padding: 15px;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 1);
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
 }
 .request:hover
 {
 	color: #ffcc00;
-	 box-shadow: 0px 8px 16px 0px rgba(255,230,00,0.3);
+	 box-shadow: 0px 0px 16px 0px rgba(255,230,00,0.3);
 }
-
 .request:active
 {
 	color: #ffcc00;
-	 box-shadow: 0px 4px 8px 0px rgba(255,230,00,0.4);
+	box-shadow: 0px 0px 8px 0px rgba(255,230,00,0.4);
 }
 
-
+/**************ACCOUNT CREATOR**************/
 .createAccount
 {
-display: none;
-position: absolute;
-width: 25%;
-border-radius: 15px;
-border: 2px solid #303030;
-min-height: 180px;
-background-color: rgba(255,204,0,1);
-box-shadow: 0px 8px 13px 0px #a0a0a0;
+	display: none;
+	position: absolute;
+	width: 25%;
+	min-height: 180px;
+	background-color: #2c2f3e;
+	box-shadow: 0px 2px 2px 2px rgba(30,30,30,0.5);
 }
-
 .createAccount #title
-{
-	border-radius: 10px 10px 0px 0px;
-	margin: 0;
+{	margin: 0;
 	text-align: center;
 	padding: 5px;
 	font-size: 30px;
-	background-color: rgba(255,255,255,0.9);
-	color: #000;
-	box-shadow: 0 5px 5px 0 #303030;
+	color: #fff;
+}
+#nameField,#surnameField
+{
+	display: inline-block;
 }
 
-#nameField,#surnameField{
-display: inline-block;
+.createAccount .in
+{
+	overflow: auto;
+	background-color: #2aa7be;
 }
-.createAccount .fa{
-background-color:rgba(0,0,0,0.7);
-	border-radius: 3px 0px 0px 3px;
-	color: #ffcc00;
-	height: 37px;
-    font-size:25px;
-	line-height: 27px;
-	text-align: center;
-	width: 50px;
-}
-.createAccount input{
-background-color: rgba(0,0,0,0.7);
-padding: 8px 3px 8px 3px;
-width: auto;
+.createAccount p .fa{
+padding: 5px;
+padding-bottom: 0px;
+width: 40px;
+margin-top: 5px;
 color:white;
+
 }
-.createAccount input:focus{
-background-color: rgba(255,204,0,0.5);
+
+.createAccount input
+{
+	background-color: #f0f0f0;
+	padding: 8px 3px 8px 3px;
+	width: auto;
+	color:black;
+	margin-bottom: 0px;
+	box-shadow: 0px;
+}
+.createAccount input:focus
+{
+box-shadow: 0px 2px 2px 2px rgba(30,30,30,0.7);
+background-color: rgba(30,30,30,0.1);
 color:black;
 }
+#createInfo
+{
+	display: none;
+	color: white;
+	text-align: center;
+	padding: 15px;
 
-
-
+}
 .createAccount #nameSurname,#numberPass,#checkInOut,#others
 {
 	text-align: center;
 	padding: 5px;
 	font-size: 17px;
-	background-color: #ffcc00;
-	color: #000;
+	color: #2ee7be;
 }
 #closeCreator, #createAccount
 {
-padding: 10px;
-color: white;
-border: none;
-width: 50%;
+	padding: 10px;
+	color: white;
+	border: none;
+	width: 50%;
 }
-#createAccount
+#othersField
 {
-	border-bottom-right-radius: 10px;
+	width:90%;
+	padding-right: 0;
+	margin-right: 0;
 }
-#closeCreator
-{
-	border-bottom-left-radius: 10px;
+.othersArea .in{
+	margin-right: 15%;
+	margin-left: 15%;
+	padding-right: 0;
 }
-.othersArea
-{
-	margin-bottom: 5px;
-}
+

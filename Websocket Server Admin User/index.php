@@ -4,15 +4,16 @@
    <title>Roomie</title>
    <head> 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <script language = "javascript" type ="text/javascript" src="Client.js"> </script>
-      <link rel="stylesheet" type="text/css" href="LoginPage.css">
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+      <script language = "javascript" type ="text/javascript" src="./Client.js"> </script>
+      <link rel="stylesheet" type="text/css" href="./LoginPage.css">
       <link rel="stylesheet" href="css/font-awesome.min.css">
       <link href='http://fonts.googleapis.com/css?family=Hammersmith+One&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="js/jquery.bpopup.min"></script>
+    <script type="text/javascript" src="js/jquery.bpopup.min.js"></script>
    </head> 
    <body id="container">
-  <script language = "javascript" type ="text/javascript" src="Client_login.js"></script>
-  <script language = "javascript" type ="text/javascript" src="Client_admin.js"></script>
+  <script language = "javascript" type ="text/javascript" src="./Client_login.js"></script>
+  <script language = "javascript" type ="text/javascript" src="./Client_admin.js"></script>
 <div class="main">
    <div class="container">
       <center>

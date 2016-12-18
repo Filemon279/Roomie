@@ -11,9 +11,9 @@
 
         
          dane = evt.data.split("#");
-         console.log(dane);
+       //  console.log(dane);
          if(dane[0]=="SERWER_STATUS") {  
-          console.log(dane[1]+"nowy");   
+         // console.log(dane[1]+"nowy");   
            $("#users_count").html(("00" + dane[1]).slice(-3));
             $("#rooms_connected").html(("00" + dane[2]).slice(-3));
              $("#rooms_unconnected").html(("00" + dane[3]).slice(-3));
@@ -26,7 +26,7 @@
            $(".users_count p:nth-of-type(2)").html(("00" + dane[1]).slice(-3));
             $(".rooms_connected p:nth-of-type(2)").html(("00" + dane[2]).slice(-3));
           $(".rooms_unconnected p:nth-of-type(2)").html(("00" + dane[3]).slice(-3));
-            console.log(dane[1]);
+          //  console.log(dane[1]);
          }
 
          else if(dane[0]=="CLEAN") {     
@@ -48,21 +48,49 @@
         else if(dane[0]=="HELP") {     
           $(".requestsPanel").append("<div class=\"request\" ID="+dane[0]+"#"+dane[1]+" style=\"color: #800000;\"><i class=\"fa fa-medkit fa-5x\" aria-hidden=\"true\"></i><br>Pomoc<br>"+("00"+dane[1]).slice(-3)+" </div>");
          }
+        else if(dane[0]=="ROOM") {     
+          $(".requestsPanel").append("<div class=\"request\" ID="+dane[0]+"#"+dane[1]+" style=\"color: #800000;\"><i class=\"fa fa-lightbulb-o fa-5x\" aria-hidden=\"true\"></i><br>Wyposażenie<br>"+("00"+dane[1]).slice(-3)+" </div>");
+         }
          else if(dane[0]=="UPTADE_REQUESTS") 
           { 
-          console.log("updReq");    
+         // console.log("updReq");    
             $(".request_pending p:nth-of-type(2)").html(("00" + dane[1]).slice(-3));
            $(".request_done p:nth-of-type(2)").html(("00" + dane[2]).slice(-3)); 
          }
+
+         else if(dane[0]=="ALERT") 
+         { 
+            $("#createInfo").css("color","red");
+            $("#createInfo").html(dane[1]);
+            $("#createInfo").fadeIn(200);
+         }
+         else if(dane[0]=="ACCOUNT_CREATED") 
+         { 
+            $("#createInfo").css("color","green");
+            $("#createInfo").html("Konto utworzone poprawnie");
+            $("#createInfo").fadeIn(400);
+            $("#createInfo").fadeOut(1500,function(){
+               bPopup.close();
+          });
+            $("#numberField").val("");
+            $("#passField").val("");
+            $("#nameField").val("");
+            $("#surnameField").val("");
+            $("#othersField").val("");
+            document.getElementById('checkINField').valueAsDate = new Date();
+            document.getElementById('checkOUTField').valueAsDate = new Date();
+         }
          else if(dane[0]=="REQINFO") {     
-        
+             //#1 Numer
+             //#2 ID
+             //#3 Info
+             //#4 Imie i Nazwisko
+             //#5 ReqID
          $('.popupInfo #title').html(dane[2]);
          $('.popupInfo #room').html(("00" + dane[1]).slice(-3)+" - "+dane[4]);
          $('.popupInfo #info').html(dane[3]);
          $('.popupInfo #infoFooter').html(dane[2]+"#ID#"+dane[1]+"#"+dane[5]);
          }
-
-        // else show(evt.data);
       };
 
     }
@@ -70,7 +98,12 @@
     function requestInfo(request)
     {
         websocket.send("REQINFO#"+request);
-        console.log("REQINFO#"+request);
+      //  console.log("REQINFO#"+request);
+    }
+
+    function response(numer,response)
+    {
+      websocket.send("RESPONSE#"+numer+"#"+response);
     }
 
     function deleteReq(id)
@@ -87,14 +120,25 @@
 
     function crtAcc()
     {
-     console.log("info");
-      var info="CREATE_ACCOUNT#"+$("#numberField").val();
+    var checkIN = Date.parse($("#checkINField").val());
+    var checkOUT = Date.parse($("#checkOUTField").val());
+    if ( checkIN < checkOUT ) {
+   var info="CREATE_ACCOUNT#"+$("#numberField").val();
       info+="#"+$("#passField").val();
       info+="#"+$("#nameField").val();
       info+="#"+$("#surnameField").val();
       info+="#"+$("#checkINField").val();
       info+="#"+$("#checkOUTField").val();
       info+="#"+$("#othersField").val();
-    console.log(info);
+    //console.log(info);
     websocket.send(info);
+    }
+   else{
+    $("#createInfo").css("color","red");
+    $("#createInfo").html("Check Out nie może być wcześniej niż Check In");
+    $("#createInfo").fadeIn(400);
+   }
+
+    
+      
     }

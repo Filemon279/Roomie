@@ -25,11 +25,11 @@
                    complete: function() 
                    {
                       if(evt.data=="#USER#"){
-                      $("#container").load("/Roomie/User.php");
+                      $("#container").load("./User.php");
                       $( "#container").animate({opacity: 1,},1000,function() {runUser();});
                       }
                       if(evt.data=="#ADMIN#"){
-                      $("#container").load("/Roomie/Admin.php");
+                      $("#container").load("./Admin.php");
                       runAdmin();
                       $( "#container" ).animate({opacity: 1,},1000,function() { websocket.send("GET_SERWER_STATUS"); });
                       }

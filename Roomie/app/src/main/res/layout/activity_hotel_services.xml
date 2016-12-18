@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu.Hotel_services"
+    android:id="@+id/Hotel_services"
+    >
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+
+                >
+
+                <ImageView
+                    android:id="@+id/background_services"
+                    android:scaleType="centerCrop"
+
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="#ffffff" />
+
+                <ImageView
+
+                    android:id="@+id/dark"
+                    android:alpha="0.3"
+                    android:scaleType="centerCrop"
+                    android:src="#000000"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                        <Button
+                            style="?android:attr/buttonStyleSmall"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Sprzątanie"
+                            android:id="@+id/button_clean_room"
+                            android:background="@drawable/button_bed_click"
+                            android:textColor="#ffffff"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                                <Button
+                                    style="?android:attr/buttonStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="Naprawa sprzęru"
+                                    android:id="@+id/button_repair_room"
+                                    android:background="@drawable/button_repair_click"
+                                    android:textColor="#ffffff"
+                                    android:elevation="0dp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                        <Button
+                            style="?android:attr/buttonStyleSmall"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Uzupełnienie wyposażenia"
+                            android:id="@+id/button_fill_needs"
+                            android:background="@drawable/button_items_click"
+                            android:textColor="#ffffff" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+

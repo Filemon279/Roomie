@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.filemon.roomie">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/roomie_logo_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Roomie_Main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Roomie_Main_Menu" />
+        <activity android:name=".Roomie_Main_Login"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAV2gz-ijII_9NJEUxby5sEstOHl0uKEmQ" />
+
+        <activity android:name=".Roomie_Main_Services"></activity>
+        <activity android:name=".Services.Service_room"></activity>
+        <activity android:name=".Services.Service_repair"></activity>
+        <activity android:name=".Services.Service_food"></activity>
+        <activity android:name=".Services.Service_contact"></activity>
+        <activity android:name=".Services.Service_clean"></activity>
+        <activity android:name=".Roomie_Main_Transport"></activity>
+        <activity android:name=".Roomie_Main_Map"></activity>
+        <activity android:name=".Roomie_Main_Setting"></activity>
+        <activity android:name=".Roomie_Main_Sos"></activity>
+        <activity android:name=".Roomie_Error"></activity>
+    </application>
+
+</manifest>

@@ -1,4 +1,5 @@
   function runUser() {   
+
   websocket.send("USER_CONNECTED");
    websocket.onopen = function(evt) {
          onOpen(evt)
@@ -18,12 +19,32 @@
             $("#user_checkIn").html(dane[4]);             //#4 checkIN
             $("#user_checkOut").html(dane[5]);             //#5 checkOUT
         }
-           
+        else if(dane[0]=="MSG")
+        {
+      
+        console.log(dane[1]);
+
+           $(".infoPanelTitle").after("<div class=\"info_msg\" id=\"not-seen\"><p>"+dane[1]+"</p></div>");
+           $(".info_msg").first().effect( "shake", {times:2,distance:40,direction:"up"}, 1000);
+        }
          //show(evt.data);
-      };
-       
+      }; 
     }
 
+   /*blink();
+    function blink()
+    {
+    $(".informacja[id='not-seen']").each(function(index, element){
+        $(element).click(function()
+        {
+            $(this).attr("id","seen");
+        })
+        $(element).fadeOut(2500,function(){
+        $(element).fadeIn(2500);
+    });
+    });
+    setInterval('blink()',5000);
+    }*/
 
     function sendClean()
     {

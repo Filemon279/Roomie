@@ -1,4 +1,4 @@
-  var wsUri = "ws://localhost:8080";
+  var wsUri = "ws://91.185.191.213:8279";
     var output;
 	  var websocket;
       function init() {
@@ -7,11 +7,12 @@
       }
 	
       function runWebSocket() {
-      websocket = new WebSocket(wsUri,'echo-pro');
+      websocket = new WebSocket(wsUri);
       runLogin();
       
        
       }
+
 	
     function onOpen(evt) {
         $(".connectionInfo .info").attr("id","connected");
